@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="iTpraTi - Soluções Tecnológicas Integradas para Angola e CPLP. Internet, TV, ERP, VENDUS e WORKSPACE.">
+    <meta name="keywords" content="soluções tecnológicas Angola, internet Luanda, TV digital, ERP Angola, VENDUS, WORKSPACE">
+    <title>iTpraTi - Soluções Tecnológicas Integradas para Angola e CPLP</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Cabeçalho (Header) e Navegação -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h1>iTpraTi</h1>
+                    <span class="slogan">Soluções Tecnológicas Integradas para Angola e CPLP</span>
+                </div>
+                
+                <div class="nav-menu">
+                    <ul class="nav-links">
+                        <li class="dropdown">
+                            <a href="#produtos">Produtos <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown-content">
+                                <a href="https://net.itprati.ao">NET - Internet</a>
+                                <a href="https://tv.itprati.ao">TV - Entretenimento</a>
+                                <a href="https://vendus.itprati.ao">VENDUS - E-commerce</a>
+                                <a href="https://erp.itprati.ao">ERP - Gestão</a>
+                                <a href="https://workspace.itprati.ao">WORKSPACE - Produtividade</a>
+                            </div>
+                        </li>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-actions">
+                    <div class="search-box">
+                        <input type="text" placeholder="Buscar produtos...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <a href="https://wa.me/244900000000" class="whatsapp-btn" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Fale Conosco
+                    </a>
+                </div>
+                
+                <div class="mobile-menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Seção Hero (Inicial) -->
+    <section class="hero" id="hero">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Bem-vindo à iTpraTi: Conectando, Entretenendo e Potencializando Seu Negócio</h1>
+            <p class="hero-subtitle">Descubra nossas soluções em internet, entretenimento, faturação, ERP e produtividade. Escolha o que precisa e transforme sua rotina.</p>
+            <button class="hero-cta" onclick="scrollToProducts()">
+                <i class="fas fa-rocket"></i> Explore Nossos Produtos
+            </button>
+        </div>
+    </section>
+
+    <!-- Seção de Produtos Principais -->
+    <section class="products" id="produtos">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nossas Soluções Tecnológicas</h2>
+                <p>Escolha a solução ideal para suas necessidades</p>
+            </div>
+            
+            <div class="product-filters">
+                <button class="filter-btn active" data-filter="all">Todos</button>
+                <button class="filter-btn" data-filter="individual">Indivíduos</button>
+                <button class="filter-btn" data-filter="empresa">Empresas</button>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card" data-category="individual empresa">
+                    <div class="product-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>NET: Internet Ilimitada</h3>
+                    <p>Internet banda larga via WiMAX para residências e empresas em Luanda, com suporte 24/7 e segurança integrada.</p>
+                    <div class="product-features">
+                        <span><i class="fas fa-check"></i> Alta velocidade</span>
+                        <span><i class="fas fa-check"></i> Suporte 24/7</span>
+                        <span><i class="fas fa-check"></i> Instalação gratuita</span>
+                    </div>
+                    <a href="https://net.itprati.ao" class="product-btn">Saiba Mais</a>
+                </div>
+                
+                <div class="product-card" data-category="individual">
+                    <div class="product-icon">
+                        <i class="fas fa-tv"></i>
+                    </div>
+                    <h3>TV: Entretenimento Digital</h3>
+                    <p>Canais de TV digital com qualidade HD, programação diversificada e conteúdo local e internacional para toda a família.</p>
+                    <div class="product-features">
+                        <span><i class="fas fa-check"></i> Qualidade HD</span>
+                        <span><i class="fas fa-check"></i> Conteúdo local</span>
+                        <span><i class="fas fa-check"></i> Programação diversa</span>
+                    </div>
+                    <a href="https://tv.itprati.ao" class="product-btn">Saiba Mais</a>
+                </div>
+                
+                <div class="product-card" data-category="empresa">
+                    <div class="product-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>VENDUS: E-commerce</h3>
+                    <p>Plataforma completa de e-commerce e faturação para empresas, com gestão de vendas, estoque e relatórios avançados.</p>
+                    <div class="product-features">
+                        <span><i class="fas fa-check"></i> Gestão completa</span>
+                        <span><i class="fas fa-check"></i> Relatórios avançados</span>
+                        <span><i class="fas fa-check"></i> Integração fácil</span>
+                    </div>
+                    <a href="https://vendus.itprati.ao" class="product-btn">Saiba Mais</a>
+                </div>
+                
+                <div class="product-card" data-category="empresa">
+                    <div class="product-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>ERP: Gestão Empresarial</h3>
+                    <p>Sistema integrado de gestão empresarial para otimizar processos, controlar recursos e aumentar a produtividade do seu negócio.</p>
+                    <div class="product-features">
+                        <span><i class="fas fa-check"></i> Gestão integrada</span>
+                        <span><i class="fas fa-check"></i> Controle de recursos</span>
+                        <span><i class="fas fa-check"></i> Relatórios em tempo real</span>
+                    </div>
+                    <a href="https://erp.itprati.ao" class="product-btn">Saiba Mais</a>
+                </div>
+                
+                <div class="product-card" data-category="empresa">
+                    <div class="product-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>WORKSPACE: Produtividade</h3>
+                    <p>Ferramentas de produtividade e colaboração para equipes, incluindo gestão de projetos, comunicação e armazenamento em nuvem.</p>
+                    <div class="product-features">
+                        <span><i class="fas fa-check"></i> Colaboração em equipe</span>
+                        <span><i class="fas fa-check"></i> Armazenamento seguro</span>
+                        <span><i class="fas fa-check"></i> Acesso remoto</span>
+                    </div>
+                    <a href="https://workspace.itprati.ao" class="product-btn">Saiba Mais</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Sobre Nós -->
+    <section class="about" id="sobre">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Sobre a iTpraTi</h2>
+                    <p>Com mais de 4 anos de experiência no mercado angolano, a iTpraTi é uma empresa líder em soluções tecnológicas integradas. Servimos mais de 200 clientes em todo o país, oferecendo inovação e qualidade em cada projeto.</p>
+                    <p>Nossa missão é conectar Angola ao futuro digital, fornecendo tecnologias que transformam negócios e melhoram a vida das pessoas.</p>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <h3>200+</h3>
+                            <p>Clientes Satisfeitos</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>99%</h3>
+                            <p>Uptime Garantido</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>4+</h3>
+                            <p>Anos de Experiência</p>
+                        </div>
+                        <div class="stat-item">
+                            <h3>24/7</h3>
+                            <p>Suporte Técnico</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonials">
+                    <h3>O que nossos clientes dizem</h3>
+                    <div class="testimonial-slider">
+                        <div class="testimonial active">
+                            <p>"A iTpraTi transformou nossa empresa. O sistema ERP aumentou nossa produtividade em 40%."</p>
+                            <cite>- João Silva, CEO da TechCorp</cite>
+                        </div>
+                        <div class="testimonial">
+                            <p>"Internet rápida e estável. Nunca mais tivemos problemas de conectividade."</p>
+                            <cite>- Maria Santos, Empresária</cite>
+                        </div>
+                        <div class="testimonial">
+                            <p>"O suporte é excepcional. Sempre prontos a ajudar quando precisamos."</p>
+                            <cite>- Carlos Mendes, Diretor de TI</cite>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Benefícios -->
+    <section class="benefits">
+        <div class="container">
+            <h2>Por Que Escolher a iTpraTi?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <i class="fas fa-headset"></i>
+                    <h3>Suporte 24/7</h3>
+                    <p>Equipe técnica disponível 24 horas por dia, 7 dias por semana para resolver qualquer problema.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Soluções Locais para Angola</h3>
+                    <p>Conhecemos o mercado angolano e oferecemos soluções adaptadas às necessidades locais.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-globe"></i>
+                    <h3>Integração com Tecnologias Globais</h3>
+                    <p>Utilizamos as melhores tecnologias mundiais adaptadas para o contexto angolano.</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Instalação Rápida e Segura</h3>
+                    <p>Processo de instalação ágil com todas as medidas de segurança necessárias.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção de Contato -->
+    <section class="contact" id="contato">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Entre em Contato</h2>
+                    <p>Estamos prontos para ajudar você a encontrar a solução tecnológica ideal.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Telefone</h4>
+                                <p>+244 900 000 000</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>contato@itprati.ao</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Endereço</h4>
+                                <p>Rua Principal, Luanda, Angola</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://wa.me/244900000000"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" placeholder="Seu Nome" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Seu Email" required>
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="">Selecione um produto</option>
+                                <option value="net">NET - Internet</option>
+                                <option value="tv">TV - Entretenimento</option>
+                                <option value="vendus">VENDUS - E-commerce</option>
+                                <option value="erp">ERP - Gestão</option>
+                                <option value="workspace">WORKSPACE - Produtividade</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Sua Mensagem" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">
+                            <i class="fas fa-paper-plane"></i> Enviar Mensagem
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Mapa de Luanda - Angola</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé (Footer) -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>iTpraTi</h3>
+                    <p>Soluções Tecnológicas Integradas para Angola e CPLP</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://wa.me/244900000000"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Produtos</h4>
+                    <ul>
+                        <li><a href="https://net.itprati.ao">NET - Internet</a></li>
+                        <li><a href="https://tv.itprati.ao">TV - Entretenimento</a></li>
+                        <li><a href="https://vendus.itprati.ao">VENDUS - E-commerce</a></li>
+                        <li><a href="https://erp.itprati.ao">ERP - Gestão</a></li>
+                        <li><a href="https://workspace.itprati.ao">WORKSPACE - Produtividade</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#sobre">Sobre Nós</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#">Carreiras</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Suporte</h4>
+                    <ul>
+                        <li><a href="#">Central de Ajuda</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Certificações</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 iTpraTi. Todos os direitos reservados.</p>
+                <div class="footer-certifications">
+                    <span>Certificado ISO 9001</span>
+                    <span>Licenciado INACOM</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat ao vivo (placeholder) -->
+    <div class="chat-widget">
+        <div class="chat-button">
+            <i class="fas fa-comments"></i>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
