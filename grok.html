@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iTpraTi - Soluções Tecnológicas Integradas</title>
+    <style>
+        /* CSS Geral */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff; /* Azul corporativo */
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #007bff; /* Azul */
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        header nav ul li a {
+            color: white;
+            padding: 10px;
+            transition: background 0.3s;
+        }
+
+        header nav ul li a:hover {
+            background-color: #0056b3;
+            border-radius: 5px;
+        }
+
+        header .cta {
+            background-color: #28a745; /* Verde para ação */
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* Seção Hero */
+        .hero {
+            background-image: url('https://via.placeholder.com/1920x600?text=Skyline+de+Luanda+com+Elementos+Digitais'); /* Placeholder para imagem */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .hero .cta {
+            background-color: #28a745;
+            padding: 15px 30px;
+            border-radius: 5px;
+            color: white;
+            font-size: 18px;
+        }
+
+        /* Seção Produtos */
+        .products {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: white;
+        }
+
+        .products h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .product-card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .product-card p {
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .product-card a {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        /* Seção Sobre Nós */
+        .about {
+            padding: 50px 20px;
+            background-color: #e9ecef;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .about p {
+            max-width: 800px;
+            margin: 0 auto 20px;
+        }
+
+        /* Seção Benefícios */
+        .benefits {
+            padding: 50px 20px;
+            text-align: center;
+            background-color: white;
+        }
+
+        .benefits h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .benefit-list {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .benefit-item {
+            flex: 1 1 200px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        /* Seção Contato */
+        .contact {
+            padding: 50px 20px;
+            background-color: #e9ecef;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .contact form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact input, .contact textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .contact button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        footer ul li a {
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="logo">iTpraTi</div>
+        <nav>
+            <ul>
+                <li><a href="https://NET.itprati.ao">NET</a></li>
+                <li><a href="https://TV.itprati.ao">TV</a></li>
+                <li><a href="https://VENDUS.itprati.ao">VENDUS</a></li>
+                <li><a href="https://ERP.itprati.ao">ERP</a></li>
+                <li><a href="https://WORKSPACE.itprati.ao">WORKSPACE</a></li>
+                <li><a href="#about">Sobre Nós</a></li>
+                <li><a href="#contact">Contato</a></li>
+            </ul>
+        </nav>
+        <a href="https://wa.me/123456789" class="cta">Fale Conosco</a>
+    </header>
+
+    <!-- Seção Hero -->
+    <section class="hero">
+        <h1>Bem-vindo à iTpraTi</h1>
+        <p>Conectando, Entretenendo e Potencializando Seu Negócio</p>
+        <a href="#products" class="cta">Explore Nossos Produtos</a>
+    </section>
+
+    <!-- Seção Produtos -->
+    <section id="products" class="products">
+        <h2>Nossos Principais Produtos</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="https://via.placeholder.com/80?text=NET" alt="Ícone NET">
+                <h3>NET: Internet Ilimitada</h3>
+                <p>Internet banda larga via WiMAX para residências e empresas em Luanda, com suporte 24/7 e segurança integrada.</p>
+                <a href="https://NET.itprati.ao">Saiba Mais</a>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/80?text=TV" alt="Ícone TV">
+                <h3>TV: Entretenimento em IPTV</h3>
+                <p>Streaming de mais de 1.000 canais, filmes e séries em 4K, focado em conteúdos para CPLP.</p>
+                <a href="https://TV.itprati.ao">Saiba Mais</a>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/80?text=VENDUS" alt="Ícone VENDUS">
+                <h3>VENDUS: Software de Faturação</h3>
+                <p>Software certificado para faturação online e POS, com relatórios e sincronização em tempo real.</p>
+                <a href="https://VENDUS.itprati.ao">Saiba Mais</a>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/80?text=ERP" alt="Ícone ERP">
+                <h3>ERP: Gestão Empresarial</h3>
+                <p>Soluções ERP para planejamento integrado de recursos empresariais.</p>
+                <a href="https://ERP.itprati.ao">Saiba Mais</a>
+            </div>
+            <div class="product-card">
+                <img src="https://via.placeholder.com/80?text=WORKSPACE" alt="Ícone WORKSPACE">
+                <h3>WORKSPACE: Produtividade em Nuvem</h3>
+                <p>Google Workspace com ferramentas colaborativas, IA e segurança para empresas.</p>
+                <a href="https://WORKSPACE.itprati.ao">Saiba Mais</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Sobre Nós -->
+    <section id="about" class="about">
+        <h2>Sobre Nós</h2>
+        <p>A iTpraTi é uma empresa angolana com mais de 4 anos de experiência, servindo milhares de clientes em Angola e CPLP. Oferecemos soluções inovadoras com 99% de uptime e suporte dedicado.</p>
+        <p>Depoimentos: "Excelente serviço!" - Cliente NET | "Transformou meu negócio." - Usuário VENDUS</p>
+    </section>
+
+    <!-- Seção Benefícios -->
+    <section class="benefits">
+        <h2>Por Que Escolher iTpraTi?</h2>
+        <div class="benefit-list">
+            <div class="benefit-item">Suporte 24/7</div>
+            <div class="benefit-item">Soluções Locais para Angola</div>
+            <div class="benefit-item">Integração com Tecnologias Globais</div>
+            <div class="benefit-item">Instalação Rápida e Segura</div>
+        </div>
+    </section>
+
+    <!-- Seção Contato -->
+    <section id="contact" class="contact">
+        <h2>Entre em Contato</h2>
+        <form>
+            <input type="text" placeholder="Nome" required>
+            <input type="email" placeholder="Email" required>
+            <textarea placeholder="Mensagem" required></textarea>
+            <select>
+                <option>Produto de Interesse</option>
+                <option>NET</option>
+                <option>TV</option>
+                <option>VENDUS</option>
+                <option>ERP</option>
+                <option>WORKSPACE</option>
+            </select>
+            <button type="submit">Enviar</button>
+        </form>
+        <p>Ou contate via WhatsApp: <a href="https://wa.me/123456789">+123 456 789</a></p>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <ul>
+            <li><a href="https://NET.itprati.ao">NET</a></li>
+            <li><a href="https://TV.itprati.ao">TV</a></li>
+            <li><a href="https://VENDUS.itprati.ao">VENDUS</a></li>
+            <li><a href="https://ERP.itprati.ao">ERP</a></li>
+            <li><a href="https://WORKSPACE.itprati.ao">WORKSPACE</a></li>
+        </ul>
+        <p>&copy; 2025 iTpraTi. Todos os direitos reservados. | <a href="#">Termos de Uso</a> | <a href="#">Política de Privacidade</a></p>
+    </footer>
+
+</body>
+</html>
