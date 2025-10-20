@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="pt">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DASHBOARD FINANCEIRO MENSAL ITPRATI: ENTRADAS E SAÍDAS</title>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- PapaParse para CSV -->
+  <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>DASHBOARD FINANCEIRO MENSAL ITPRATI: ENTRADAS E SAÍDAS</h1>
+    <div class="controls">
+      <label for="monthPicker">Mês de Análise:</label>
+      <input type="month" id="monthPicker" />
+      <button id="reloadBtn">Recarregar Dados</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="kpis" class="grid kpi-grid">
+      <div class="kpi">
+        <div class="kpi-title">Total Entradas</div>
+        <div id="kpi-entradas" class="kpi-value">--</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-title">Total Saídas</div>
+        <div id="kpi-saidas" class="kpi-value">--</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-title">Saldo Líquido</div>
+        <div id="kpi-saldo" class="kpi-value">--</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-title">Receber Pendentes</div>
+        <div id="kpi-rpendentes" class="kpi-value">--</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-title">Pagar Pendentes</div>
+        <div id="kpi-ppendentes" class="kpi-value">--</div>
+      </div>
+    </section>
+
+    <section class="charts">
+      <div class="chart-card">
+        <h3>Fluxo de Caixa (últimos 12 meses)</h3>
+        <canvas id="cashflowChart" height="120"></canvas>
+      </div>
+
+      <div class="two-columns">
+        <div class="chart-card">
+          <h3>Distribuição Entradas por Produto (Mês)</h3>
+          <canvas id="pieEntradas" height="200"></canvas>
+        </div>
+        <div class="chart-card">
+          <h3>Distribuição Saídas por Produto/Categoria (Mês)</h3>
+          <canvas id="pieSaidas" height="200"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-card">
+        <h3>Status dos Recebíveis (Mês)</h3>
+        <canvas id="stackRecebiveis" height="140"></canvas>
+      </div>
+    </section>
+
+    <section class="table-section">
+      <h3>Detalhes do Mês</h3>
+      <div class="filters">
+        <label>Tipo:
+          <select id="filterTipo">
+            <option value="all">Todos</option>
+            <option value="Recebível">Recebível</option>
+            <option value="Pagável">Pagável</option>
+          </select>
+        </label>
+        <label>Status:
+          <select id="filterStatus">
+            <option value="all">Todos</option>
+            <option value="Pago">Pago</option>
+            <option value="Pendente">Pendente</option>
+            <option value="Atrasado">Atrasado</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="table-wrapper">
+        <table id="detalhesTabela">
+          <thead>
+            <tr>
+              <th>Data_Vencimento</th>
+              <th>Tipo</th>
+              <th>Descricao</th>
+              <th>Produto</th>
+              <th>Valor</th>
+              <th>Status</th>
+              <th>Cliente_Fornecedor</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <small>ITPRATI — Dashboard gerado localmente. Atualize <code>data/dados_financeiros_itprati.csv</code> para alimentar o dashboard.</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
