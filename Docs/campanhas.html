@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Plano de Campanha — Selenium (Odoo) — LinkedIn & E-mail</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#071027; --card:#071324; --accent:#6ee7b7; --accent2:#60a5fa; --muted:#95a3b8; --glass:rgba(255,255,255,0.03);
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Arial; margin:0; background:linear-gradient(180deg,#061022 0%, #071423 70%); color:#e8f2fb}
+    .wrap{max-width:var(--maxw); margin:36px auto; padding:28px}
+    header{display:flex; gap:20px; align-items:center}
+    .logo{width:76px; height:76px; border-radius:14px; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-weight:800; color:#042022; font-size:20px}
+    h1{margin:0; font-size:26px}
+    p.lead{color:var(--muted); margin-top:6px}
+    .grid{display:grid; grid-template-columns:1fr 360px; gap:20px; margin-top:20px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:20px; border-radius:12px; box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+    .section-title{display:flex; justify-content:space-between; align-items:center; margin-bottom:12px}
+    .section-title h2{font-size:18px; margin:0}
+    .pill{background:var(--glass); color:var(--muted); padding:6px 10px; border-radius:999px; font-size:13px}
+    table{width:100%; border-collapse:collapse; margin-top:8px}
+    th,td{padding:10px; text-align:left}
+    th{font-weight:700; background:rgba(255,255,255,0.02)}
+    tr:nth-child(even) td{background:rgba(255,255,255,0.015)}
+    .kpi{display:flex; gap:12px; flex-wrap:wrap}
+    .kpi .item{background:rgba(255,255,255,0.02); padding:12px; border-radius:10px; min-width:140px}
+    .num{font-size:18px; font-weight:800; color:var(--accent)}
+    .code{background:rgba(0,0,0,0.25); padding:10px; border-radius:8px; font-family:monospace; font-size:13px}
+    footer{margin-top:20px; color:var(--muted); font-size:13px}
+    @media (max-width:980px){.grid{grid-template-columns:1fr;}.wrap{padding:16px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">S&amp;IT</div>
+      <div>
+        <h1>Plano de Campanha — Selenium (Odoo)</h1>
+        <p class="lead">Campanha LinkedIn + E‑mail Marketing para captar grandes clientes empresariais.</p>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div class="pill">Foco: B2B • Mercado Alto Nível</div>
+        <div style="color:var(--muted); font-size:13px; margin-top:6px">Atualizado: <!--DATE--></div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <main>
+        <section class="card">
+          <div class="section-title"><h2>Estratégia de Comunicação B2B</h2><div class="pill">Mensagem & Posicionamento</div></div>
+          <p style="color:var(--muted)">Objetivo: alcançar decisores (CTO, CFO, CIO, Diretores de Operações) em grandes empresas. Abordagem consultiva com provas de valor: estudos de caso, POCs e demonstrações privadas. Tonalidade: técnica, segura e focada em ROI.</p>
+          <ul style="color:var(--muted); margin-left:18px">
+            <li>Fase 1 — Awareness: conteúdos técnicos, posts LinkedIn e artigos que demonstrem domínio do Odoo em setores específicos.</li>
+            <li>Fase 2 — Engajamento: campanhas de e-mail altamente segmentadas com convite para webinar/POC.</li>
+            <li>Fase 3 — Conversão: reuniões, provas de conceito e propostas comerciais personalizadas.</li>
+          </ul>
+        </section>
+
+        <section class="card" style="margin-top:16px">
+          <div class="section-title"><h2>Modelos de Mensagens</h2><div class="pill">E-mail & LinkedIn</div></div>
+
+          <h4 style="margin:6px 0">Modelo — E-mail de Prospeção (Curto)</h4>
+          <div class="code">Assunto: [Nome da Empresa] — 15min para reduzir custos operacionais em X%?
+
+Olá [Nome],
+
+Sou [Seu Nome], da Selenium. Ajudamos empresas do setor [setor] a automatizar processos com Odoo e reduzir custos operacionais em até X% em Y meses. Temos um caso recente com [Cliente] que gerou [resultado].
+
+Posso agendar 15 minutos para lhe mostrar uma prova de conceito relevante para [Empresa]?
+
+Melhores cumprimentos,
+[Seu Nome] • Selenium
+</div>
+
+          <h4 style="margin:12px 0 6px 0">Modelo — Mensagem LinkedIn (Conexão)</h4>
+          <div class="code">Olá [Nome],
+Notei seu trabalho em [empresa/setor]. Trabalho com automação empresarial usando Odoo na Selenium. Gostaria de partilhar um estudo de caso curto que pode interessar a sua equipa. Posso enviar?</div>
+
+          <h4 style="margin:12px 0 6px 0">Sequência de Follow-up (E‑mail)</h4>
+          <table>
+            <thead><tr><th>Dia</th><th>Conteúdo</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>E-mail de prospeção curto (convite 15min).</td></tr>
+              <tr><td>3</td><td>Follow-up — caso de estudo relevante + link para calendario.</td></tr>
+              <tr><td>7</td><td>Follow-up final — convite para webinar/POC.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="card" style="margin-top:16px">
+          <div class="section-title"><h2>Metas Mensais</h2><div class="pill">Leads → Reuniões → Contratos</div></div>
+
+          <div class="kpi">
+            <div class="item"><div class="num">20</div><div style="font-size:13px">Leads qualificados / mês</div></div>
+            <div class="item"><div class="num">10</div><div style="font-size:13px">Reuniões agendadas / mês</div></div>
+            <div class="item"><div class="num">3</div><div style="font-size:13px">Contratos fechados / mês</div></div>
+            <div class="item"><div class="num">15%</div><div style="font-size:13px">Taxa de conversão (lead→contrato)</div></div>
+          </div>
+
+          <div style="margin-top:12px">
+            <h4 style="margin:0 0 6px 0">Quadro de Metas</h4>
+            <table>
+              <thead><tr><th>Métrica</th><th>Meta Mensal</th><th>Observação</th></tr></thead>
+              <tbody>
+                <tr><td>Leads</td><td>20</td><td>Segmentação por setor e cargo</td></tr>
+                <tr><td>Reuniões</td><td>10</td><td>Demo personalizada (30–45 min)</td></tr>
+                <tr><td>Propostas enviadas</td><td>8</td><td>Customização por setor</td></tr>
+                <tr><td>Contratos</td><td>3</td><td>Clientes de grande porte</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card" style="margin-top:16px">
+          <div class="section-title"><h2>Estratégia com Influenciadores & Podcasters</h2><div class="pill">Parcerias B2B</div></div>
+          <p style="color:var(--muted)">Objetivo: reforçar autoridade técnica e abrir portas para tomadores de decisão. Foco em podcasters de tecnologia, negócios e liderança. Influenciadores: consultores e especialistas Odoo com audiência corporativa.</p>
+
+          <table>
+            <thead><tr><th>Tipo</th><th>Ação</th><th>Resultado Esperado</th></tr></thead>
+            <tbody>
+              <tr><td>Podcasts</td><td>Patrocinar episódios + participação em painel</td><td>Brand awareness e leads qualificados</td></tr>
+              <tr><td>Influenciadores B2B</td><td>Estudos de caso e webinars conjuntos</td><td>Credibilidade e tráfego para landing pages</td></tr>
+              <tr><td>Parcerias</td><td>Parcerias com consultorias locais</td><td>Entrada em contas enterprise</td></tr>
+            </tbody>
+          </table>
+
+          <div style="margin-top:12px; color:var(--muted)">Passos práticos: identificar 10 podcasters/consultores, preparar kit de media (case studies, one-pager), propor formatos de conteúdo (entrevista, webinar, case deep-dive).</div>
+        </section>
+
+        <section class="card" style="margin-top:16px">
+          <div class="section-title"><h2>Roteiro de Vídeo Publicitário — Odoo (Selenium)</h2><div class="pill">Vídeo curto (60–90s)</div></div>
+
+          <h4 style="margin:6px 0">Brief</h4>
+          <p style="color:var(--muted)">Objetivo: demonstrar impacto do Odoo em operações complexas — foco em ROI, segurança e integração. Público: decisores C-level.</p>
+
+          <h4 style="margin:6px 0">Estrutura (0:00–1:30)</h4>
+          <ol style="color:var(--muted)">
+            <li><strong>0:00–0:10</strong> — Abertura: cena de operação empresarial (sala de controlo). Texto: "Transforme operações em vantagem competitiva."</li>
+            <li><strong>0:10–0:30</strong> — Problema: processos manuais, erros, custo. Exemplo rápido com números.</li>
+            <li><strong>0:30–0:50</strong> — Solução: Odoo + Selenium — integração, automação, dashboards em tempo real.</li>
+            <li><strong>0:50–1:10</strong> — Prova social: logo de clientes, citação curta de um cliente (testemunho).</li>
+            <li><strong>1:10–1:30</strong> — CTA: convite para demo privada + contato direto (telefone/email/link).</li>
+          </ol>
+
+          <h4 style="margin:6px 0">Prompt para gerar vídeo com IA</h4>
+          <div class="code">Generate a 60-90s corporate video showcasing Odoo for large enterprises. Tone: professional, confident. Scenes: executive office, operations control room, animated dashboards, customer testimonial. Include captions and a final CTA: "Schedule your private demo with Selenium". End with company logo and contact details.</div>
+
+        </section>
+
+      </main>
+
+      <aside>
+        <div class="card">
+          <div class="section-title"><h2>KPIs & Acompanhamento</h2><div class="pill">Medição</div></div>
+          <div class="kpi">
+            <div class="item"><div class="num">20</div><div style="font-size:13px">Leads/mês</div></div>
+            <div class="item"><div class="num">10</div><div style="font-size:13px">Reuniões/mês</div></div>
+            <div class="item"><div class="num">3</div><div style="font-size:13px">Contratos/mês</div></div>
+          </div>
+
+          <div style="margin-top:12px">
+            <h4 style="margin:0 0 8px 0">Funnel estimado</h4>
+            <svg viewBox="0 0 200 220" width="100%" aria-hidden>
+              <g transform="translate(10,10)">
+                <rect x="0" y="0" width="180" height="40" rx="6" fill="#6ee7b7" opacity="0.95"></rect>
+                <text x="90" y="26" text-anchor="middle" font-weight="700" fill="#042022">Top: 4000 Impressions</text>
+                <rect x="20" y="60" width="140" height="36" rx="6" fill="#60a5fa" opacity="0.95"></rect>
+                <text x="90" y="84" text-anchor="middle" font-weight="700" fill="#042022">Engaged: 400</text>
+                <rect x="40" y="120" width="100" height="36" rx="6" fill="#f9c74f" opacity="0.95"></rect>
+                <text x="90" y="144" text-anchor="middle" font-weight="700" fill="#042022">Leads: 40</text>
+                <rect x="60" y="180" width="60" height="36" rx="6" fill="#ef4565" opacity="0.95"></rect>
+                <text x="90" y="204" text-anchor="middle" font-weight="700" fill="#042022">Clients: 3</text>
+              </g>
+            </svg>
+          </div>
+
+          <div style="margin-top:12px">
+            <h4 style="margin:0 0 8px 0">Checklist de Execução Rápida</h4>
+            <ol style="color:var(--muted)">
+              <li>Configurar landing page para demo.</li>
+              <li>Segmentar base LinkedIn por cargo e setor.</li>
+              <li>Criar sequência de e-mails (0/3/7 dias).</li>
+              <li>Preparar kit de mídia para podcasters/influencers.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <div class="section-title"><h2>Assets Recomendados</h2><div class="pill">Para criar já</div></div>
+          <ul style="color:var(--muted)">
+            <li>One‑pager para decisores (PDF).</li>
+            <li>Case study — 1 página com resultados numéricos.</li>
+            <li>Landing page com agendamento automático (Calendly/HubSpot).</li>
+            <li>Script para webinar técnico (45 min).</li>
+          </ul>
+          <div style="margin-top:10px; font-size:13px; color:var(--muted)">Quer que eu gere já o one‑pager ou a sequência de e‑mails como ficheiros prontos?</div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>
+      <div style="display:flex; justify-content:space-between; align-items:center">
+        <div>© Selenium — Campanha Odoo</div>
+        <div style="color:var(--muted)">Pronto para execução • Feito com IA</div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
