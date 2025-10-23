@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Plano Estratégico — Selenium & iTpraTi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --accent:#6ee7b7; --muted:#94a3b8; --glass:rgba(255,255,255,0.04);
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,Arial; margin:0; background:linear-gradient(180deg,#071022 0%, #071423 60%); color:#e6eef8; -webkit-font-smoothing:antialiased;}
+    .wrap{max-width:var(--maxw); margin:36px auto; padding:28px;}
+    header{display:flex; gap:20px; align-items:center}
+    .logo{width:76px; height:76px; border-radius:14px; background:linear-gradient(135deg,#0ea5a3,#06b6d4); display:flex; align-items:center; justify-content:center; font-weight:800; color:#062024; font-size:20px}
+    h1{margin:0; font-size:26px}
+    p.lead{color:var(--muted); margin-top:6px}
+
+    .grid{display:grid; grid-template-columns:1fr 380px; gap:20px; margin-top:20px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:20px; border-radius:12px; box-shadow:0 6px 18px rgba(2,6,23,0.6);}
+
+    .section-title{display:flex; justify-content:space-between; align-items:center; margin-bottom:12px}
+    .section-title h2{font-size:18px; margin:0}
+    .pill{background:var(--glass); color:var(--muted); padding:6px 10px; border-radius:999px; font-size:13px}
+
+    .two-col{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    dl{margin:0}
+    dt{font-weight:700; color:#dbeafe}
+    dd{margin:6px 0 12px 0; color:var(--muted)}
+
+    table{width:100%; border-collapse:collapse; margin-top:8px}
+    th,td{padding:10px 8px; text-align:left}
+    th{font-weight:700; color:#c7f9e6; background:rgba(255,255,255,0.02)}
+    tr:nth-child(even) td{background:rgba(255,255,255,0.015)}
+
+    /* charts */
+    .chart-row{display:flex; gap:12px; align-items:center}
+    .chart{flex:1; padding:12px; border-radius:10px; background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent)}
+    .bar{height:14px; background:rgba(255,255,255,0.06); border-radius:8px; overflow:hidden}
+    .bar > i{display:block; height:100%; background:linear-gradient(90deg,var(--accent),#60a5fa);}
+
+    footer{margin-top:20px; color:var(--muted); font-size:13px}
+
+    /* responsive */
+    @media (max-width:980px){.grid{grid-template-columns:1fr;}.wrap{padding:16px}}
+
+    /* decorative */
+    .badge{display:inline-block; padding:8px 12px; background:linear-gradient(90deg,#0ea5a3,#06b6d4); color:#042022; border-radius:999px; font-weight:700}
+    .kpi{display:flex; gap:12px; flex-wrap:wrap}
+    .kpi .item{background:rgba(255,255,255,0.02); padding:14px; border-radius:10px; min-width:140px}
+    .kpi .num{font-size:20px; font-weight:800; color:var(--accent)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">S&amp;IT</div>
+      <div>
+        <h1>Plano Estratégico — Selenium &amp; iTpraTi</h1>
+        <p class="lead">Visão geral executiva, objetivos, KPIs e estratégia de posicionamento — pronto para usar em apresentações e execução.</p>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <div class="badge">Versão 1.0</div>
+        <div style="color:var(--muted); font-size:13px; margin-top:6px">Atualizado: <!--DATE--></div>
+      </div>
+    </header>
+
+    <div class="grid">
+      <main>
+        <section class="card">
+          <div class="section-title"><h2>Contexto e Posicionamento</h2><div class="pill">Resumo executivo</div></div>
+          <p style="color:var(--muted); margin-top:6px">Selenium — Soluções Odoo para grandes empresas (B2B).<br>iTpraTi — Serviços de internet, IPTV, faturação e Google Workspace (B2C e B2B leve). Estratégia integrada para explorar sinergias e maximizar receita.</p>
+
+          <div style="margin-top:14px" class="two-col">
+            <div>
+              <h3 style="margin:0 0 8px 0">Selenium — Visão &amp; Missão</h3>
+              <dl>
+                <dt>Visão</dt>
+                <dd>Ser referência Odoo em Angola e países lusófonos, com consultoria premium.</dd>
+                <dt>Missão</dt>
+                <dd>Automatizar processos e elevar a performance das grandes empresas através do Odoo.</dd>
+                <dt>Valores</dt>
+                <dd>Inovação, Transparência, Excelência e Parcerias de valor.</dd>
+              </dl>
+            </div>
+            <div>
+              <h3 style="margin:0 0 8px 0">iTpraTi — Visão &amp; Missão</h3>
+              <dl>
+                <dt>Visão</dt>
+                <dd>Ser a provedora de internet e TV mais confiável e acessível de Angola.</dd>
+                <dt>Missão</dt>
+                <dd>Conectar famílias e empresas com serviços simples, rápidos e confiáveis.</dd>
+                <dt>Valores</dt>
+                <dd>Proximidade, Simplicidade, Inovação e Experiência do usuário.</dd>
+              </dl>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" style="margin-top:16px">
+          <div class="section-title"><h2>Objetivos Estratégicos</h2><div class="pill">Curto • Médio • Longo prazo</div></div>
+
+          <table aria-label="Objetivos por prazo">
+            <thead><tr><th>Prazo</th><th>Selenium</th><th>iTpraTi</th></tr></thead>
+            <tbody>
+              <tr><td><strong>0–6 meses</strong></td>
+                  <td>Aumentar visibilidade no LinkedIn; 20 leads/mês; 3 contratos/mês.</td>
+                  <td>Lançar campanha WhatsApp; +30% base residencial; 3 dias grátis IPTV.</td></tr>
+              <tr><td><strong>6–18 meses</strong></td>
+                  <td>Expandir para países lusófonos; parcerias estratégicas.</td>
+                  <td>2.000 assinantes IPTV; expandir cobertura; produto de faturação comercial.</td></tr>
+              <tr><td><strong>18–36 meses</strong></td>
+                  <td>Ser parceiro de referência Odoo; desenvolver módulos próprios.</td>
+                  <td>Top 3 provedor regional; ecossistema integrado de serviços.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="card" style="margin-top:16px">
+          <div class="section-title"><h2>Metas &amp; KPIs</h2><div class="pill">Medir para melhorar</div></div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px">
+            <div>
+              <h4 style="margin:0 0 8px 0">Selenium — KPIs</h4>
+              <div class="kpi">
+                <div class="item"><div class="num">20+</div><div style="font-size:13px">Leads / mês</div></div>
+                <div class="item"><div class="num">3+</div><div style="font-size:13px">Contratos / mês</div></div>
+                <div class="item"><div class="num">+30%</div><div style="font-size:13px">LinkedIn (6 meses)</div></div>
+                <div class="item"><div class="num">≥ 80</div><div style="font-size:13px">NPS</div></div>
+              </div>
+            </div>
+
+            <div>
+              <h4 style="margin:0 0 8px 0">iTpraTi — KPIs</h4>
+              <div class="kpi">
+                <div class="item"><div class="num">100+</div><div style="font-size:13px">Novos assinantes IPTV / mês</div></div>
+                <div class="item"><div class="num">≥85%</div><div style="font-size:13px">Taxa de renovação</div></div>
+                <div class="item"><div class="num">≥20%</div><div style="font-size:13px">Taxa de resposta (WhatsApp)</div></div>
+                <div class="item"><div class="num">≥60%</div><div style="font-size:13px">Conversão teste→pago</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:14px">
+            <h4 style="margin:0 0 8px 0">Tabela Resumo</h4>
+            <table>
+              <thead><tr><th>Métrica</th><th>Selenium</th><th>iTpraTi</th></tr></thead>
+              <tbody>
+                <tr><td>Leads / mês</td><td>20+</td><td>—</td></tr>
+                <tr><td>Contratos / mês</td><td>3+</td><td>—</td></tr>
+                <tr><td>Novos assinantes / mês</td><td>—</td><td>100+</td></tr>
+                <tr><td>Renovação</td><td>—</td><td>≥85%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="card" style="margin-top:16px">
+          <div class="section-title"><h2>Estratégia de Posicionamento</h2><div class="pill">Canais &amp; Mensagens</div></div>
+
+          <div style="display:grid; grid-template-columns:1fr; gap:12px">
+            <div>
+              <h4 style="margin:0 0 6px 0">Selenium — Estratégia B2B</h4>
+              <ul style="margin:6px 0 0 18px; color:var(--muted)">
+                <li>Alvo: grandes empresas, setores regulados (bancos, energia, indústria).</li>
+                <li>Canais: LinkedIn, e-mail marketing, podcasts e eventos corporativos.</li>
+                <li>Oferta: Pacotes de implementação + consultoria + módulos customizados.</li>
+                <li>Abordagem: conteúdo técnico, estudos de caso e provas de conceito (POC).</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 style="margin:12px 0 6px 0">iTpraTi — Estratégia B2C/B2B</h4>
+              <ul style="margin:6px 0 0 18px; color:var(--muted)">
+                <li>Alvo: famílias, pequenas empresas e empreendedores.</li>
+                <li>Canais: WhatsApp (principal), Facebook, transmissões e marketing de referência.</li>
+                <li>Oferta: testes gratuitos (3 dias IPTV), descontos por indicação, pacotes bundle (internet+TV).</li>
+                <li>Abordagem: mensagens amigáveis, ofertas locais e campanhas de recomendação.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" style="margin-top:16px">
+          <div class="section-title"><h2>Plano de Ação Rápido (Próximos 90 dias)</h2><div class="pill">Execução</div></div>
+          <ol style="color:var(--muted)">
+            <li>Documentar roteiros de vídeo (Odoo + IPTV + Internet + Faturação + Workspace).</li>
+            <li>Lançar campanha WhatsApp iTpraTi com teste gratuito de 3 dias.</li>
+            <li>Campanha LinkedIn + e-mail Selenium direcionada a decisores (CTO/CFO).</li>
+            <li>Parcerias com 3 podcasters/influenciadores B2B e 5 micro-influenciadores locais.</li>
+            <li>Configurar painel simples de KPIs (leads, conversão, churn) com atualizações semanais.</li>
+          </ol>
+        </section>
+
+      </main>
+
+      <aside>
+        <div class="card">
+          <div class="section-title"><h2>KPIs Visuais</h2><div class="pill">Gráficos</div></div>
+
+          <!-- simple SVG bar chart -->
+          <div style="margin-top:8px" class="chart">
+            <h4 style="margin:0 0 10px 0">Projeção de Leads / mês (Selenium)</h4>
+            <svg viewBox="0 0 300 160" width="100%" aria-hidden>
+              <defs>
+                <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#6ee7b7"/><stop offset="1" stop-color="#60a5fa"/></linearGradient>
+              </defs>
+              <!-- grid -->
+              <g transform="translate(20,10)">
+                <g fill="none" stroke="rgba(255,255,255,0.03)">
+                  <path d="M0 0 H260"/>
+                  <path d="M0 40 H260"/>
+                  <path d="M0 80 H260"/>
+                  <path d="M0 120 H260"/>
+                </g>
+                <!-- bars -->
+                <rect x="8" y="40" width="36" height="80" fill="url(#g1)" opacity="0.95"/>
+                <rect x="60" y="20" width="36" height="100" fill="url(#g1)" opacity="0.9"/>
+                <rect x="112" y="4" width="36" height="116" fill="url(#g1)" opacity="0.85"/>
+                <rect x="164" y="0" width="36" height="120" fill="url(#g1)" opacity="0.8"/>
+                <rect x="216" y="28" width="36" height="92" fill="url(#g1)" opacity="0.8"/>
+                <!-- labels -->
+                <g fill="var(--muted)" style="font-size:11px">
+                  <text x="22" y="135">Jan</text>
+                  <text x="74" y="135">Fev</text>
+                  <text x="126" y="135">Mar</text>
+                  <text x="178" y="135">Abr</text>
+                  <text x="230" y="135">Mai</text>
+                </g>
+              </g>
+            </svg>
+          </div>
+
+          <div style="margin-top:12px" class="chart">
+            <h4 style="margin:0 0 10px 0">Distribuição de Metas (iTpraTi)</h4>
+            <!-- simple donut chart -->
+            <svg viewBox="0 0 120 120" width="100%" height="150" aria-hidden>
+              <g transform="translate(60,60)">
+                <circle r="36" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="24"></circle>
+                <circle r="36" fill="none" stroke="#6ee7b7" stroke-width="24" stroke-dasharray="85 100" stroke-dashoffset="0" transform="rotate(-90)"/>
+                <circle r="36" fill="none" stroke="#60a5fa" stroke-width="24" stroke-dasharray="10 100" stroke-dashoffset="-85" transform="rotate(-90)"/>
+                <circle r="36" fill="none" stroke="#f9c74f" stroke-width="24" stroke-dasharray="5 100" stroke-dashoffset="-95" transform="rotate(-90)"/>
+
+                <text x="0" y="6" text-anchor="middle" style="font-size:12px; font-weight:700; fill:#e6eef8">100+</text>
+                <text x="0" y="20" text-anchor="middle" style="font-size:10px; fill:var(--muted)">assinantes / mês</text>
+              </g>
+            </svg>
+
+            <div style="margin-top:8px; color:var(--muted); font-size:13px">
+              <div style="display:flex; gap:8px; align-items:center"><span style="width:10px; height:10px; background:#6ee7b7; display:inline-block; border-radius:2px"></span> Internet</div>
+              <div style="display:flex; gap:8px; align-items:center; margin-top:6px"><span style="width:10px; height:10px; background:#60a5fa; display:inline-block; border-radius:2px"></span> IPTV</div>
+              <div style="display:flex; gap:8px; align-items:center; margin-top:6px"><span style="width:10px; height:10px; background:#f9c74f; display:inline-block; border-radius:2px"></span> Faturação</div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="card" style="margin-top:16px">
+          <div class="section-title"><h2>Docs Rápidos</h2><div class="pill">Modelos</div></div>
+          <ul style="color:var(--muted)">
+            <li>Modelo: Carta de proposta (patrocinadores).</li>
+            <li>Modelo: Template de mensagem WhatsApp (campanha de referência).</li>
+            <li>Roteiro base para vídeos IA (Odoo e IPTV).</li>
+          </ul>
+          <div style="margin-top:10px; font-size:13px; color:var(--muted)">Quer que eu gere algum desses modelos agora como ficheiro pronto para partilhar?</div>
+        </div>
+
+      </aside>
+    </div>
+
+    <footer>
+      <div style="display:flex; justify-content:space-between; align-items:center">
+        <div>© Selenium &amp; iTpraTi — Plano Estratégico</div>
+        <div style="color:var(--muted)">Feito com IA e know-how operativo</div>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
