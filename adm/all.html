@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>NET iTpraTi — Plano de Negócios 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* --- Variáveis CSS & Reset --- */
+:root {
+    --bg: #0f1724;
+    --card: #0b1220;
+    --accent: #6ee7b7; /* Verde Claro */
+    --accent2: #60a5fa; /* Azul Claro */
+    --muted: #94a3b8;
+    --glass: rgba(255,255,255,0.04);
+    --maxw: 1200px;
+    --radius: 12px;
+    --transition: 0.3s ease;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Inter', system-ui, Arial, sans-serif;
+    /* Degradê de fundo escuro */
+    background: linear-gradient(180deg, #071022 0%, #071423 65%);
+    color: #e6eef8;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+/* --- Layout Básico --- */
+.wrap { 
+    max-width: var(--maxw); 
+    margin: 20px auto; 
+    padding: 0 20px 20px 20px; 
+}
+
+/* --- Header & Navegação --- */
+.site-header { 
+    display: flex; 
+    flex-wrap: wrap; /* Permite quebrar a linha em telas menores */
+    gap: 20px; 
+    align-items: center; 
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.header-info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.logo {
+    width: 64px; height: 64px; border-radius: 14px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; color: #042022; font-size: 20px;
+}
+h1 { margin: 0; font-size: 24px; font-weight: 700; }
+.sub { color: var(--muted); font-size: 14px; }
+
+.main-nav { 
+    display: flex; 
+    gap: 10px; 
+    align-items: center; 
+    flex-wrap: wrap; 
+    margin-top: 10px;
+    justify-content: center;
+    /* Adicionado para melhor separação no cabeçalho */
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 15px;
+    width: 100%;
+}
+.nav-btn {
+    background: transparent; color: var(--muted); 
+    border: 1px solid rgba(255,255,255,0.03);
+    padding: 8px 12px; border-radius: 10px; 
+    cursor: pointer; font-weight: 600;
+    transition: var(--transition);
+    font-size: 14px;
+}
+.nav-btn:hover { background: rgba(255,255,255,0.05); }
+.nav-btn.active { 
+    background: linear-gradient(90deg, var(--accent), var(--accent2)); 
+    color: #042022; 
+    border-color: transparent;
+}
+
+/* --- Hero Section --- */
+.hero { 
+    padding: 40px 0; 
+    border-radius: var(--radius); 
+    background: rgba(255,255,255,0.01); /* Fundo sutil */
+    margin-bottom: 30px; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center;
+}
+.hero h2 { 
+    font-size: 32px; 
+    margin-bottom: 10px; 
+    color: var(--accent);
+}
+.hero p { 
+    max-width: 800px; 
+    margin-bottom: 20px; 
+    font-size: 18px; 
+    color: #c7f9e6;
+}
+.hero .cta { display: flex; gap: 12px; }
+.btn {
+    background: linear-gradient(90deg, var(--accent), var(--accent2)); 
+    color: #042022;
+    padding: 12px 20px; 
+    border-radius: 10px; 
+    text-decoration: none; 
+    font-weight: 700;
+    border: none; 
+    cursor: pointer; 
+    transition: var(--transition);
+    font-size: 16px;
+}
+.btn:hover { opacity: 0.9; transform: translateY(-1px); }
+.ghost {
+    background: transparent; 
+    border: 1px solid var(--muted); 
+    color: var(--muted);
+    padding: 12px 20px; 
+    border-radius: 10px; 
+    cursor: pointer; 
+    transition: var(--transition);
+    text-decoration: none;
+    font-weight: 700;
+}
+.ghost:hover { background: rgba(255,255,255,0.05); color: #fff; border-color: #fff; }
+
+/* --- Conteúdo Principal (Tabs) --- */
+main { margin-top: 20px; }
+.page { 
+    display: none; 
+    opacity: 0; 
+    /* Usar altura auto para permitir transição de opacidade */
+    transition: opacity var(--transition); 
+}
+.page.active { 
+    display: block; 
+    opacity: 1; 
+}
+.grid { 
+    display: grid; 
+    grid-template-columns: 1fr 360px; 
+    gap: 20px; 
+}
+.card {
+    /* Efeito Glassmorphism Sutil */
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 20px; 
+    border-radius: var(--radius); 
+    box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+    margin-bottom: 20px; /* Espaçamento entre cards */
+}
+h2 { margin: 0 0 15px 0; font-size: 24px; color: var(--accent); }
+h3 { margin: 18px 0 10px 0; font-size: 18px; color: var(--accent2); }
+h4 { margin: 12px 0 8px 0; font-size: 16px; }
+p { margin-bottom: 1em; }
+p.lead { color: var(--muted); margin: 0 0 15px 0; font-size: 16px; }
+
+/* --- Elementos de Conteúdo --- */
+table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+th, td { padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); }
+th { 
+    background: rgba(255,255,255,0.03); 
+    font-weight: 700; 
+    color: var(--accent); 
+    font-size: 14px;
+}
+tr:last-child td { border-bottom: none; }
+tr:nth-child(even) td { background: rgba(255,255,255,0.015); }
+.kpi { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 20px; }
+.kpi .item { 
+    background: rgba(255,255,255,0.02); 
+    padding: 15px; 
+    border-radius: 10px; 
+    min-width: 150px; 
+    text-align: center; 
+    flex-grow: 1; /* Para melhor distribuição */
+}
+.kpi .num { font-size: 28px; font-weight: 800; color: var(--accent); line-height: 1; }
+.small { font-size: 14px; color: var(--muted); margin-top: 5px; }
+.two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+.chart { 
+    padding: 15px; 
+    border-radius: 8px; 
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.03);
+}
+.code {
+    background: rgba(0,0,0,0.3); 
+    padding: 15px; 
+    border-radius: 8px;
+    font-family: 'Fira Code', 'Roboto Mono', monospace; 
+    font-size: 14px; 
+    color: #e6eef8; 
+    white-space: pre-wrap; 
+    word-break: break-all;
+    margin-top: 10px;
+}
+ul.checklist { list-style: none; padding-left: 0; }
+ul.checklist li { 
+    margin: 10px 0; 
+    color: #c7f9e6; 
+    position: relative; 
+    padding-left: 25px; 
+}
+ul.checklist li::before {
+    content: '✓'; 
+    color: var(--accent); 
+    font-weight: 800;
+    position: absolute;
+    left: 0;
+}
+.contact-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 15px; }
+.contact-btn {
+    display: inline-flex; gap: 8px; align-items: center; 
+    padding: 10px 15px; border-radius: 10px;
+    background: rgba(255,255,255,0.02); 
+    border: 1px solid rgba(255,255,255,0.05);
+    color: var(--muted); text-decoration: none; 
+    transition: var(--transition);
+    font-weight: 600;
+}
+.contact-btn:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.download {
+    background: linear-gradient(90deg, var(--accent2), var(--accent)); 
+    color: #042022;
+    border-radius: 10px; 
+    padding: 10px 15px; 
+    text-decoration: none; 
+    font-weight: 700;
+    cursor: pointer; 
+    border: none; 
+    transition: var(--transition);
+}
+.download:hover { opacity: 0.9; }
+img.section-img { max-width: 100%; height: auto; border-radius: var(--radius); margin-bottom: 20px; }
+
+
+/* --- Media Queries (Responsividade) --- */
+@media (max-width: 980px) {
+    .grid { grid-template-columns: 1fr; }
+    .site-header { flex-direction: column; align-items: center; text-align: center; }
+    .header-info { margin-bottom: 15px; }
+    .main-nav { margin-top: 15px; border-top: none; padding-top: 0; }
+    .hero h2 { font-size: 28px; }
+    .hero p { font-size: 16px; }
+}
+@media (max-width: 600px) {
+    .nav-btn { font-size: 13px; padding: 6px 10px; }
+    .hero .cta { flex-direction: column; width: 100%; }
+    .btn, .ghost { width: 100%; text-align: center; }
+    .kpi { justify-content: center; }
+}
+
+/* --- Footer --- */
+footer { 
+    margin-top: 30px; 
+    padding-top: 15px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    color: var(--muted); 
+    font-size: 14px; 
+    text-align: center; 
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+    <header class="site-header">
+        <div class="header-info">
+            <div class="logo">NET</div>
+            <div>
+                <h1>NET iTpraTi — Plano de Negócios</h1>
+                <div class="sub">Provedor de Internet em Angola • Atualizado em Outubro 2025</div>
+            </div>
+        </div>
+        
+        <nav class="main-nav" role="tablist">
+            <button class="nav-btn active" data-target="home" role="tab" aria-controls="page-home" aria-selected="true">🏠 Home</button>
+            <button class="nav-btn" data-target="sumario" role="tab" aria-controls="page-sumario" aria-selected="false">📜 Sumário Executivo</button>
+            <button class="nav-btn" data-target="equipa" role="tab" aria-controls="page-equipa" aria-selected="false">👥 A Equipa</button>
+            <button class="nav-btn" data-target="negocio" role="tab" aria-controls="page-negocio" aria-selected="false">💼 O Negócio</button>
+            <button class="nav-btn" data-target="produtos" role="tab" aria-controls="page-produtos" aria-selected="false">📦 Produtos</button>
+            <button class="nav-btn" data-target="financeiro" role="tab" aria-controls="page-financeiro" aria-selected="false">💰 Plano Financeiro</button>
+            <button class="nav-btn" data-target="investir" role="tab" aria-controls="page-investir" aria-selected="false">🔗 Como Investir</button>
+            <button class="nav-btn" data-target="contact" role="tab" aria-controls="page-contact" aria-selected="false">📞 Contacto</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="page-home" class="page active" role="tabpanel" aria-labelledby="home">
+            <div class="hero">
+                <h2>Conectando Angola ao Futuro Digital.</h2>
+                <p>O plano estratégico detalhado para a expansão da NET iTpraTi, o seu novo parceiro de internet de alta velocidade e confiança em Luanda.</p>
+                <div class="cta">
+                    <a href="#page-sumario" class="btn">Ver Sumário Completo</a>
+                    <a href="#" class="ghost">Baixar Plano (PDF)</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🚀 KPIs do Projeto (Estimados)</h2>
+                <div class="kpi">
+                    <div class="item">
+                        <div class="num">85%</div>
+                        <div class="small">Taxa de Adesão Mês 12</div>
+                    </div>
+                    <div class="item">
+                        <div class="num">15.000</div>
+                        <div class="small">Clientes Ativos (Ano 3)</div>
+                    </div>
+                    <div class="item">
+                        <div class="num">1.2M USD</div>
+                        <div class="small">Receita Anual Estimada</div>
+                    </div>
+                    <div class="item">
+                        <div class="num">24 Meses</div>
+                        <div class="small">Previsão de Break-Even</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-sumario" class="page" role="tabpanel" aria-labelledby="sumario">
+            <div class="grid">
+                <div>
+                    <div class="card">
+                        <h2>📜 Sumário Executivo</h2>
+                        <p class="lead">A NET iTpraTi é uma operadora de telecomunicações que visa preencher a lacuna de qualidade e fiabilidade no mercado angolano de acesso à internet.</p>
+                        <p>Focaremos na **Zona Sul de Luanda**, implementando tecnologia de fibra ótica de última geração (FTTH - Fiber To The Home) para garantir velocidades ultra-rápidas e estabilidade inigualável.</p>
+                        <h3>Missão e Visão</h3>
+                        <p>Nossa missão é fornecer a melhor experiência de internet em Angola. Nossa visão é ser a operadora de eleição para residências e pequenos negócios até 2028.</p>
+                        <ul class="checklist">
+                            <li>Foco na qualidade do serviço e suporte ao cliente 24/7.</li>
+                            <li>Investimento em infraestrutura robusta e escalável.</li>
+                            <li>Modelos de preços competitivos e transparentes.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sidebar">
+                    <div class="card">
+                        <h2>Mercado Angolano</h2>
+                        <img src="https://via.placeholder.com/340x180?text=Mapa+de+Luanda" alt="Mapa de Luanda" class="section-img">
+                        <p>O mercado de internet em Angola está em rápida expansão, mas com baixa penetração de FTTH. Há uma alta insatisfação com os serviços existentes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-equipa" class="page" role="tabpanel" aria-labelledby="equipa">
+            <div class="card">
+                <h2>👥 A Equipa de Liderança</h2>
+                <p class="lead">O nosso sucesso será impulsionado por uma equipa experiente e apaixonada, com profundo conhecimento do mercado local e da tecnologia de telecomunicações.</p>
+                <div class="two-col">
+                    <div>
+                        <h3>João Silva, CEO</h3>
+                        <p class="small">15 anos de experiência em gestão e estratégia de telecomunicações em Portugal e Angola. Liderou a implantação de redes móveis.</p>
+                    </div>
+                    <div>
+                        <h3>Maria Pimenta, CTO</h3>
+                        <p class="small">Especialista em Redes de Fibra Ótica. Responsável pela arquitetura e manutenção de toda a infraestrutura técnica da NET iTpraTi.</p>
+                    </div>
+                    <div>
+                        <h3>Pedro Costa, Diretor Financeiro</h3>
+                        <p class="small">Experiência em captação de investimento e modelagem financeira. Garante a sustentabilidade e crescimento capital do negócio.</p>
+                    </div>
+                    <div>
+                        <h3>Ana Luísa, Diretora de Marketing</h3>
+                        <p class="small">Conhecimento aprofundado do consumidor angolano e estratégias de penetração de mercado B2C e B2B.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-negocio" class="page" role="tabpanel" aria-labelledby="negocio">
+            <div class="card">
+                <h2>💼 Modelo de Negócio e Estrutura</h2>
+                <p class="lead">O modelo de negócio baseia-se na oferta de serviços de internet de alta margem, focando na retenção de clientes pela qualidade.</p>
+                <h3>Análise SWOT</h3>
+                <table>
+                    <thead>
+                        <tr><th>Fator</th><th>Descrição</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>**Forças**</td><td>Tecnologia FTTH de ponta, foco no cliente.</td></tr>
+                        <tr><td>**Fraquezas**</td><td>Necessidade de alto investimento inicial, marca nova no mercado.</td></tr>
+                        <tr><td><td>**Oportunidades**</td><td>Baixa satisfação com a concorrência, crescente procura por banda larga.</td></tr>
+                        <tr><td>**Ameaças**</td><td>Regulação governamental, volatilidade cambial.</td></tr>
+                    </tbody>
+                </table>
+                <h3>Estrutura de Custos</h3>
+                <div class="chart">
+                    <p class="small">Gráfico de barras: 40% Capex (Infraestrutura), 30% Opex (Manutenção/Salários), 30% Marketing/Vendas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="page-produtos" class="page" role="tabpanel" aria-labelledby="produtos">
+            <div class="card">
+                <h2>📦 Produtos e Serviços</h2>
+                <p class="lead">Oferta simplificada em 3 pacotes principais para residências e 2 para negócios, todos baseados em fibra ótica.</p>
+                
+                <h3>Pacotes Residenciais (FTTH)</h3>
+                <table>
+                    <thead>
+                        <tr><th>Plano</th><th>Velocidade (Download/Upload)</th><th>Preço Mensal (Kz)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Essencial</td><td>50 Mbps / 25 Mbps</td><td>15.000</td></tr>
+                        <tr><td>Familiar</td><td>100 Mbps / 50 Mbps</td><td>25.000</td></tr>
+                        <tr><td>Premium</td><td>300 Mbps / 150 Mbps</td><td>45.000</td></tr>
+                    </tbody>
+                </table>
+                
+                <h3>Serviços Agregados</h3>
+                <ul class="checklist">
+                    <li>Instalação e Suporte Técnico 24/7.</li>
+                    <li>IP Fixo e Serviço de Telefonia VoIP (Opcional).</li>
+                    <li>SLA (Acordo de Nível de Serviço) garantido para clientes empresariais.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="page-financeiro" class="page" role="tabpanel" aria-labelledby="financeiro">
+            <div class="card">
+                <h2>💰 Plano Financeiro Detalhado</h2>
+                <p class="lead">Projeções de receitas, custos e fluxo de caixa para os primeiros 5 anos de operação.</p>
+                
+                <h3>Projeção de Receita (Ano 1 - 3)</h3>
+                <table>
+                    <thead>
+                        <tr><th>Ano</th><th>Clientes (Est.)</th><th>Receita Bruta (USD)</th><th>Margem Operacional (%)</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Ano 1</td><td>3,500</td><td>350,000</td><td>15%</td></tr>
+                        <tr><td>Ano 2</td><td>8,000</td><td>780,000</td><td>25%</td></tr>
+                        <tr><td>Ano 3</td><td>15,000</td><td>1,200,000</td><td>35%</td></tr>
+                    </tbody>
+                </table>
+                
+                <h3>Necessidade de Capital</h3>
+                <p>O investimento inicial total para a infraestrutura da Zona Piloto é de **$450.000 USD**.</p>
+                <div class="code">
+                    Investimento em Fibra Ótica: $250.000<br>
+                    Equipamentos (ONTs, Switches): $100.000<br>
+                    Marketing e Capital de Giro: $100.000
+                </div>
+            </div>
+        </section>
+
+        <section id="page-investir" class="page" role="tabpanel" aria-labelledby="investir">
+            <div class="card">
+                <h2>🔗 Oportunidades de Investimento</h2>
+                <p class="lead">Convidamos parceiros estratégicos e investidores anjo a participar da próxima ronda de financiamento.</p>
+                <h3>Tipos de Investimento</h3>
+                <p>Procuramos investimento na modalidade **Equity (Participação)**, com retorno estimado de 3x em 5 anos, ou **Dívida Conversível**, para investidores que desejam menor risco inicial.</p>
+                <p>Para mais informações sobre o rácio de avaliação (Valuation) e as condições, por favor, entre em contacto.</p>
+                <a href="#" class="download">Baixar Proposta de Investimento Completa</a>
+            </div>
+        </section>
+
+        <section id="page-contact" class="page" role="tabpanel" aria-labelledby="contact">
+            <div class="card">
+                <h2>📞 Contacte a Nossa Equipa</h2>
+                <p class="lead">Estamos disponíveis para agendar uma reunião presencial ou online para discutir os detalhes do nosso plano de negócios e as suas questões.</p>
+                
+                <div class="contact-row">
+                    <a href="mailto:investimento@itprati.com" class="contact-btn">
+                        📧 E-mail: investimento@itprati.com
+                    </a>
+                    <a href="tel:+244923456789" class="contact-btn">
+                        📱 Telefone: +244 923 456 789
+                    </a>
+                    <a href="#" class="contact-btn">
+                        📍 Sede: Luanda Sul, Angola
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        &copy; 2025 NET iTpraTi. Todos os direitos reservados. Plano de Negócios Confidencial.
+    </footer>
+
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const navButtons = document.querySelectorAll('.nav-btn');
+        const pages = document.querySelectorAll('.page');
+
+        navButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const targetId = 'page-' + e.target.getAttribute('data-target');
+
+                // 1. Desativar todos os botões e páginas
+                navButtons.forEach(btn => {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-selected', 'false');
+                });
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+
+                // 2. Ativar o botão clicado
+                e.target.classList.add('active');
+                e.target.setAttribute('aria-selected', 'true');
+
+                // 3. Ativar a página correspondente
+                const targetPage = document.getElementById(targetId);
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                    // Scroll para o topo da página principal para melhor UX
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // 4. Lidar com links internos de navegação (como o botão "Ver Sumário Completo")
+        document.querySelectorAll('a[href^="#page-"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetPageId = this.getAttribute('href').substring(1); // 'page-sumario'
+                const targetButtonData = targetPageId.replace('page-', ''); // 'sumario'
+                
+                // Encontrar e simular o clique no botão de navegação
+                const targetButton = document.querySelector(`.nav-btn[data-target="${targetButtonData}"]`);
+                if (targetButton) {
+                    targetButton.click();
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
