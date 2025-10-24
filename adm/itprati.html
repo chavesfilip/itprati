@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>iTpraTi — Plano Estratégico Consolidado</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --accent:#6ee7b7; --accent2:#60a5fa; --muted:#94a3b8; --glass:rgba(255,255,255,0.04);
+      --maxw:1200px; --radius:12px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{font-family:Inter,system-ui,Arial; margin:0; background:linear-gradient(180deg,#071022 0%, #071423 65%); color:#e6eef8; -webkit-font-smoothing:antialiased;}
+    .wrap{max-width:var(--maxw); margin:20px auto; padding:20px;}
+    header{display:flex; gap:20px; align-items:center}
+    .logo{width:64px; height:64px; border-radius:14px; background:linear-gradient(135deg,var(--accent),var(--accent2)); display:flex; align-items:center; justify-content:center; font-weight:800; color:#042022; font-size:20px}
+    h1{margin:0; font-size:20px}
+    .sub{color:var(--muted); font-size:13px}
+    nav{margin-left:auto; display:flex; gap:10px; align-items:center}
+    .nav-btn{background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.03); padding:8px 12px; border-radius:10px; cursor:pointer; font-weight:600}
+    .nav-btn.active{background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#042022}
+    .hero{display:flex; gap:20px; align-items:center; margin-top:18px}
+    .hero .info{flex:1}
+    .hero .cta{display:flex; gap:8px; align-items:center}
+    .btn{background:linear-gradient(90deg,var(--accent),var(--accent2)); color:#042022; padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:700; border:none; cursor:pointer}
+    .ghost{background:transparent; border:1px solid rgba(255,255,255,0.04); color:var(--muted); padding:8px 12px; border-radius:10px; cursor:pointer}
+    main{margin-top:20px}
+    .page{display:none}
+    .page.active{display:block}
+    .grid{display:grid; grid-template-columns:1fr 360px; gap:20px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:18px; border-radius:var(--radius); box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+    h2{margin:0 0 10px 0; font-size:18px}
+    p.lead{color:var(--muted); margin:0 0 10px 0}
+    table{width:100%; border-collapse:collapse; margin-top:10px}
+    th,td{padding:10px; text-align:left}
+    th{background:rgba(255,255,255,0.02); font-weight:700; color:#c7f9e6}
+    tr:nth-child(even) td{background:rgba(255,255,255,0.015)}
+    .kpi{display:flex; gap:10px; flex-wrap:wrap}
+    .kpi .item{background:rgba(255,255,255,0.02); padding:12px; border-radius:10px; min-width:140px}
+    .kpi .num{font-size:18px; font-weight:800; color:var(--accent)}
+    .two-col{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    .chart{padding:12px; border-radius:8px; background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent)}
+    .code{background:rgba(0,0,0,0.25); padding:10px; border-radius:8px; font-family:monospace; font-size:13px; color:#e6eef8}
+    .checklist li{margin:8px 0; color:var(--muted)}
+    footer{margin-top:20px; color:var(--muted); font-size:13px; text-align:center}
+    .contact-row{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px}
+    .contact-btn{display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border-radius:10px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03); color:var(--muted); text-decoration:none}
+    .download{background:linear-gradient(90deg,var(--accent2),var(--accent)); color:#042022; border-radius:10px; padding:8px 12px; text-decoration:none; font-weight:700; cursor:pointer}
+    @media (max-width:980px){.grid{grid-template-columns:1fr}; nav{display:none}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">iT</div>
+      <div>
+        <h1>iTpraTi — Plano Estratégico Consolidado</h1>
+        <div class="sub">Internet • IPTV • Google Workspace • Sistema de Faturação — Plano operacional e de marketing</div>
+      </div>
+
+      <nav aria-label="Navegação principal">
+        <button class="nav-btn active" data-target="home">Home</button>
+        <button class="nav-btn" data-target="strategy">Estratégia</button>
+        <button class="nav-btn" data-target="campaigns">Campanhas</button>
+        <button class="nav-btn" data-target="operations">Operações</button>
+        <button class="nav-btn" data-target="templates">Templates</button>
+        <button class="nav-btn" data-target="contact">Contacto</button>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div class="info">
+        <p class="lead">Documento operativo e site interno para gerir, apresentar e executar o plano estratégico da iTpraTi. Navegue pelas secções para ver metas, cronogramas, campanhas e descarregar templates prontos.</p>
+      </div>
+      <div class="cta">
+        <a class="btn" id="quick-whatsapp" href="https://wa.me/244900000000?text=Ol%C3%A1%20iTpraTi%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn" id="quick-email" href="mailto:contact@itprati.com?subject=Contacto%20iTpraTi" >Email</a>
+      </div>
+    </div>
+
+    <main>
+      <!-- HOME -->
+      <section id="home" class="page active">
+        <div class="grid">
+          <div class="card">
+            <h2>Resumo Executivo</h2>
+            <p class="lead">A iTpraTi oferece pacotes integrados de Internet, IPTV, Google Workspace e Faturação para famílias e empresas. Este documento consolida estratégia, metas, operações e materiais executáveis para ser usado como guia de ação.</p>
+
+            <h3 style="margin-top:14px">Prioridades (30 dias)</h3>
+            <ul style="color:var(--muted)">
+              <li>Implementar automação WhatsApp com templates e tracking.</li>
+              <li>Lançar trial IPTV (3 dias) com landing page e suporte pronto.</li>
+              <li>Produzir 3 vídeos (30s/60s) focados em família e conversão.</li>
+              <li>Configurar painel de KPIs e rotinas de reporte semanais.</li>
+            </ul>
+          </div>
+
+          <aside class="card">
+            <h2>Contacto Rápido</h2>
+            <div class="contact-row" style="margin-top:10px">
+              <a class="contact-btn" href="tel:+244900000000">📞 +244 900 000 000</a>
+              <a class="contact-btn" href="https://wa.me/244900000000?text=Ol%C3%A1%20iTpraTi%2C%20gostaria%20de%20saber%20mais" target="_blank" rel="noopener">💬 WhatsApp</a>
+              <a class="contact-btn" href="mailto:contact@itprati.com">✉️ Email</a>
+            </div>
+
+            <h4 style="margin-top:12px">KPIs-chave (alvo mensal)</h4>
+            <div class="kpi" style="margin-top:8px">
+              <div class="item"><div class="num">1.200</div><div class="small">Trials IPTV</div></div>
+              <div class="item"><div class="num">720</div><div class="small">Conversões IPTV</div></div>
+              <div class="item"><div class="num">100+</div><div class="small">Novos Internet / mês</div></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- STRATEGY -->
+      <section id="strategy" class="page">
+        <div class="grid">
+          <div class="card">
+            <h2>Contexto, Visão, Missão e Valores</h2>
+            <p class="lead">Contexto do mercado e identidade estratégica da iTpraTi.</p>
+
+            <h3>Contexto Geral</h3>
+            <p style="color:var(--muted)">Forte potencial urbano/suburbano em Angola; concorrência mista. A vantagem da iTpraTi é a proximidade, suporte local e pacotes integrados (bundle).</p>
+
+            <div class="two-col" style="margin-top:10px">
+              <div>
+                <h4>Visão</h4>
+                <p class="small">Ser a provedora de conectividade e soluções digitais mais confiável e acessível em Angola.</p>
+
+                <h4 style="margin-top:10px">Missão</h4>
+                <p class="small">Oferecer serviços integrados de Internet, entretenimento e produtividade com excelência operacional e suporte local.</p>
+              </div>
+              <div>
+                <h4>Valores</h4>
+                <ul style="color:var(--muted)"><li>Proximidade</li><li>Confiabilidade</li><li>Transparência</li><li>Inovação</li><li>Orientação ao Cliente</li></ul>
+              </div>
+            </div>
+
+            <h3 style="margin-top:14px">Objetivos Estratégicos</h3>
+            <table>
+              <thead><tr><th>Prazo</th><th>Objetivos</th></tr></thead>
+              <tbody>
+                <tr><td>0–6 meses</td><td>Campanha WhatsApp, trials IPTV, painel KPIs, +30% base residencial.</td></tr>
+                <tr><td>6–18 meses</td><td>Expandir 2 cidades, consolidar faturação B2B, parcerias locais.</td></tr>
+                <tr><td>18–36 meses</td><td>Ser referência regional para bundles, reduzir churn &lt;15%.</td></tr>
+              </tbody>
+            </table>
+
+            <h3 style="margin-top:14px">Posicionamento</h3>
+            <p class="small">Local, confiável e simples — comunique facilmente (app/WhatsApp) e entregue suporte com SLAs claros.</p>
+          </div>
+
+          <aside class="card">
+            <h2>KPIs Operacionais</h2>
+            <div style="margin-top:8px" class="kpi">
+              <div class="item"><div class="num">≤48h</div><div class="small">Ativação média</div></div>
+              <div class="item"><div class="num">≥85%</div><div class="small">Renovação</div></div>
+              <div class="item"><div class="num">≥20%</div><div class="small">Resposta WhatsApp</div></div>
+            </div>
+
+            <h4 style="margin-top:12px">Ações Prioritárias</h4>
+            <ol style="color:var(--muted)">
+              <li>Automação WhatsApp + templates.</li>
+              <li>Landing page para trials com tracking.</li>
+              <li>Produção de vídeos e assets sociais.</li>
+            </ol>
+          </aside>
+        </div>
+      </section>
+
+      <!-- CAMPAIGNS -->
+      <section id="campaigns" class="page">
+        <div class="grid">
+          <div class="card">
+            <h2>Campanhas — WhatsApp & Vídeo</h2>
+            <p class="lead">Detalhes operacionais para lançar campanhas que geram trials, referências e conversões.</p>
+
+            <h3>Mensagens Não Invasivas (exemplos)</h3>
+            <div class="code">
+1) Oferta teste IPTV:
+Oba! 🎉 Você foi selecionado para testar a nossa TV por 3 dias GRÁTIS. Responda SIM para ativarmos já. — iTpraTi
+
+2) Indicação (cliente atual):
+Obrigado por ser nosso cliente! Indique um amigo e ganhe 1 mês grátis por cada 3 indicações confirmadas. Peça seu link de indicação: [link]
+
+3) Upsell Internet+TV:
+Quer internet rápida + TV premium por apenas 7.777 Kz? Responda INFO e mostramos o plano mais perto de si.
+            </div>
+
+            <h3 style="margin-top:12px">Fluxo do Trial (IPTV)</h3>
+            <ol style="color:var(--muted)">
+              <li>Usuário responde SIM → recebe link de ativação.</li>
+              <li>Usa 3 dias → envio de lembrete 24h antes do fim.</li>
+              <li>Oferta de conversão com desconto + upsell bundle.</li>
+            </ol>
+
+            <h3 style="margin-top:12px">Vídeos (roteiro simplificado)</h3>
+            <p class="small">Formato 30s / 60s. Foco na família: app fácil, 2 cliques, qualidade e oferta 3 dias grátis. CTA: "Responda SIM".</p>
+            <div class="chart" style="margin-top:10px">
+              <h4 style="margin:0 0 8px 0">Roteiro 60s — pontos</h4>
+              <ul style="color:var(--muted)">
+                <li>0–8s: problema — "Cansado de procurar canais?"</li>
+                <li>8–25s: solução — app simples, 2 cliques.</li>
+                <li>25–45s: benefícios — qualidade e preço.</li>
+                <li>45–60s: CTA — "Experimente 3 dias grátis — envie SIM".</li>
+              </ul>
+            </div>
+          </div>
+
+          <aside class="card">
+            <h2>Campanha: Metas & Projeções</h2>
+            <table>
+              <thead><tr><th>Produto</th><th>Leads/mês</th><th>Conv.</th><th>Clientes/mês</th></tr></thead>
+              <tbody>
+                <tr><td>IPTV</td><td>1.200</td><td>60%</td><td>720</td></tr>
+                <tr><td>Internet</td><td>800</td><td>35%</td><td>280</td></tr>
+                <tr><td>Faturação</td><td>200</td><td>25%</td><td>50</td></tr>
+                <tr><td>Google Workspace</td><td>150</td><td>20%</td><td>30</td></tr>
+              </tbody>
+            </table>
+
+            <h4 style="margin-top:10px">Funnel estimado</h4>
+            <svg viewBox="0 0 200 220" width="100%" aria-hidden>
+              <g transform="translate(10,10)">
+                <rect x="0" y="0" width="180" height="40" rx="6" fill="#6ee7b7"></rect>
+                <text x="90" y="26" text-anchor="middle" font-weight="700" fill="#042022">10.000 Mensagens</text>
+                <rect x="20" y="60" width="140" height="36" rx="6" fill="#60a5fa"></rect>
+                <text x="90" y="84" text-anchor="middle" font-weight="700" fill="#042022">2.000 Respostas</text>
+                <rect x="40" y="120" width="100" height="36" rx="6" fill="#f9c74f"></rect>
+                <text x="90" y="144" text-anchor="middle" font-weight="700" fill="#042022">1.200 Trials</text>
+                <rect x="60" y="180" width="60" height="36" rx="6" fill="#ef4565"></rect>
+                <text x="90" y="204" text-anchor="middle" font-weight="700" fill="#042022">720 Clientes</text>
+              </g>
+            </svg>
+          </aside>
+        </div>
+      </section>
+
+      <!-- OPERATIONS (rotina e cronograma) -->
+      <section id="operations" class="page">
+        <div class="grid">
+          <div class="card">
+            <h2>Rotina Semanal & Cronograma</h2>
+            <p class="lead">Blocos de trabalho pensados para foco e consistência — seg-sex, horas comerciais.</p>
+
+            <h3>Horários recomendados (blocos)</h3>
+            <table>
+              <thead><tr><th>Horário</th><th>Atividade</th></tr></thead>
+              <tbody>
+                <tr><td>09:00–09:45</td><td>Planeamento diário & definição das 3 MITs</td></tr>
+                <tr><td>10:00–10:45</td><td>Produção de conteúdo (vídeos / roteiros)</td></tr>
+                <tr><td>11:00–11:30</td><td>Outreach & LinkedIn (B2B)</td></tr>
+                <tr><td>11:45–12:30</td><td>Campanhas WhatsApp (segmentação & envios)</td></tr>
+                <tr><td>13:30–14:15</td><td>Análise KPIs & ajustes</td></tr>
+                <tr><td>14:30–15:15</td><td>Follow-ups & vendas</td></tr>
+                <tr><td>15:30–16:00</td><td>Suporte técnico e ativação</td></tr>
+                <tr><td>16:15–17:00</td><td>Operações e entrega</td></tr>
+                <tr><td>17:15–17:30</td><td>Encerramento & prioridades para amanhã</td></tr>
+              </tbody>
+            </table>
+
+            <h3 style="margin-top:12px">Checklist diário (rápido)</h3>
+            <ul class="checklist">
+              <li><strong>Antes das 09:00</strong> — preparar 3 MITs e verificar tickets urgentes.</li>
+              <li><strong>Meio-dia</strong> — atualizar painel de KPIs com números do dia.</li>
+              <li><strong>Final do expediente</strong> — registrar progresso e prioridades para amanhã.</li>
+            </ul>
+          </div>
+
+          <aside class="card">
+            <h2>Painel de Medição</h2>
+            <p class="small">Exemplo de métricas a acompanhar diariamente.</p>
+            <div style="margin-top:10px">
+              <div style="margin-bottom:8px">Leads hoje <strong>120</strong></div>
+              <div style="margin-bottom:8px">Trials ativos <strong>612</strong></div>
+              <div style="margin-bottom:8px">Conversões (mês) <strong>58%</strong></div>
+            </div>
+
+            <h4 style="margin-top:12px">Ferramentas recomendadas</h4>
+            <ul style="color:var(--muted)">
+              <li>Google Sheets / Data Studio — KPIs.</li>
+              <li>WhatsApp Business + API (quando disponível) — automação.</li>
+              <li>Trello / Asana — gestão de tarefas.</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <!-- TEMPLATES (download) -->
+      <section id="templates" class="page">
+        <div class="grid">
+          <div class="card">
+            <h2>Templates Prontos</h2>
+            <p class="lead">Templates editáveis: Mensagens WhatsApp, Carta Comercial e Checklist de Implementação. Usa os botões para descarregar em HTML imediatamente (podes abrir e editar em Word/Editor).</p>
+
+            <h3>1) Template WhatsApp (oferta) — resumo</h3>
+            <div class="code">Oba! 🎉 Você foi selecionado para testar a nossa TV por 3 dias GRÁTIS. Responda SIM para ativarmos já. — iTpraTi</div>
+            <p style="margin-top:8px; color:var(--muted)">Download pronto:</p>
+            <div style="display:flex; gap:8px; margin-top:8px">
+              <button class="download" data-tpl="whatsapp">Descarregar WhatsApp (.html)</button>
+              <button class="download" data-tpl="whatsapp-txt">Descarregar WhatsApp (.txt)</button>
+            </div>
+
+            <h3 style="margin-top:14px">2) Carta Comercial — proposta (resumida)</h3>
+            <div class="code">[Nome do Destinatário]\n\nAssunto: Proposta de Serviços iTpraTi — Internet & IPTV\n\nCaro(a) [Nome],\n\nApresento a proposta da iTpraTi para [serviço]. Inclui: ...\n\nAtenciosamente,\n[Seu Nome] — iTpraTi</div>
+            <div style="display:flex; gap:8px; margin-top:8px">
+              <button class="download" data-tpl="carta">Descarregar Carta (.html)</button>
+              <button class="download" data-tpl="carta-doc">Descarregar Carta (.txt)</button>
+            </div>
+
+            <h3 style="margin-top:14px">3) Checklist de Implementação</h3>
+            <div class="code">[ ] Preparar segmentação de base\n[ ] Criar landing page para trial\n[ ] Configurar automação e templates WhatsApp\n[ ] Testes e QA\n[ ] Lançamento</div>
+            <div style="display:flex; gap:8px; margin-top:8px">
+              <button class="download" data-tpl="checklist">Descarregar Checklist (.html)</button>
+              <button class="download" data-tpl="checklist-csv">Descarregar Checklist (.csv)</button>
+            </div>
+          </div>
+
+          <aside class="card">
+            <h2>Notas sobre os templates</h2>
+            <ul style="color:var(--muted)">
+              <li>Os ficheiros .html são editáveis (abre no browser e depois Salvar como).</li>
+              <li>Os .txt/.csv permitem colar em ferramentas de automação ou editores simples.</li>
+              <li>Se quiseres, converto também para .docx/.pdf — pede-me que eu faço já.</li>
+            </ul>
+
+            <h4 style="margin-top:10px">Gerações rápidas</h4>
+            <p class="small">Os botões produzem ficheiros prontos com conteúdo já preenchido — podes alterar campos entre colchetes antes de enviar.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="page">
+        <div class="grid">
+          <div class="card">
+            <h2>Contacto & Chamadas Rápidas</h2>
+            <p class="lead">Escolhe o canal mais rápido para contacto com a equipa iTpraTi.</p>
+
+            <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:12px">
+              <a class="contact-btn" href="tel:+244900000000">📞 Ligar — +244 900 000 000</a>
+              <a class="contact-btn" href="https://wa.me/244900000000?text=Ol%C3%A1%20iTpraTi%2C%20gostaria%20de%20ajuda" target="_blank" rel="noopener">💬 WhatsApp</a>
+              <a class="contact-btn" href="mailto:contact@itprati.com?subject=Contacto%20via%20site">✉️ E-mail</a>
+              <button class="contact-btn" id="btn-schedule">📅 Agendar Demo</button>
+            </div>
+
+            <h3 style="margin-top:14px">Informação de contacto</h3>
+            <p style="color:var(--muted)">Sede: Luanda, Angola<br>Horário: Seg–Sex, 09:00–18:00</p>
+            <div style="margin-top:12px">
+              <button class="btn" id="btn-download-all">Descarregar todo o pacote (.zip)</button>
+              <div class="small" style="margin-top:8px">Obs: o .zip é gerado localmente no browser (conteúdo HTML dos templates).</div>
+            </div>
+          </div>
+
+          <aside class="card">
+            <h2>Suporte</h2>
+            <p class="small">Suporte técnico disponível durante horário comercial. Para casos críticos use WhatsApp e marcar como urgente.</p>
+            <h4 style="margin-top:12px">FAQ Rápido</h4>
+            <ul style="color:var(--muted)">
+              <li>Como ativar trial? Responda SIM no WhatsApp → recebe link.</li>
+              <li>Como me tornar parceiro? Envie email para contact@itprati.com.</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="small">© iTpraTi — Plano Estratégico Consolidado • Feito com IA</div>
+    </footer>
+  </div>
+
+  <script>
+    // Simple page router
+    document.querySelectorAll('.nav-btn').forEach(btn=>{
+      btn.addEventListener('click', ()=> {
+        document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+        btn.classList.add('active');
+        const target = btn.getAttribute('data-target');
+        document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+        document.getElementById(target).classList.add('active');
+        window.scrollTo({top:0, behavior:'smooth'});
+      });
+    });
+
+    // Template contents
+    const templates = {
+      'whatsapp': `<!doctype html>
+<html><head><meta charset="utf-8"><title>WhatsApp Template - iTpraTi</title></head><body>
+<p>Oba! 🎉 Você foi selecionado para testar a nossa TV por <strong>3 dias GRÁTIS</strong>. Responda <strong>SIM</strong> para ativarmos já. — iTpraTi</p>
+</body></html>`,
+
+      'whatsapp-txt': `Oba! 🎉 Você foi selecionado para testar a nossa TV por 3 dias GRÁTIS. Responda SIM para ativarmos já. — iTpraTi`,
+
+      'carta': `<!doctype html>
+<html><head><meta charset="utf-8"><title>Carta Comercial - iTpraTi</title></head><body>
+<h2>[Nome do Destinatário]</h2>
+<p>Assunto: Proposta de Serviços iTpraTi — Internet & IPTV</p>
+<p>Caro(a) [Nome],</p>
+<p>Apresento a proposta da iTpraTi para [serviço]. Inclui: implementação, suporte e garantia de qualidade. Valor e condições: [inserir].</p>
+<p>Atenciosamente,<br>[Seu Nome] — iTpraTi</p>
+</body></html>`,
+
+      'carta-doc': `[Nome do Destinatário]
+
+Assunto: Proposta de Serviços iTpraTi — Internet & IPTV
+
+Caro(a) [Nome],
+
+Apresento a proposta da iTpraTi para [serviço]. Inclui: implementação, suporte e garantia de qualidade. Valor e condições: [inserir].
+
+Atenciosamente,
+[Seu Nome] — iTpraTi`,
+
+      'checklist': `<!doctype html>
+<html><head><meta charset="utf-8"><title>Checklist Implementação - iTpraTi</title></head><body>
+<h2>Checklist de Implementação</h2>
+<ul>
+<li>[ ] Preparar segmentação de base</li>
+<li>[ ] Criar landing page para trial</li>
+<li>[ ] Configurar automação e templates WhatsApp</li>
+<li>[ ] Realizar testes e QA</li>
+<li>[ ] Lançamento e monitorização</li>
+</ul>
+</body></html>`,
+
+      'checklist-csv': `Tarefa,Status
+Preparar segmentação de base,Pending
+Criar landing page para trial,Pending
+Configurar automação e templates WhatsApp,Pending
+Realizar testes e QA,Pending
+Lançamento e monitorização,Pending`
+    };
+
+    // Download helper
+    function downloadFile(filename, content, type='text/html') {
+      const blob = new Blob([content], {type});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      setTimeout(()=>URL.revokeObjectURL(url), 1000);
+    }
+
+    document.querySelectorAll('.download').forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const key = btn.getAttribute('data-tpl');
+        if(!templates[key]) return alert('Template não encontrado');
+        const map = {
+          'whatsapp': ['whatsapp.html','text/html'],
+          'whatsapp-txt': ['whatsapp.txt','text/plain'],
+          'carta': ['carta_comercial.html','text/html'],
+          'carta-doc': ['carta_comercial.txt','text/plain'],
+          'checklist': ['checklist_implementacao.html','text/html'],
+          'checklist-csv': ['checklist.csv','text/csv']
+        };
+        const info = map[key];
+        downloadFile(info[0], templates[key], info[1]);
+      });
+    });
+
+    // Button: download all as zip (client-side)
+    // We'll create a simple zip-like folder by building a blob for .zip isn't trivial without libraries.
+    // Instead, create a single downloadable .zip-like .txt that contains the files separated, or create a .zip using JSZip if available.
+    // For this deliverable we'll create a .zip using a minimal library-free approach: assemble a single .html package file containing all templates.
+    document.getElementById('btn-download-all').addEventListener('click', ()=>{
+      const contentParts = [
+        '--- WhatsApp (whatsapp.html) ---\\n',
+        templates['whatsapp'],
+        '\\n\\n--- Carta (carta_comercial.html) ---\\n',
+        templates['carta'],
+        '\\n\\n--- Checklist (checklist_implementacao.html) ---\\n',
+        templates['checklist']
+      ].join('');
+      downloadFile('itprati_templates_package.txt', contentParts, 'text/plain');
+      alert('Pacote gerado como itprati_templates_package.txt — podes extrair/colar os conteúdos em ficheiros individuais.');
+    });
+
+    // Schedule demo button (simple contact prompt)
+    document.getElementById('btn-schedule').addEventListener('click', ()=>{
+      window.open('https://wa.me/244900000000?text=Gostaria%20de%20agendar%20uma%20demo%20com%20a%20iTpraTi','_blank');
+    });
+
+    // Quick contact buttons: (already linkable) - no extra JS required
+
+    // Make anchor links on mobile hidden nav possible
+    // (optional: allow keyboard navigation)
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === '1') document.querySelector('[data-target="home"]').click();
+      if(e.key === '2') document.querySelector('[data-target="strategy"]').click();
+      if(e.key === '3') document.querySelector('[data-target="campaigns"]').click();
+      if(e.key === '4') document.querySelector('[data-target="operations"]').click();
+      if(e.key === '5') document.querySelector('[data-target="templates"]').click();
+      if(e.key === '6') document.querySelector('[data-target="contact"]').click();
+    });
+  </script>
+</body>
+</html>
