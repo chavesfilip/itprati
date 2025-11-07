@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Técnica e Comercial – Migração para Cloud | iTpraTi</title>
+    <style>
+        /* Reset and Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 10px 10px 0 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            animation: fadeIn 1s ease-in-out;
+        }
+        header p {
+            font-size: 1.2em;
+        }
+        main {
+            background: white;
+            padding: 40px;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border-left: 5px solid #007bff;
+            background: #fff;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+        h2 {
+            color: #007bff;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        h3 {
+            color: #0056b3;
+            margin-bottom: 10px;
+        }
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #007bff;
+            color: white;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        .signature {
+            margin-top: 40px;
+            font-style: italic;
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            main {
+                padding: 20px;
+            }
+            header {
+                padding: 20px;
+            }
+        }
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                max-width: none;
+            }
+            header, main, footer {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            section {
+                border-left: none;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>iTpraTi - Internet e Tecnologias</h1>
+        <p>Soluções em Informática, Lda.</p>
+    </header>
+    <main>
+        <section id="title">
+            <h2>ASSUNTO: Proposta Técnica e Comercial – Migração para Cloud</h2>
+            <p>PROPOSTA: 2025/11/I0001</p>
+            <p>CLIENTE: PEGOS</p>
+        </section>
+
+        <section id="objetivo">
+            <h2>1. Objetivo da Proposta</h2>
+            <p>Esta proposta tem como objetivo apresentar uma solução completa para a migração da infraestrutura atual da Pegos para a Cloud, com foco em melhor desempenho, segurança, disponibilidade e escalabilidade.</p>
+            <p>O projeto contempla a implementação de dois servidores dedicados alojado num dos nossos parceiros, garantindo a estabilidade e o desempenho necessários para suportar o ERP Cegid Primavera, o Active Directory e a partilha de ficheiros empresariais entre todas as clínicas e farmácias.</p>
+        </section>
+
+        <section id="diagnostico">
+            <h2>2. Diagnóstico da Situação Atual</h2>
+            <p>Atualmente, a Pegos possui infraestrutura local distribuída entre várias unidades (Luanda, Soyo, Cabinda e farmácias em diferentes localizações).</p>
+            <p>O ambiente carece de:</p>
+            <ul>
+                <li>Centralização de utilizadores e autenticações (Active Directory);</li>
+                <li>Gestão unificada de acessos e permissões;</li>
+                <li>Partilha de ficheiros corporativos segura;</li>
+                <li>Performance e disponibilidade elevadas no ERP Primavera.</li>
+            </ul>
+        </section>
+
+        <section id="solucao">
+            <h2>3. Solução Proposta</h2>
+            <h3>Servidor 1 – ERP Cegid Primavera</h3>
+            <ul>
+                <li>Modelo: iTpraTi Advance-2</li>
+                <li>Processador: AMD EPYC 4345P (8c/16t – 3.8GHz/5.5GHz)</li>
+                <li>Memória: 64GB DDR5 ECC On-Die 5600MHz</li>
+                <li>Armazenamento: 4× 960GB SSD NVMe (Soft RAID)</li>
+                <li>Largura de Banda: 3 Gbit/s garantidos, tráfego ilimitado</li>
+                <li>Função: Hospedagem do ERP Primavera e base de dados principal</li>
+                <li>Licenciamentos: Windows Server 2019/2022/2025 - 8 Cores</li>
+                <li>Custo: 293.080,00Kz mês Servidor + 244.800,00Kz de instalação (Paga apenas uma vez) + 57.120.00Kz mês Licenciamento</li>
+            </ul>
+
+            <h3>Servidor 2 – Active Directory e Partilha de Ficheiros</h3>
+            <ul>
+                <li>Modelo: iTpraTi Advance-1</li>
+                <li>Processador: AMD EPYC 4245P (6c/12t – 3.9GHz/5.4GHz)</li>
+                <li>Memória: 32GB DDR5 ECC On-Die 5600MHz</li>
+                <li>Armazenamento: 2× 960GB SSD NVMe + 2× 1.92TB SSD NVMe (Soft RAID)</li>
+                <li>Largura de Banda: 3 Gbit/s garantidos, tráfego ilimitado</li>
+                <li>Função: Controlador de domínio, gestão de utilizadores e partilha de ficheiros</li>
+                <li>Licenciamentos: Windows Server 2019/2022/2025 - 8 Cores</li>
+                <li>Custo: 281.506,00Kz mês Servidor + 204.000,00Kz de instalação (Paga apenas uma vez) + 57.120.00Kz mês Licenciamento</li>
+            </ul>
+        </section>
+
+        <section id="infraestrutura">
+            <h2>4. Infraestrutura e Segurança</h2>
+            <ul>
+                <li>Active Directory Centralizado: Todos os utilizadores autenticam-se no domínio corporativo Pegos.Cloud.</li>
+                <li>Rede Segura via VPN: Ligação segura entre todas as clínicas e farmácias, com tunelamento criptografado.</li>
+                <li>Backups Automáticos:
+                    <ul>
+                        <li>Diários (incrementais) e semanais (completos);</li>
+                        <li>Retenção em dias/espaço;</li>
+                        <li>Armazenamento em datacenter distinto (Cloud Storage).</li>
+                    </ul>
+                </li>
+                <li>Firewall e Monitorização: Configuração de firewall avançada e monitorização 24/7 de disponibilidade e segurança.</li>
+            </ul>
+
+            <h3>Opções práticas:</h3>
+            <ol>
+                <li>WireGuard (recomendado)
+                    <ul>
+                        <li>Leve, rápido e seguro.</li>
+                        <li>Pode ser instalado no Servidor 2 (AD + Ficheiros).</li>
+                        <li>Cada clínica/farmácia teria um túnel seguro que autentica automaticamente.</li>
+                    </ul>
+                </li>
+                <li>OpenVPN Access Server
+                    <ul>
+                        <li>Interface mais visual e fácil para gestão de utilizadores.</li>
+                        <li>Ideal se quiseres permitir acessos remotos individuais (ex: administração, manutenção, técnicos).</li>
+                    </ul>
+                </li>
+                <li>Alternativa Premium (mas simples)
+                    <ul>
+                        <li>Criar uma VPN site-to-site com routers compatíveis (ex: Mikrotik, FortiGate ou Ubiquiti).</li>
+                        <li>Assim, cada clínica liga-se automaticamente à Cloud, e toda a rede local já tem acesso ao domínio e partilhas — sem necessidade de login VPN manual.</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
+
+        <section id="beneficios">
+            <h2>5. Benefícios da Solução</h2>
+            <ul>
+                <li>Centralização total da infraestrutura de TI.</li>
+                <li>Acesso remoto seguro e eficiente.</li>
+                <li>Redução de custos de manutenção local.</li>
+                <li>Melhoria no desempenho e disponibilidade do ERP Primavera.</li>
+                <li>Ambiente escalável para futuras expansões.</li>
+                <li>Segurança empresarial com controlo total de utilizadores e permissões.</li>
+            </ul>
+        </section>
+
+        <section id="investimento">
+            <h2>6. Investimento Mensal Estimado / Custos Fixos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Custo Mensal</th>
+                        <th>Custo de Instalação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Servidor – 1 + Licenciamento</td>
+                        <td>350.200,00Kz</td>
+                        <td>244.800,00Kz (Datacenter)</td>
+                    </tr>
+                    <tr>
+                        <td>Servidor – 2 + Licenciamento</td>
+                        <td>338.626,00Kz</td>
+                        <td>204.000,00Kz (Datacenter)</td>
+                    </tr>
+                    <tr>
+                        <td>Gestão dos Servidores na Cloud</td>
+                        <td>425.000,00Kz</td>
+                        <td>750.000,00Kz (Implement)</td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td>1.113.826,00Kz (mês)</td>
+                        <td>448.800,00Kz (único)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Outros Custos / Variáveis</h3>
+            <ol>
+                <li>Backups – 36.720,00Kz (4.080,00Kz por TB)</li>
+                <li>VPN – Aquisição de Material, Implementação e configuração (está variação dependerá de duas variantes, ligação ao Active Directory e o Primavera pelos Computadores das Clínicas e Farmácias com a solução WireGuard ou OpenVPN e as ligações entre si Clínicas e Farmácias que aqui recomendaríamos o uso de uma VPN site-to-site com routers compatíveis (ex: Mikrotik, FortiGate ou Ubiquiti) com o WireGuard / OpenVPN.</li>
+            </ol>
+        </section>
+
+        <section id="prazos">
+            <h2>7. Prazos e Implementação</h2>
+            <ul>
+                <li>Fase 1 – Planeamento e provisionamento: 3 dias úteis</li>
+                <li>Fase 2 – Configuração e testes: 10 dias úteis</li>
+                <li>Fase 3 – Migração de dados e ativação: 2 dias úteis</li>
+            </ul>
+            <p>Prazo total estimado: 15 dias úteis após adjudicação (2 semanas).</p>
+        </section>
+
+        <section id="condicoes">
+            <h2>8. Condições Comerciais</h2>
+            <ul>
+                <li>Pagamento mensal via transferência bancária.</li>
+                <li>Acordo mínimo de 12 meses com suporte incluído.</li>
+                <li>Na proposta inclui gestão completa dos servidores, backups e monitorização.</li>
+            </ul>
+        </section>
+
+        <section id="proximos">
+            <h2>9. Próximos Passos</h2>
+            <p>Após validação da proposta, será enviado o contrato de prestação de serviços de infraestrutura Cloud, seguido do plano técnico detalhado de migração.</p>
+        </section>
+
+        <section id="opcao2">
+            <h2>Opção 2 – Solução Unificada</h2>
+            <h3>Servidor 3 – Active Directory, Partilha de Ficheiros e Primavera</h3>
+            <ul>
+                <li>Modelo: iTpraTi Advance-3</li>
+                <li>Processador: AMD EPYC 4465P - 12c/24t - 3.4GHz/5.4GHz 2026</li>
+                <li>Memória: 128GB DDR5 ECC On-Die 5600MHz</li>
+                <li>Armazenamento: 4× 1.92TB SSD NVMe Soft RAID</li>
+                <li>Largura de Banda: 3 Gbit/s garantidos, tráfego ilimitado</li>
+                <li>Função: Controlador de domínio, gestão de utilizadores e partilha de ficheiros</li>
+                <li>Licenciamentos: Windows Server 2019/2022/2025 - 12 Cores</li>
+                <li>Custo: 586.840,00Kz mês Servidor + 326.400,00Kz de instalação (Paga apenas uma vez) + 85.680.00Kz mês Licenciamento</li>
+            </ul>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Descrição</th>
+                        <th>Custo Mensal</th>
+                        <th>Custo de Instalação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Servidor - 3 + Licenciamento</td>
+                        <td>672.520,00Kz</td>
+                        <td>326.400,00Kz (Datacenter)</td>
+                    </tr>
+                    <tr>
+                        <td>Gestão dos Servidores na Cloud</td>
+                        <td>325.000,00Kz</td>
+                        <td>750.000,00Kz (Implement)</td>
+                    </tr>
+                    <tr>
+                        <td>Total</td>
+                        <td>937.520,00Kz (mês)</td>
+                        <td>326.400,00Kz (único)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="notas">
+            <h2>NOTAS:</h2>
+            <ol>
+                <li>A presente proposta tem um prazo de validade de 30 dias, contados a partir da data em que foi disponibilizada pela iTpraTi. Esta proposta poderá ser alterada por erro de digitação nos valores ou descrição apresentada.</li>
+                <li>A iTpraTi oferece a Implementação e migração se aprovada a proposta.</li>
+            </ol>
+        </section>
+    </main>
+    <footer>
+        <p>Feito em Luanda, aos 07 de Novembro de 2025</p>
+        <div class="signature">
+            <p>PELA iTpraTi</p>
+            <p>DIRECTOR DE TI</p>
+            <p>___________________________________</p>
+            <p>João Silva</p>
+        </div>
+    </footer>
+</body>
+</html>
