@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposta Técnica - Migração Cloud | iTpraTi</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0066cc;
+            --secondary-color: #00b4d8;
+            --accent-color: #ff6b35;
+            --dark-color: #1a1a1a;
+            --light-gray: #f8f9fa;
+            --medium-gray: #6c757d;
+            --success-color: #28a745;
+            --gradient-primary: linear-gradient(135deg, #0066cc 0%, #00b4d8 100%);
+            --gradient-accent: linear-gradient(135deg, #ff6b35 0%, #ff8e53 100%);
+            --shadow-light: 0 2px 10px rgba(0,0,0,0.1);
+            --shadow-medium: 0 8px 30px rgba(0,0,0,0.12);
+            --shadow-heavy: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .company-logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffffff, #e3f2fd);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .header p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .client-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: var(--shadow-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            color: var(--medium-gray);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-item:hover {
+            color: var(--primary-color);
+            background: var(--light-gray);
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section:nth-child(even) {
+            background: var(--light-gray);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            color: var(--medium-gray);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-primary);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .card p {
+            color: var(--medium-gray);
+            line-height: 1.7;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Server Cards */
+        .server-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow-medium);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .server-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .server-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .server-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .server-specs {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .server-specs li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .server-specs li:last-child {
+            border-bottom: none;
+        }
+
+        .spec-label {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .spec-value {
+            color: var(--medium-gray);
+            text-align: right;
+        }
+
+        /* Pricing Table */
+        .pricing-table {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            margin: 2rem 0;
+        }
+
+        .pricing-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .pricing-header h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .pricing-body {
+            padding: 0;
+        }
+
+        .pricing-row {
+            display: flex;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #eee;
+            align-items: center;
+        }
+
+        .pricing-row:last-child {
+            border-bottom: none;
+        }
+
+        .pricing-row:nth-child(even) {
+            background: var(--light-gray);
+        }
+
+        .pricing-label {
+            flex: 1;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .pricing-value {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-primary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .timeline-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-light);
+            width: 45%;
+            position: relative;
+        }
+
+        .timeline-marker {
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            border: 4px solid white;
+            box-shadow: var(--shadow-light);
+        }
+
+        .timeline-phase {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-duration {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Benefits Grid */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-light);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .benefit-card:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .benefit-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .benefit-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-primary);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-light);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 3rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .footer-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .footer-item i {
+            color: var(--secondary-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: column !important;
+                align-items: flex-start;
+                padding-left: 50px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-marker {
+                left: 20px;
+            }
+
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="company-logo">iTpraTi</div>
+                <h1>Proposta Técnica e Comercial</h1>
+                <p>Migração para Cloud - Infraestrutura de Alta Performance</p>
+                <div class="client-badge">Cliente: PEGOS</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-container">
+                <a href="#objetivo" class="nav-item">Objetivo</a>
+                <a href="#diagnostico" class="nav-item">Diagnóstico</a>
+                <a href="#solucao" class="nav-item">Solução</a>
+                <a href="#beneficios" class="nav-item">Benefícios</a>
+                <a href="#investimento" class="nav-item">Investimento</a>
+                <a href="#implementacao" class="nav-item">Implementação</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Objetivo -->
+    <section id="objetivo" class="section">
+        <div class="container">
+            <h2 class="section-title">Objetivo da Proposta</h2>
+            <p class="section-subtitle">Modernizar a infraestrutura de TI da PEGOS através de uma migração estratégica para a Cloud</p>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Performance</h3>
+                    <p>Infraestrutura de alta performance com servidores dedicados e tecnologia de ponta para garantir o máximo desempenho do ERP Primavera.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Segurança</h3>
+                    <p>Ambiente seguro com Active Directory centralizado, VPN criptografada e monitorização 24/7 para proteger os seus dados.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-expand-arrows-alt"></i>
+                    </div>
+                    <h3>Escalabilidade</h3>
+                    <p>Solução preparada para crescer com o seu negócio, permitindo adicionar novos utilizadores e serviços de forma rápida.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Diagnóstico -->
+    <section id="diagnostico" class="section">
+        <div class="container">
+            <h2 class="section-title">Diagnóstico da Situação Atual</h2>
+            <p class="section-subtitle">Análise da infraestrutura distribuída entre Luanda, Soyo, Cabinda e farmácias</p>
+            
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>Desafios Identificados</h3>
+                    <ul style="list-style: none; padding: 0; margin-top: 1rem;">
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><i class="fas fa-times" style="color: #dc3545; margin-right: 0.5rem;"></i> Falta de centralização de utilizadores</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><i class="fas fa-times" style="color: #dc3545; margin-right: 0.5rem;"></i> Gestão de acessos fragmentada</li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;"><i class="fas fa-times" style="color: #dc3545; margin-right: 0.5rem;"></i> Partilha de ficheiros insegura</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-times" style="color: #dc3545; margin-right: 0.5rem;"></i> Performance limitada do ERP</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Distribuição Geográfica</h3>
+                    <p>A infraestrutura atual está distribuída por várias unidades, criando desafios de gestão e manutenção:</p>
+                    <ul style="list-style: none; padding: 0; margin-top: 1rem;">
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-map-marker-alt" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Luanda - Sede principal</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-map-marker-alt" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Soyo - Filial</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-map-marker-alt" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Cabinda - Filial</li>
+                        <li style="padding: 0.5rem 0;"><i class="fas fa-map-marker-alt" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Farmácias - Múltiplas localizações</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solução -->
+    <section id="solucao" class="section">
+        <div class="container">
+            <h2 class="section-title">Solução Proposta</h2>
+            <p class="section-subtitle">Infraestrutura Cloud de alta performance com duas opções flexíveis</p>
+            
+            <!-- Opção 1 -->
+            <div style="margin-bottom: 4rem;">
+                <h3 style="text-align: center; font-size: 2rem; margin-bottom: 2rem; color: var(--primary-color);">Opção 1: Arquitetura com Dois Servidores</h3>
+                <div class="grid-2">
+                    <div class="server-card">
+                        <h4 class="server-title">Servidor 1 - ERP Primavera</h4>
+                        <p style="color: var(--medium-gray); margin-bottom: 1.5rem;">iTpraTi Cloud-Pro-2</p>
+                        <ul class="server-specs">
+                            <li><span class="spec-label">Processador</span><span class="spec-value">AMD EPYC 4345P (8c/16t)</span></li>
+                            <li><span class="spec-label">Memória</span><span class="spec-value">64GB DDR5 ECC</span></li>
+                            <li><span class="spec-label">Armazenamento</span><span class="spec-value">4× 960GB SSD NVMe</span></li>
+                            <li><span class="spec-label">Largura de Banda</span><span class="spec-value">3 Gbit/s garantidos</span></li>
+                            <li><span class="spec-label">Licenciamento</span><span class="spec-value">Windows Server 8 Cores</span></li>
+                        </ul>
+                        <div style="text-align: center; margin-top: 1.5rem;">
+                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--success-color);">350.200,00 Kz/mês</div>
+                            <div style="color: var(--medium-gray); margin-top: 0.5rem;">+ 244.800,00 Kz instalação</div>
+                        </div>
+                    </div>
+                    <div class="server-card">
+                        <h4 class="server-title">Servidor 2 - Active Directory</h4>
+                        <p style="color: var(--medium-gray); margin-bottom: 1.5rem;">iTpraTi Cloud-Pro-1</p>
+                        <ul class="server-specs">
+                            <li><span class="spec-label">Processador</span><span class="spec-value">AMD EPYC 4245P (6c/12t)</span></li>
+                            <li><span class="spec-label">Memória</span><span class="spec-value">32GB DDR5 ECC</span></li>
+                            <li><span class="spec-label">Armazenamento</span><span class="spec-value">2× 960GB + 2× 1.92TB SSD</span></li>
+                            <li><span class="spec-label">Largura de Banda</span><span class="spec-value">3 Gbit/s garantidos</span></li>
+                            <li><span class="spec-label">Licenciamento</span><span class="spec-value">Windows Server 8 Cores</span></li>
+                        </ul>
+                        <div style="text-align: center; margin-top: 1.5rem;">
+                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--success-color);">338.626,00 Kz/mês</div>
+                            <div style="color: var(--medium-gray); margin-top: 0.5rem;">+ 204.000,00 Kz instalação</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Opção 2 -->
+            <div>
+                <h3 style="text-align: center; font-size: 2rem; margin-bottom: 2rem; color: var(--accent-color);">Opção 2: Solução Unificada</h3>
+                <div style="max-width: 600px; margin: 0 auto;">
+                    <div class="server-card" style="border-color: var(--accent-color);">
+                        <h4 class="server-title" style="color: var(--accent-color);">Servidor 3 - Solução Completa</h4>
+                        <p style="color: var(--medium-gray); margin-bottom: 1.5rem;">iTpraTi Cloud-Pro-3</p>
+                        <ul class="server-specs">
+                            <li><span class="spec-label">Processador</span><span class="spec-value">AMD EPYC 4465P (12c/24t)</span></li>
+                            <li><span class="spec-label">Memória</span><span class="spec-value">128GB DDR5 ECC</span></li>
+                            <li><span class="spec-label">Armazenamento</span><span class="spec-value">4× 1.92TB SSD NVMe</span></li>
+                            <li><span class="spec-label">Largura de Banda</span><span class="spec-value">3 Gbit/s garantidos</span></li>
+                            <li><span class="spec-label">Licenciamento</span><span class="spec-value">Windows Server 12 Cores</span></li>
+                        </ul>
+                        <div style="text-align: center; margin-top: 1.5rem;">
+                            <div style="font-size: 1.5rem; font-weight: 700; color: var(--success-color);">997.520,00 Kz/mês</div>
+                            <div style="color: var(--medium-gray); margin-top: 0.5rem;">+ 1.076.400,00 Kz instalação</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section id="beneficios" class="section">
+        <div class="container">
+            <h2 class="section-title">Benefícios da Solução iTpraTi</h2>
+            <p class="section-subtitle">Transforme a sua infraestrutura de TI com benefícios imediatos e a longo prazo</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h4 class="benefit-title">Centralização Total</h4>
+                    <p>Gestão centralizada de toda a infraestrutura de TI, com controlo total sobre utilizadores, acessos e permissões.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h4 class="benefit-title">Acesso Remoto Seguro</h4>
+                    <p>Colaboradores podem aceder aos sistemas e ficheiros de forma segura a partir de qualquer localização.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4 class="benefit-title">Redução de Custos</h4>
+                    <p>Eliminação de custos com manutenção de hardware local, energia e espaço físico.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h4 class="benefit-title">Performance Superior</h4>
+                    <p>Melhoria significativa no desempenho e disponibilidade do ERP Primavera, resultando em maior produtividade.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-expand"></i>
+                    </div>
+                    <h4 class="benefit-title">Escalabilidade</h4>
+                    <p>Ambiente preparado para crescer com o seu negócio, permitindo adicionar novos utilizadores e serviços facilmente.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h4 class="benefit-title">Segurança Empresarial</h4>
+                    <p>Proteção robusta contra ameaças cibernéticas, com backups e monitorização contínua.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investimento -->
+    <section id="investimento" class="section">
+        <div class="container">
+            <h2 class="section-title">Investimento</h2>
+            <p class="section-subtitle">Estrutura de investimento transparente e flexível</p>
+            
+            <div class="grid-2">
+                <div class="pricing-table">
+                    <div class="pricing-header">
+                        <h3>Opção 1: Dois Servidores</h3>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="pricing-row">
+                            <span class="pricing-label">Servidor 1 + Licenciamento</span>
+                            <span class="pricing-value">350.200,00 Kz/mês</span>
+                        </div>
+                        <div class="pricing-row">
+                            <span class="pricing-label">Servidor 2 + Licenciamento</span>
+                            <span class="pricing-value">338.626,00 Kz/mês</span>
+                        </div>
+                        <div class="pricing-row">
+                            <span class="pricing-label">Gestão e Suporte iTpraTi</span>
+                            <span class="pricing-value">425.000,00 Kz/mês</span>
+                        </div>
+                        <div class="pricing-row" style="background: var(--light-gray); font-weight: 700; font-size: 1.2rem;">
+                            <span class="pricing-label">Total Mensal</span>
+                            <span class="pricing-value" style="color: var(--success-color);">1.113.826,00 Kz</span>
+                        </div>
+                        <div class="pricing-row" style="border-top: 2px solid var(--primary-color);">
+                            <span class="pricing-label">Instalação (Pagamento Único)</span>
+                            <span class="pricing-value">1.198.800,00 Kz</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pricing-table">
+                    <div class="pricing-header" style="background: var(--gradient-accent);">
+                        <h3>Opção 2: Solução Unificada</h3>
+                    </div>
+                    <div class="pricing-body">
+                        <div class="pricing-row">
+                            <span class="pricing-label">Servidor 3 + Licenciamento</span>
+                            <span class="pricing-value">672.520,00 Kz/mês</span>
+                        </div>
+                        <div class="pricing-row">
+                            <span class="pricing-label">Gestão e Suporte iTpraTi</span>
+                            <span class="pricing-value">325.000,00 Kz/mês</span>
+                        </div>
+                        <div class="pricing-row" style="background: var(--light-gray); font-weight: 700; font-size: 1.2rem;">
+                            <span class="pricing-label">Total Mensal</span>
+                            <span class="pricing-value" style="color: var(--success-color);">997.520,00 Kz</span>
+                        </div>
+                        <div class="pricing-row" style="border-top: 2px solid var(--accent-color);">
+                            <span class="pricing-label">Instalação (Pagamento Único)</span>
+                            <span class="pricing-value">1.076.400,00 Kz</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem; padding: 2rem; background: white; border-radius: 15px; box-shadow: var(--shadow-light);">
+                <h4 style="color: var(--primary-color); margin-bottom: 1rem;">Custos Adicionais</h4>
+                <p><strong>Backups:</strong> 36.720,00 Kz (4.080,00 Kz por TB)</p>
+                <p><strong>VPN:</strong> Orçamento personalizado após análise da infraestrutura</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementação -->
+    <section id="implementacao" class="section">
+        <div class="container">
+            <h2 class="section-title">Prazos e Implementação</h2>
+            <p class="section-subtitle">Processo rápido e eficiente, minimizando o impacto nas suas operações</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Fase 1</div>
+                        <div class="timeline-duration">3 dias úteis</div>
+                        <h4>Planeamento e Provisionamento</h4>
+                        <p>Análise detalhada dos requisitos, provisionamento dos servidores e preparação da infraestrutura base.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Fase 2</div>
+                        <div class="timeline-duration">10 dias úteis</div>
+                        <h4>Configuração e Testes</h4>
+                        <p>Configuração dos servidores, instalação do software, configuração do Active Directory e testes de conectividade.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Fase 3</div>
+                        <div class="timeline-duration">2 dias úteis</div>
+                        <h4>Migração e Ativação</h4>
+                        <p>Migração dos dados, ativação dos serviços e testes finais para garantir o funcionamento perfeito.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <div style="display: inline-block; background: var(--gradient-primary); color: white; padding: 1.5rem 3rem; border-radius: 50px; font-size: 1.2rem; font-weight: 700;">
+                    <i class="fas fa-clock" style="margin-right: 0.5rem;"></i>
+                    Prazo Total: 15 dias úteis
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Pronto para Transformar a Sua Infraestrutura?</h2>
+                <p class="cta-subtitle">Entre em contacto connosco para agendar uma reunião e esclarecer qualquer dúvida sobre esta proposta.</p>
+                <a href="mailto:info@itprati.ao" class="cta-button">
+                    <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i>
+                    Contactar iTpraTi
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">iTpraTi</div>
+                <p style="margin-bottom: 2rem; opacity: 0.8;">Internet e Tecnologias - Soluções Cloud de Alta Performance</p>
+                
+                <div class="footer-info">
+                    <div class="footer-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@itprati.ao</span>
+                    </div>
+                    <div class="footer-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+244 XXX XXX XXX</span>
+                    </div>
+                    <div class="footer-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Luanda, Angola</span>
+                    </div>
+                    <div class="footer-item">
+                        <i class="fas fa-calendar"></i>
+                        <span>07 de Novembro de 2025</span>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #333; opacity: 0.6;">
+                    <p>&copy; 2025 iTpraTi - Internet e Tecnologias. Todos os direitos reservados.</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem;">Proposta válida por 30 dias a partir da data de emissão.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-on-scroll');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.card, .server-card, .benefit-card, .timeline-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Active navigation highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.style.color = '';
+                item.style.background = '';
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.style.color = 'var(--primary-color)';
+                    item.style.background = 'var(--light-gray)';
+                }
+            });
+        });
+
+        // Add loading animation to CTA button
+        document.querySelector('.cta-button').addEventListener('click', function(e) {
+            const button = this;
+            const originalText = button.innerHTML;
+            button.innerHTML = '<span class="loading"></span> Enviando...';
+            
+            setTimeout(() => {
+                button.innerHTML = originalText;
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
