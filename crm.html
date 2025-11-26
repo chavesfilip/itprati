@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planilha de Leads - Novos Domínios Registrados em .ao</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        td[contenteditable="true"] {
+            cursor: text;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #addLeadForm {
+            display: none; /* Pode ser toggled via JS se necessário */
+        }
+    </style>
+</head>
+<body>
+    <h1>Planilha de Leads - Novos Domínios Registrados em .ao (Atualizada em 26/11/2025)</h1>
+    <p>Esta tabela consolida todos os leads identificados até agora. Os campos são editáveis diretamente (clique e edite). Use o formulário abaixo para adicionar novos leads.</p>
+    
+    <table id="leadsTable">
+        <thead>
+            <tr>
+                <th>Domínio</th>
+                <th>Nome Completo da Empresa</th>
+                <th>Website</th>
+                <th>Contatos (Telefone/Email)</th>
+                <th>Responsáveis/Decisores</th>
+                <th>Descrição do Negócio</th>
+                <th>Oportunidades de Prospecção Qualificadas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Leads Anteriores -->
+            <tr>
+                <td contenteditable="true">metodottd.it.ao</td>
+                <td contenteditable="true">Método TTD (Transforma Talento em Dinheiro)</td>
+                <td contenteditable="true">https://metodottd.it.ao/</td>
+                <td contenteditable="true">Não disponíveis (site com conteúdo limitado)</td>
+                <td contenteditable="true">Não identificados (menciona mentor, mas sem nome específico)</td>
+                <td contenteditable="true">Programa de mentoria e workshop focado em transformar talentos em renda, possivelmente relacionado a desenvolvimento pessoal ou empreendedorismo. Site com descrição de evento, mas sem detalhes corporativos profundos.</td>
+                <td contenteditable="true">- Workspace e Microsoft 365 (para gerenciamento de mentorias online).<br>- Hosting e VPS (site parece em fase inicial, precisa de hospedagem robusta).<br>- Provedor de Internet (conexão estável para conteúdos digitais). Alta prioridade, pois site parcial indica necessidade de setup.</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">mentoria.ao</td>
+                <td contenteditable="true">Não identificado (site inativo)</td>
+                <td contenteditable="true">https://mentoria.ao/</td>
+                <td contenteditable="true">Não disponíveis</td>
+                <td contenteditable="true">Não identificados</td>
+                <td contenteditable="true">Domínio sugere foco em mentoria ou consultoria, possivelmente educacional ou profissional. Site não live, indicando registro recente sem desenvolvimento.</td>
+                <td contenteditable="true">- Hosting e VPS (essencial para lançar site).<br>- Workspace e Microsoft 365 (para colaboração em mentorias).<br>- Provedor de Internet (básico para novos negócios). Alta prioridade para captação inicial.</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">consultorseo.ao</td>
+                <td contenteditable="true">Não identificado (site inativo)</td>
+                <td contenteditable="true">https://consultorseo.ao/</td>
+                <td contenteditable="true">Não disponíveis</td>
+                <td contenteditable="true">Não identificados</td>
+                <td contenteditable="true">Domínio indica consultoria em SEO (otimização para motores de busca), provavelmente agência digital ou serviços de marketing online. Site não live.</td>
+                <td contenteditable="true">- Hosting e VPS (para hospedar sites de clientes).<br>- Software de Faturação (Vendus) (para gerenciar cobranças em serviços).<br>- Odoo Assistência Técnica (para ERP em agência digital).<br>- Provedor de Internet (alta velocidade para SEO/tools online). Alta prioridade.</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">como.ao</td>
+                <td contenteditable="true">Não identificado (site inativo)</td>
+                <td contenteditable="true">https://como.ao/</td>
+                <td contenteditable="true">Não disponíveis</td>
+                <td contenteditable="true">Não identificados</td>
+                <td contenteditable="true">Domínio "como" (significando "how" em português) sugere site de tutoriais, guias ou educação (ex.: how-to). Site não live.</td>
+                <td contenteditable="true">- Hosting e VPS (para conteúdo educacional).<br>- Workspace e Microsoft 365 (para criação de conteúdos colaborativos).<br>- Provedor de Televisão (se evoluir para vídeo tutoriais/IPTV).<br>- Provedor de Internet. Alta prioridade para novos setups.</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">musica.ao</td>
+                <td contenteditable="true">Não identificado (site inativo)</td>
+                <td contenteditable="true">https://musica.ao/</td>
+                <td contenteditable="true">Não disponíveis</td>
+                <td contenteditable="true">Não identificados</td>
+                <td contenteditable="true">Domínio relacionado a música, possivelmente streaming, loja ou portal cultural. Site não live.</td>
+                <td contenteditable="true">- Provedor de Televisão (IPTV para conteúdos musicais/vídeos).<br>- Hosting e VPS (para streaming de áudio/vídeo).<br>- Provedor de Internet (banda larga para upload/download de mídia).<br>- Software de Faturação (para vendas de músicas). Alta prioridade para mídia digital.</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">plmservice.ao</td>
+                <td contenteditable="true">Organizações P.L.M</td>
+                <td contenteditable="true">https://plmservice.ao/</td>
+                <td contenteditable="true">Telefone: +244 947374613<br>Emails: geral@plmservice.ao, plmasstecn@gmail.com, plmservice068@gmail.com<br>Endereço: Cabinda, Angola</td>
+                <td contenteditable="true">Não identificados</td>
+                <td contenteditable="true">Empresa especializada em fornecimento de materiais de alta qualidade, serviços personalizados onshore/offshore, soluções inovadoras. Foco em excelência, durabilidade, eficiência e parcerias nacionais/internacionais. Atua em todo território angolano com profissionais qualificados.</td>
+                <td contenteditable="true">- Hosting e VPS (para expansão digital de serviços).<br>- Workspace e Microsoft 365 (gerenciamento de projetos onshore/offshore).<br>- Provedor de Internet (conexões estáveis para operações remotas).<br>- Odoo Assistência Técnica (ERP para logística e suprimentos).<br>- Software de Faturação (para faturamento de serviços). Lead qualificado como médio-alto, com contatos diretos para abordagem.</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">avangola.ao</td>
+                <td contenteditable="true">Agricultura Verde de Angola (AVA)</td>
+                <td contenteditable="true">https://avangola.ao/</td>
+                <td contenteditable="true">Não disponíveis (seção de contatos existe, mas sem detalhes preenchidos)</td>
+                <td contenteditable="true">Não identificados</td>
+                <td contenteditable="true">Empresa agrícola em grande escala, focada em produção sustentável, complexos agroindustriais. Opera em províncias férteis do sul de Angola, fornecendo matéria-prima para consumo interno e indústrias. Ênfase em modernização, tecnologias inovadoras e desenvolvimento econômico. Visão: Diversificação econômica, redução da dependência do petróleo.</td>
+                <td contenteditable="true">- Hosting e VPS (para site corporativo e e-commerce agrícola).<br>- Workspace e Microsoft 365 (colaboração em projetos rurais).<br>- Provedor de Internet (conexões em áreas rurais/províncias).<br>- Odoo Assistência Técnica (gestão de cadeia de suprimentos agro).<br>- Software de Faturação (para vendas de produtos agrícolas). Lead qualificado como alto, alinhado a negócios em crescimento.</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">afrilatino.ao</td>
+                <td contenteditable="true">Não identificado (site inativo)</td>
+                <td contenteditable="true">https://afrilatino.ao/</td>
+                <td contenteditable="true">Não disponíveis</td>
+                <td contenteditable="true">Não identificados</td>
+                <td contenteditable="true">Domínio sugere foco cultural ou comercial afro-latino, possivelmente eventos, comércio ou mídia. Site com placeholder de hospedagem configurada, indicando setup recente mas sem conteúdo.</td>
+                <td contenteditable="true">- Hosting e VPS (site em configuração inicial).<br>- Provedor de Televisão (se for mídia cultural/IPTV).<br>- Provedor de Internet.<br>- Workspace e Microsoft 365 (para colaboração cultural). Alta prioridade para ativação.</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">itmuxima.co.ao</td>
+                <td contenteditable="true">IT Muxima</td>
+                <td contenteditable="true">https://itmuxima.co.ao/</td>
+                <td contenteditable="true">Não disponíveis (site com conteúdo mínimo)</td>
+                <td contenteditable="true">Não identificados</td>
+                <td contenteditable="true">Empresa de TI focada em formações e soluções (treinamentos e serviços IT). Site com título sugerindo educação e soluções tecnológicas, mas conteúdo limitado.</td>
+                <td contenteditable="true">- Odoo Assistência Técnica (suporte para ferramentas ERP).<br>- Hosting e VPS (para plataformas de treinamento online).<br>- Workspace e Microsoft 365 (ferramentas colaborativas para IT).<br>- Provedor de Internet (essencial para serviços TI).<br>- Software de Faturação. Alta prioridade, perfil IT alinhado aos nossos serviços.</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">fontvannes.ao</td>
+                <td contenteditable="true">Não identificado (site inativo)</td>
+                <td contenteditable="true">https://fontvannes.ao/</td>
+                <td contenteditable="true">Não disponíveis</td>
+                <td contenteditable="true">Não identificados</td>
+                <td contenteditable="true">Domínio possivelmente relacionado a uma marca ou local (ex.: Fontvannes é uma comuna na França, mas adaptado; talvez fontes ou vannes). Site com placeholder de hospedagem, sem conteúdo.</td>
+                <td contenteditable="true">- Hosting e VPS (configuração inicial detectada).<br>- Provedor de Internet.<br>- Workspace e Microsoft 365 (se for negócio geral). Alta prioridade para prospecção básica.</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">fcoc.co.ao</td>
+                <td contenteditable="true">Academia FCOC</td>
+                <td contenteditable="true">https://fcoc.co.ao/</td>
+                <td contenteditable="true">Telefone: (+244) 934-735-832 / Whatsapp: 934 735 832<br>Email: info@fcoc.co.ao<br>Endereço: Luanda, Golf-2, junto à farmácia Central e loja PEP</td>
+                <td contenteditable="true">Felix Cunha (Diretor da Academia FCOC)</td>
+                <td contenteditable="true">Academia especializada em formações de redes IP, telecomunicações móveis, VoIP e segurança. Oferece cursos como Redes IP (Huawei e Cisco), Telecom IP, MPLS, BGP Avançado, e Testes de Fibra Óptica. Com mais de 10 anos de experiência, 500+ alunos formados e foco em melhores práticas. Atua em Luanda, com horários de segunda a domingo.</td>
+                <td contenteditable="true">- Provedor de Internet (ISP para redes IP e fibra óptica).<br>- Provedor de Televisão (IPTV via VoIP e sistemas de voz).<br>- Hosting e VPS (para plataformas de e-learning e VoIP).<br>- Workspace e Microsoft 365 (ferramentas colaborativas para treinamentos remotos).<br>- Odoo Assistência Técnica (ERP para gerenciamento de cursos e alunos).<br>- Software de Faturação (Vendus para cobrança de cursos em Kwanzas). Lead qualificado como alto, com contatos diretos e alinhamento em TI/telecom. Alta prioridade para abordagem imediata.</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">colegiomuxito.ao</td>
+                <td contenteditable="true">Complexo Escolar Muxito (suspeito, baseado em pesquisas semelhantes)</td>
+                <td contenteditable="true">https://colegiomuxito.ao/</td>
+                <td contenteditable="true">Não disponíveis diretamente; pesquisas indicam contatos semelhantes para escolas em Angola, como 923 907 671 (para escola similar)</td>
+                <td contenteditable="true">Não identificados</td>
+                <td contenteditable="true">Domínio sugere uma instituição educacional (colégio ou complexo escolar). Site inativo ou com conteúdo insuficiente, possivelmente em fase de setup. Pesquisas web não retornaram info direta, mas domínios semelhantes apontam para escolas em Luanda/Bengo.</td>
+                <td contenteditable="true">- Hosting e VPS (para lançar site educacional).<br>- Workspace e Microsoft 365 (ferramentas para gestão escolar e colaboração online).<br>- Provedor de Internet (conexões para e-learning).<br>- Odoo Assistência Técnica (ERP para administração escolar).<br>- Software de Faturação (para matrículas e pagamentos). Alta prioridade para ativação inicial, qualificado como médio para educação.</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">contafiscal.co.ao</td>
+                <td contenteditable="true">Não identificado (possivelmente O Consultor - Contas, Fisco & Finanças ou similar)</td>
+                <td contenteditable="true">https://contafiscal.co.ao/</td>
+                <td contenteditable="true">Telefones: 936873143 / 924552619 (de perfil similar em pesquisas)<br>Email: Não disponível diretamente</td>
+                <td contenteditable="true">Não identificados</td>
+                <td contenteditable="true">Domínio indica serviços de contabilidade fiscal. Site com placeholder de configuração de conta, sugerindo setup recente. Pesquisas apontam para consultorias fiscais em Angola, com foco em contabilidade, fiscalidade e finanças empresariais.</td>
+                <td contenteditable="true">- Software de Faturação (Vendus para gerenciamento fiscal).<br>- Odoo Assistência Técnica (assistência ERP para contabilidade).<br>- Hosting e VPS (para ativar site de serviços).<br>- Workspace e Microsoft 365 (ferramentas para relatórios financeiros colaborativos).<br>- Provedor de Internet. Alta prioridade, qualificado como alto para serviços financeiros alinhados.</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">produtoskaiba.co.ao</td>
+                <td contenteditable="true">Não identificado (possivelmente relacionado a GRUPO CASTEL ANGOLA ou similar)</td>
+                <td contenteditable="true">https://produtoskaiba.co.ao/</td>
+                <td contenteditable="true">Telefones: +244 923169800 (geral), +244 923120415 (call center) - de grupo similar<br>Email: Não disponível diretamente</td>
+                <td contenteditable="true">Não identificados</td>
+                <td contenteditable="true">Domínio sugere comércio de produtos (possivelmente bebidas ou bens de consumo, baseado em pesquisas semelhantes). Site inativo, com conteúdo insuficiente. Pesquisas web ligam a empresas angolanas de distribuição.</td>
+                <td contenteditable="true">- Hosting e VPS (para e-commerce de produtos).<br>- Software de Faturação (Vendus para vendas).<br>- Odoo Assistência Técnica (gestão de estoque e suprimentos).<br>- Provedor de Internet (para operações online).<br>- Workspace e Microsoft 365 (colaboração em logística). Alta prioridade para setup comercial.</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">kwanzashop.ao</td>
+                <td contenteditable="true">KwanzaShop</td>
+                <td contenteditable="true">https://kwanzashop.ao/</td>
+                <td contenteditable="true">Telefones: +244 921 678 770 (de site similar Os Kwanzas); possivelmente +55 47 99173-0696 (internacional, mas irrelevante?)<br>Emails: geral@oskwanzas.com, kwanzashop@yahoo.com</td>
+                <td contenteditable="true">Não identificados</td>
+                <td contenteditable="true">Loja online focada em praticidade e qualidade, com entregas em casa em Angola. Site inativo, mas pesquisas indicam e-commerce com frete grátis e parcelamento. Ênfase em compras fáceis e pagamentos na entrega.</td>
+                <td contenteditable="true">- Hosting e VPS (para plataforma de e-commerce).<br>- Software de Faturação (Vendus para transações).<br>- Odoo Assistência Técnica (ERP para gerenciamento de loja).<br>- Provedor de Internet (alta velocidade para site de vendas).<br>- Workspace e Microsoft 365 (para equipe de suporte). Alta prioridade, qualificado como alto para varejo digital.</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">josilice.ao</td>
+                <td contenteditable="true">Não identificado (site inativo)</td>
+                <td contenteditable="true">https://josilice.ao/</td>
+                <td contenteditable="true">Não disponíveis</td>
+                <td contenteditable="true">Não identificados</td>
+                <td contenteditable="true">Domínio possivelmente relacionado a uma empresa ou serviço (ex.: nome próprio ou marca). Site com placeholder de configuração, sem conteúdo. Nenhuma info adicional em pesquisas web.</td>
+                <td contenteditable="true">- Hosting e VPS (configuração inicial detectada).<br>- Provedor de Internet (básico para ativação).<br>- Workspace e Microsoft 365 (se for negócio geral). Alta prioridade para prospecção inicial, qualificado como baixo até mais dados.</td>
+            </tr>
+            <!-- Novos Leads da Lista -->
+            <tr>
+                <td contenteditable="true">aiep-ukb.ao</td>
+                <td contenteditable="true">Não identificado (site inativo)</td>
+                <td contenteditable="true">https://aiep-ukb.ao/</td>
+                <td contenteditable="true">Não disponíveis
