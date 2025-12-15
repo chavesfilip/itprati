@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diretrizes Estratégicas e Financeiras ITPRATI 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cor-primaria: #007bff; /* Azul ITPRATI */
+            --cor-secundaria: #6c757d; /* Cinza */
+            --cor-acento: #28a745; /* Verde para sucesso */
+            --cor-fundo: #f8f9fa;
+            --cor-texto: #343a40;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--cor-texto);
+            background-color: var(--cor-fundo);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1200px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--cor-primaria);
+            margin-bottom: 30px;
+        }
+
+        header h1 {
+            color: var(--cor-primaria);
+            font-weight: 700;
+        }
+        
+        /* Secções e Títulos */
+        section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border-left: 5px solid var(--cor-secundaria);
+            background-color: #ffffff;
+            border-radius: 0 8px 8px 0;
+        }
+
+        h2, h3 {
+            color: var(--cor-primaria);
+            padding-bottom: 5px;
+            margin-top: 25px;
+        }
+        
+        /* Tabelas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--cor-primaria);
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        /* Destaques e Listas */
+        .destaque {
+            background-color: #e9f7ee;
+            border-left: 5px solid var(--cor-acento);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+            margin-left: 20px;
+            position: relative;
+        }
+        
+        ul li::before {
+            content: '✓';
+            color: var(--cor-acento);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+
+        .passos-proximos {
+            background-color: #ffe0b2;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border: 1px solid #ffcc80;
+        }
+
+        .passos-proximos h3 {
+            color: #d84315; /* Laranja Escuro */
+            border-bottom: none;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 20px auto;
+            }
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            tr {
+                border: 1px solid #ccc;
+                margin-bottom: 10px;
+                border-radius: 4px;
+            }
+            td {
+                border: none;
+                border-bottom: 1px solid #eee;
+                position: relative;
+                padding-left: 50%;
+                text-align: right;
+            }
+            td::before {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
+                color: var(--cor-primaria);
+            }
+            /* Adaptação de cabeçalhos para células */
+            td:nth-of-type(1)::before { content: attr(data-th); }
+            td:nth-of-type(2)::before { content: attr(data-th); }
+            td:nth-of-type(3)::before { content: attr(data-th); }
+            td:nth-of-type(4)::before { content: attr(data-th); }
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Diretrizes Estratégicas e Financeiras ITPRATI 2026</h1>
+        <p>Documento de Orientação para Controlo Financeiro, Governança e Crescimento.</p>
+    </header>
+
+    <section id="visao-geral-financeira">
+        <h2>🎯 Visão Geral: Reformulação da Gestão Financeira</h2>
+        <p>A implementação de **Centros de Custos (CC)** e a integração do **Odoo** no ciclo de faturação são cruciais para a **visibilidade financeira, otimização da tomada de decisões** e **escalabilidade** da ITPRATI.</p>
+        
+        <div class="destaque">
+            Foco: Medir a **rentabilidade real** de cada unidade de negócio e garantir que a faturação fiscal é estritamente legal através do Vendus.
+        </div>
+    </section>
+
+    <section id="analise-centros-custos">
+        <h2>🔎 Análise: Centros de Custos e Integração Odoo</h2>
+
+        <h3>1. Centros de Custos Sugeridos (CC)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Unidade de Negócio</th>
+                    <th>CC Sugerido</th>
+                    <th>Descrição e Foco</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-th="Unidade">net.itprati.ao (Internet)</td>
+                    <td data-th="CC Sugerido">CC100 - Internet</td>
+                    <td data-th="Descrição">Receita de subscrições, custos de banda e infraestrutura de rede (FTTH/Wireless).</td>
+                </tr>
+                <tr>
+                    <td data-th="Unidade">tv.itprati.ao (Televisão/IPTV)</td>
+                    <td data-th="CC Sugerido">CC200 - IPTV/TV</td>
+                    <td data-th="Descrição">Receita de subscrições, custos de licenciamento de canais/conteúdos e plataformas CDN.</td>
+                </tr>
+                <tr>
+                    <td data-th="Unidade">vendus.itprati.ao (Faturação)</td>
+                    <td data-th="CC Sugerido">CC300 - Faturação</td>
+                    <td data-th="Descrição">Custos de software de faturação, taxas de transação e custos associados à conformidade legal/fiscal.</td>
+                </tr>
+                <tr>
+                    <td data-th="Unidade">bubaloo.pt (Hospedagem & VPS)</td>
+                    <td data-th="CC Sugerido">CC400 - Hosting/Cloud</td>
+                    <td data-th="Descrição">Receita de alojamento, custos de hardware (servidores), energia e *datacenter*.</td>
+                </tr>
+                <tr>
+                    <td data-th="Unidade">workspace.itprati.ao (Microsoft 365)</td>
+                    <td data-th="CC Sugerido">CC500 - M365/Cloud</td>
+                    <td data-th="Descrição">Margens de revenda de licenças, custos de formação/certificação e suporte técnico.</td>
+                </tr>
+                <tr>
+                    <td data-th="Unidade">nandoo.itprati.ao (Odoo Assistência Técnica)</td>
+                    <td data-th="CC Sugerido">CC600 - Assistência Técnica</td>
+                    <td data-th="Descrição">Receita de serviços, custos de pessoal técnico e ferramentas de gestão (Odoo).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>2. Faturação: Odoo, UISP e Vendus (Modelo Híbrido)</h3>
+        <p>O Odoo será a **plataforma de gestão de clientes (*backend* de faturação)** para todos os CCs, substituindo o UISP no processo de automação de cobranças. O **VENDUS** será o sistema final de emissão de faturas legalmente aceites.</p>
+        
+        <ul>
+            <li>**ODU (CCs 100-600):** Gestão de clientes, subscrições, geração de cobranças e notificações.</li>
+            <li>**UISP (CCs 100/200):** Continua a ser usado exclusivamente para gestão e monitorização da infraestrutura de rede ISP (equipamentos, *links*, QoS).</li>
+            <li>**VENDUS (CC300):** Recebe os dados de cobrança do Odoo via API para a **emissão final e legal** da fatura fiscal para todos os clientes, garantindo conformidade.</li>
+        </ul>
+    </section>
+
+    <section id="recomendacoes-estrategicas">
+        <h2>✅ Recomendações Estratégicas</h2>
+        
+        <h3>Prioridade de Investimento: CC100 (Internet) e CC200 (IPTV)</h3>
+        <p>A prioridade máxima de investimento deve ser alocada aos Centros de Custos **CC100 (Internet)** e **CC200 (IPTV)**, uma vez que representam o *core business* e o maior potencial de receita recorrente. Os investimentos devem focar-se em:</p>
+        <ul>
+            <li>Expansão de cobertura de fibra/wireless.</li>
+            <li>Aquisição de banda internacional/licenciamento de conteúdos IPTV.</li>
+            <li>Treinamento da equipa técnica.</li>
+        </ul>
+
+        <h3>Ações de Contabilidade e IT</h3>
+        <ul>
+            <li>**Decisão:** Formalizar a estrutura dos 6 Centros de Custos e definir a **chave de alocação** para custos indiretos (ex: aluguer de escritório) entre os 6 CCs.</li>
+            <li>**Configuração Odoo (Fase 1):** Configurar o Odoo para gerir o ciclo de vida dos clientes e automatizar o processo de cobrança.</li>
+            <li>**Análise de Integração:** Priorizar a avaliação de custo e desenvolvimento da **ligação API bidirecional** entre **ODU** e **Vendus**.</li>
+            <li>**Meta:** Medir o **EBITDA por Centro de Custo** no final do primeiro trimestre.</li>
+        </ul>
+    </section>
+    
+    <section id="diretrizes-2026">
+        <h2>✨ Diretrizes Financeiras ITPRATI 2026</h2>
+        <p>Esboço dos pilares para as novas diretrizes, focadas em Controlo e Governança.</p>
+
+        <h3>A. Previsibilidade e Controlo de Custos (Agendamento e ENCOMENDA)</h3>
+        <ul>
+            <li>**Mapa de Custos Programados (MCP):** Todas as despesas recorrentes devem ser mapeadas e agendadas com 12 meses de antecedência para garantir previsibilidade.</li>
+            <li>**Protocolo de ENCOMENDA:** Qualquer aquisição acima de um limite (€X) deve ser iniciada através de um documento interno de "Encomenda" (do Odoo ou Vendus) que referencie o **CC** a ser debitado.</li>
+        </ul>
+
+        <h3>B. Gestão de Talentos e Conformidade (Folha de Pagamentos)</h3>
+        <p>Reformulação da folha de pagamentos para ser competitiva e clara:</p>
+        <ul>
+            <li>**Ajudas de Custo (Transporte):** Definir uma política clara e fiscalmente suportada, ligada à função e necessidade.</li>
+            <li>**Subsídio de Alimentação:** Clarificar o cálculo e pagamento em conformidade legal.</li>
+            <li>**Benefício Social (Escolaridade):** Formalizar o **Subsídio de Escolaridade a Filhos**, definindo critérios de elegibilidade.</li>
+        </ul>
+        
+        <h3>C. Eficiência do *Cash Flow* (IBAN e Fundo de Maneio)</h3>
+        <ul>
+            <li>**Auditoria do IBAN:** Garantir que **todos** os *templates* de fatura em **Vendus** e nos sistemas de notificação (**Odoo/UISP**) contêm apenas o **IBAN correto e único** da ITPRATI.</li>
+            <li>**Política de *Cash Flow***: Definir o Tempo Médio de Cobrança (AR) alvo (< 30 dias) e otimizar o Tempo Médio de Pagamento (AP).</li>
+        </ul>
+
+        <h3>D. Governança e Risco (Funções e Responsabilidades)</h3>
+        <ul>
+            <li>**Segregação de Funções (SoD):** Clarificar formalmente quem pode: **Iniciar** a despesa (Gestor do CC), **Aprovar** a Encomenda (Direção Financeira), e **Efetuar** o pagamento (Tesouraria).</li>
+            <li>**Dono do CC:** Nomear formalmente um Gestor responsável por cada um dos 6 Centros de Custos para gerir o orçamento e reportar o EBITDA.</li>
+        </ul>
+
+    </section>
+
+    <div class="passos-proximos">
+        <h3>⏭️ Próximos Passos (Ação Imediata)</h3>
+        <ul>
+            <li>**Designar a Equipa de Projeto:** Nomear o líder para redigir a versão final das Diretrizes 2026.</li>
+            <li>**Consulta Legal/RH:** Validar as políticas de remuneração (Ajudas de Custo e Escolaridade) para garantir a conformidade fiscal.</li>
+            <li>**Auditoria de Sistemas:** Emitir ordem para verificar e corrigir imediatamente o IBAN em **todos** os *templates* de fatura e sistemas de notificação.</li>
+            <li>**Relatório Inicial:** Apresentar um relatório financeiro mostrando o resultado isolado do **CC100 - Internet** no final do próximo mês.</li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>
