@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iTpraTi - Hub</title>
+    <style>
+        :root {
+            --primary-color: #0055ff;
+            --text-color: #333;
+            --bg-color: #ffffff;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        /* Estilização do Logo SVG */
+        #logo-itprati {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            cursor: pointer;
+        }
+
+        /* Efeito de hover nas partes do logo */
+        .logo-section {
+            transition: transform 0.3s ease, fill 0.3s ease, opacity 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .logo-section:hover {
+            transform: scale(1.05);
+            opacity: 1;
+            filter: brightness(1.2);
+        }
+
+        /* Caixa de Informação */
+        #info-box {
+            margin-top: 40px;
+            height: 100px;
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        #info-box.active {
+            opacity: 1;
+        }
+
+        #product-title {
+            font-size: 2rem;
+            margin: 0;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        #product-desc {
+            font-size: 1.1rem;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* Instrução inicial */
+        .instruction {
+            position: absolute;
+            bottom: 30px;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <svg id="logo-itprati" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+            <g class="logo-section" id="itprati-tv" data-url="https://tv.itprati.ao" 
+               data-title="iTpraTi TV" data-desc="A sua televisão interativa com conteúdos exclusivos.">
+                <circle cx="250" cy="100" r="60" fill="#E91E63" />
+            </g>
+
+            <g class="logo-section" id="itprati-net" data-url="https://net.itprati.ao" 
+               data-title="iTpraTi NET" data-desc="Internet de alta velocidade para a sua casa ou empresa.">
+                <circle cx="400" cy="250" r="60" fill="#2196F3" />
+            </g>
+
+            <g class="logo-section" id="itprati-vendus" data-url="https://vendus.itprati.ao" 
+               data-title="Vendus" data-desc="Software de faturação online simples e certificado.">
+                <circle cx="330" cy="400" r="60" fill="#4CAF50" />
+            </g>
+
+            <g class="logo-section" id="itprati-workspace" data-url="https://workspace.itprati.ao" 
+               data-title="Workspace" data-desc="Produtividade e colaboração em nuvem para equipas.">
+                <circle cx="170" cy="400" r="60" fill="#FF9800" />
+            </g>
+
+            <g class="logo-section" id="itprati-nandoo" data-url="https://nandoo.pt" 
+               data-title="Nandoo" data-desc="Soluções tecnológicas avançadas para o mercado português.">
+                <circle cx="100" cy="250" r="60" fill="#9C27B0" />
+            </g>
+        </svg>
+
+        <div id="info-box">
+            <h2 id="product-title"></h2>
+            <p id="product-desc"></p>
+        </div>
+    </div>
+
+    <div class="instruction">Passe o rato sobre o logo para explorar</div>
+
+    <script>
+        const sections = document.querySelectorAll('.logo-section');
+        const infoBox = document.getElementById('info-box');
+        const title = document.getElementById('product-title');
+        const desc = document.getElementById('product-desc');
+
+        sections.forEach(section => {
+            // Evento ao passar o mouse
+            section.addEventListener('mouseenter', () => {
+                const productTitle = section.getAttribute('data-title');
+                const productDesc = section.getAttribute('data-desc');
+                
+                title.innerText = productTitle;
+                desc.innerText = productDesc;
+                infoBox.classList.add('active');
+            });
+
+            // Evento ao tirar o mouse (opcional: manter o último ou limpar)
+            section.addEventListener('mouseleave', () => {
+                // Se quiser que o texto suma ao tirar o mouse:
+                // infoBox.classList.remove('active');
+            });
+
+            // Evento ao clicar (Redirecionamento)
+            section.addEventListener('click', () => {
+                const url = section.getAttribute('data-url');
+                window.location.href = url;
+            });
+        });
+    </script>
+</body>
+</html>
