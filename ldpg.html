@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iTpraTi One - A Sua Vida Digital Integrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #0055ff;
+            --accent: #00d2ff;
+            --dark: #050505;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --text: #ffffff;
+            --gradient: linear-gradient(135deg, var(--primary), var(--accent));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            position: fixed;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span { color: var(--accent); }
+
+        .btn-client {
+            background: var(--glass);
+            border: 1px solid var(--primary);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .btn-client:hover { background: var(--primary); }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 8%;
+            background: radial-gradient(circle at 80% 20%, #002244 0%, #050505 100%);
+        }
+
+        .hero-content { flex: 1; z-index: 2; }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 span {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #aaa;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .hero-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        /* O Hub Interativo */
+        .hub-circles {
+            width: 450px;
+            height: 450px;
+            position: relative;
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 4s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { width: 200px; height: 200px; opacity: 0.8; }
+            50% { width: 450px; height: 450px; opacity: 0.2; }
+            100% { width: 200px; height: 200px; opacity: 0.8; }
+        }
+
+        /* --- Planos iTpraTi One --- */
+        .pricing {
+            padding: 100px 5%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            border-color: var(--accent);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .card.featured {
+            border: 2px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(0, 85, 255, 0.2);
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 20px 0;
+        }
+
+        .price span { font-size: 1rem; color: #888; }
+
+        .features-list {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .features-list li {
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: #ccc;
+        }
+
+        .features-list li i { color: var(--accent); margin-right: 10px; }
+
+        /* --- CTA Buttons --- */
+        .cta-main {
+            background: var(--gradient);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(0, 85, 255, 0.3);
+        }
+
+        .cta-main:hover { transform: scale(1.05); box-shadow: 0 15px 25px rgba(0, 85, 255, 0.4); }
+
+        .btn-card {
+            display: block;
+            padding: 15px;
+            border: 1px solid var(--primary);
+            border-radius: 12px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .btn-card:hover { background: var(--primary); }
+
+        /* --- WhatsApp Floating --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: white;
+            z-index: 1000;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* --- Responsividade --- */
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 120px; }
+            .hub-circles { width: 300px; height: 300px; margin-top: 50px; }
+            .hero-content h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">iTpraTi<span>.One</span></div>
+        <nav>
+            <a href="#planos" class="btn-client" style="border:none">Soluções</a>
+            <a href="https://id.itprati.ao" class="btn-client">Entrar no meu ID</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <span style="color:var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 2px;">Operadora Digital Soberana</span>
+            <h1>A sua vida conectada num <span>ID Único.</span></h1>
+            <p>Esqueça faturas separadas e suporte lento. A iTpraTi integra Internet, TV, Cloud e Gestão num ecossistema inteligente desenhado para Angola.</p>
+            <a href="#planos" class="cta-main">Quero Liberdade Digital</a>
+        </div>
+        
+        <div class="hero-visual">
+            <div class="hub-circles">
+                <div class="circle" style="animation-delay: 0s;"></div>
+                <div class="circle" style="animation-delay: 1s; border-color: var(--accent); width: 300px; height: 300px;"></div>
+                <div class="circle" style="animation-delay: 2s; border-style: dashed; width: 150px; height: 150px;"></div>
+                <img src="https://itprati.ao/logo.png" alt="ID Central" style="position: absolute; width: 80px; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 5;">
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="planos">
+        <h2 class="section-title">Escolha o seu nível de Integração</h2>
+        <div class="pricing-grid">
+            
+            <div class="card">
+                <h3>One Básico</h3>
+                <div class="price">22.000 <span>/mês</span></div>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> Internet 20/5 Mbps</li>
+                    <li><i class="fas fa-check"></i> TV 80+ Canais (IPTV)</li>
+                    <li><i class="fas fa-check"></i> ID Digital iTpraTi</li>
+                    <li><i class="fas fa-check"></i> Suporte via WhatsApp</li>
+                </ul>
+                <a href="#" class="btn-card">Aderir Agora</a>
+            </div>
+
+            <div class="card featured">
+                <div style="background:var(--primary); position:absolute; top:20px; right:-35px; transform:rotate(45deg); width:150px; font-size:0.7rem; font-weight:bold; padding:5px 0;">MAIS VENDIDO</div>
+                <h3>One Família</h3>
+                <div class="price">35.000 <span>/mês</span></div>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> Internet 50/10 Mbps</li>
+                    <li><i class="fas fa-check"></i> TV Premium + Streaming</li>
+                    <li><i class="fas fa-check"></i> Workspace Email (M365)</li>
+                    <li><i class="fas fa-check"></i> Controlo Parental Avançado</li>
+                </ul>
+                <a href="#" class="cta-main" style="display:block; padding:15px;">Ativar Ecossistema</a>
+            </div>
+
+            <div class="card">
+                <h3>One Pro (B2B)</h3>
+                <div class="price">55.000 <span>/mês</span></div>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> Net 100/20 Mbps</li>
+                    <li><i class="fas fa-check"></i> ERP Ondjila (Odoo)</li>
+                    <li><i class="fas fa-check"></i> Faturação Vendus Inc.</li>
+                    <li><i class="fas fa-check"></i> Cloud Backup 50GB</li>
+                </ul>
+                <a href="#" class="btn-card">Escalar meu Negócio</a>
+            </div>
+
+        </div>
+    </section>
+
+    <section style="padding: 100px 5%; background: rgba(255,255,255,0.02); text-align: center;">
+        <h2 style="margin-bottom: 20px;">Pronto para sair da invisibilidade digital?</h2>
+        <p style="color:#888; margin-bottom: 40px;">Junte-se a centenas de angolanos que já centralizaram a sua tecnologia.</p>
+        <a href="mailto:vendas@itprati.ao" class="cta-main" style="background:none; border: 2px solid var(--primary);">Falar com Consultor</a>
+    </section>
+
+    <a href="https://wa.me/2449XXXXXXXXX?text=Quero%20saber%20mais%20sobre%20os%20planos%20iTpraTi" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <footer style="padding: 50px 5%; text-align: center; border-top: 1px solid rgba(255,255,255,0.1); color: #555;">
+        <p>&copy; 2026 ITPRATI — Provedora de Serviços Digitais Integrados. Luanda, Angola.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll para os links de âncora
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Efeito simples de revelação ao rolar
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                if(cardTop < window.innerHeight - 100) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
