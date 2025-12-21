@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iTpraTi - Provedora de Serviços Digitais Integrados</title>
+    <style>
+        :root {
+            --primary: #0055ff;
+            --dark: #0a0a0a;
+            --accent: #00d2ff;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark);
+            color: white;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        nav {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.8);
+            position: fixed;
+            width: 90%;
+            z-index: 1000;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 5%;
+            background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(45deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #ccc;
+            max-width: 500px;
+        }
+
+        .circular-logo {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            animation: rotate 20s linear infinite;
+        }
+
+        .circle-segment {
+            position: absolute;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            opacity: 0.5;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 50px 5%;
+        }
+
+        .plan-card {
+            background: var(--glass);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+            text-align: center;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .id-badge {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="logo"><strong>iTpraTi</strong> PSDI</div>
+    <a href="#" class="btn" style="padding: 10px 20px;">Área do Cliente (ID Único)</a>
+</nav>
+
+<section class="hero">
+    <div class="hero-text">
+        <span class="id-badge">Soberania Digital Angolana</span>
+        <h1>Um ID. Toda a sua vida digital integrada.</h1>
+        <p>Internet, TV, Cloud e ERP num único ecossistema soberano. Menos custos, mais inteligência para o seu negócio.</p>
+        <a href="#planos" class="btn">Explorar Planos iTpraTi One</a>
+    </div>
+    <div class="circular-logo">
+        <div class="circle-segment" style="width: 100%; height: 100%; border-width: 10px;"></div>
+        <div class="circle-segment" style="width: 80%; height: 80%; top: 10%; left: 10%; border-width: 5px; border-color: var(--primary);"></div>
+        <div class="circle-segment" style="width: 60%; height: 60%; top: 20%; left: 20%; border-style: dashed;"></div>
+    </div>
+</section>
+
+<section class="plans" id="planos">
+    <div class="plan-card">
+        <h3>One Básico</h3>
+        <h2>22.000 Kz/mês</h2>
+        <p>Internet 20/5 Mbps<br>TV 80+ Canais<br>ID Digital Básico</p>
+        <a href="#" class="btn">Aderir Agora</a>
+    </div>
+    <div class="plan-card" style="border-color: var(--accent);">
+        <h3>One Pro (PME)</h3>
+        <h2>55.000 Kz/mês</h2>
+        <p>Internet 100/20 Mbps<br>ERP Ondjila Starter<br>Cloud 50GB</p>
+        <a href="#" class="btn">Escalar Negócio</a>
+    </div>
+    <div class="plan-card">
+        <h3>One Elite</h3>
+        <h2>Sob Consulta</h2>
+        <p>Dedicado 300Mbps+<br>Escolha DSTV/ZAP/TVCabo<br>Suporte VIP NANDOO</p>
+        <a href="#" class="btn">Contactar Consultor</a>
+    </div>
+</section>
+
+<script>
+    // Script simples para animação de scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
