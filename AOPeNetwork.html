@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>iTpraTi | Open Radio Network</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --bg-dark: #050a14; /* Fundo Cyber-Dark */
+            --bg-card: #0f172a; /* Fundo dos Cartões estilo App */
+            --neon-blue: #00f2ff; /* Cor de Conectividade */
+            --neon-purple: #bc13fe; /* Cor de Serviços Premium */
+            --neon-gold: #ffd700; /* Cor de Dinheiro/Parceria */
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --section-spacing: 80px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Typography & Utilities --- */
+        h1, h2, h3 { font-weight: 800; letter-spacing: -0.03em; }
+        h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1.1; }
+        h2 { font-size: 2rem; margin-bottom: 20px; }
+        p { color: var(--text-secondary); line-height: 1.6; font-size: 1.1rem; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        .accent-blue { color: var(--neon-blue); }
+        .accent-gold { color: var(--neon-gold); }
+        .text-center { text-align: center; }
+        section { padding: var(--section-spacing) 0; border-bottom: 1px solid #ffffff10; }
+
+        /* --- Buttons (App Style) --- */
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background: var(--neon-blue);
+            color: var(--bg-dark);
+            font-weight: 800;
+            text-transform: uppercase;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 40px rgba(0, 242, 255, 0.6);
+        }
+        .btn-gold {
+            background: var(--neon-gold);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+        }
+        .btn-gold:hover { box-shadow: 0 0 40px rgba(255, 215, 0, 0.6); }
+
+        /* --- Header/Nav (Minimalist App Bar) --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            background: rgba(5, 10, 20, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #ffffff10;
+        }
+        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; }
+        .logo span { color: var(--neon-blue); }
+
+        /* --- Hero Section --- */
+        #hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            background: radial-gradient(circle at top right, rgba(0, 242, 255, 0.1), transparent 60%),
+                        radial-gradient(circle at bottom left, rgba(188, 19, 254, 0.1), transparent 60%);
+        }
+        .hero-content { max-width: 800px; }
+        .hero-tagline {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            color: var(--neon-blue);
+            margin-bottom: 20px;
+            display: block;
+            font-weight: 700;
+        }
+
+        /* --- The Concept Section (Open Network) --- */
+        #concept { background: var(--bg-card); }
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        .concept-item h3 { color: var(--neon-blue); margin-bottom: 15px; }
+
+        /* --- Services Hub (App Grid Feel) --- */
+        #services { }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+        .service-card {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #ffffff0d;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Efeito de hover "cyber" */
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            background: #16203a;
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-icon { font-size: 2.5rem; margin-bottom: 20px; }
+        .service-card h3 { margin-bottom: 10px; font-size: 1.3rem; }
+
+        /* --- Partnership Section (The Money Hook) --- */
+        #partnership {
+            background: linear-gradient(135deg, var(--bg-dark), rgba(255, 215, 0, 0.1));
+            border-top: 2px solid var(--neon-gold);
+        }
+        .partnership-content h2 { color: var(--neon-gold); }
+        
+        /* --- Footer --- */
+        footer {
+            padding: 50px 0;
+            text-align: center;
+            background: var(--bg-card);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* --- Mobile Adjustments --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 3rem; }
+            .hero-content { text-align: center; }
+            .btn { width: 100%; text-align: center; margin-bottom: 10px; }
+            #hero { min-height: auto; padding: 150px 0 100px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">iTpraTi<span class>.io</span></div>
+        <div style="font-size: 1.5rem; cursor: pointer;">☰</div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-tagline">// PSDI • VNO • WEB3 //</span>
+                <h1>A Primeira <span class="accent-blue">Open Radio Network</span> de Angola.</h1>
+                <p style="font-size: 1.3rem; margin: 30px 0 40px 0;">
+                    Não somos um ISP tradicional. Somos uma Operadora Digital Virtual. Traga o seu equipamento, localize o nosso sinal e ligue-se à rede descentralizada. Sem amarras, sem contratos antigos.
+                </p>
+                <a href="#services" class="btn">Explorar o Hub</a>
+                <a href="#partnership" class="btn btn-gold" style="margin-left: 10px; background: transparent; border: 2px solid var(--neon-gold); color: var(--neon-gold); box-shadow: none;">Monetizar</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="concept">
+        <div class="container">
+            <div class="text-center" style="max-width: 700px; margin: 0 auto;">
+                <h2>O Modelo <span class="accent-blue">Asset-Light</span>.</h2>
+                <p>Esqueça a infraestrutura pesada. Nós iluminamos a rede existente com inteligência digital e serviços soberanos.</p>
+            </div>
+            <div class="concept-grid">
+                <div class="concept-item">
+                    <h3>01. Localize</h3>
+                    <p>Use a nossa WebApp para encontrar um ponto de acesso ou antena parceira da iTpraTi perto de si.</p>
+                </div>
+                <div class="concept-item">
+                    <h3>02. Conecte-se</h3>
+                    <p>Use o seu próprio router ou antena compatível. A nossa rede é aberta e agnóstica ao hardware.</p>
+                </div>
+                <div class="concept-item">
+                    <h3>03. Ative o ID</h3>
+                    <p>Receba o seu iT-ID Soberano e desbloqueie o acesso instantâneo a todo o ecossistema digital.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>O Seu Hub Digital.</h2>
+            <p style="margin-bottom: 40px;">Um único ID para aceder a tudo o que precisa para viver e trabalhar digitalmente.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon accent-blue">📡</div>
+                    <h3>Conectividade Aberta</h3>
+                    <p>Internet de alta disponibilidade via rádio ou fibra parceira. Baixa latência e sem filtros.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon" style="color: var(--neon-purple)">📺</div>
+                    <h3>Super Agregador TV</h3>
+                    <p>IPTV com +200 canais, filmes e desporto. O seu entretenimento sem precisar de pratos satélite.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon accent-gold">🆔</div>
+                    <h3>ID Soberano & Wallet</h3>
+                    <p>Sua identidade digital na Blockchain. Pague serviços com Cripto ou Kwanza instantâneo.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon accent-blue">💼</div>
+                    <h3>Suite de Negócios</h3>
+                    <p>Faturação certificada (Vendus) e ERP completo (Odoo) prontos a usar na nuvem.</p>
+                </div>
+                 <div class="service-card">
+                    <div class="service-icon" style="color: var(--neon-purple)">☁️</div>
+                    <h3>Cloud Workspace</h3>
+                    <p>E-mail profissional e ferramentas de colaboração Google/Microsoft integradas.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon accent-blue">🛡️</div>
+                    <h3>VPN Soberana</h3>
+                    <p>Navegação privada e segura incluída nos planos para proteger os seus dados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="partnership">
+        <div class="container partnership-content text-center">
+            <h2 style="font-size: 2.5rem;">A Sua Internet Pode <span class="accent-gold">Pagar as Suas Contas</span>.</h2>
+            <p style="max-width: 700px; margin: 30px auto; font-size: 1.2rem; color: #ffffff;">
+                Não seja apenas um cliente. Seja um nó da nossa rede. Torne-se um Parceiro de Ponto de Acesso iTpraTi.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-bottom: 40px;">
+                <div style="background: rgba(255,215,0,0.1); padding: 20px; border-radius: 8px; border: 1px solid var(--neon-gold); flex: 1 1 200px;">
+                    <strong style="color: var(--neon-gold); font-size: 1.5rem;">Comissão Recorrente</strong>
+                    <p style="color: #ccc; margin-top: 10px;">Ganhe uma % mensal de cada cliente ligado à sua antena.</p>
+                </div>
+                <div style="background: rgba(255,215,0,0.1); padding: 20px; border-radius: 8px; border: 1px solid var(--neon-gold); flex: 1 1 200px;">
+                    <strong style="color: var(--neon-gold); font-size: 1.5rem;">Sem Custo de Adesão</strong>
+                    <p style="color: #ccc; margin-top: 10px;">Use a infraestrutura que já tem. Nós tratamos da gestão.</p>
+                </div>
+            </div>
+            <a href="#" class="btn btn-gold">Quero Ganhar Dinheiro com a iTpraTi</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo" style="margin-bottom: 20px;">iTpraTi<span style="color: var(--neon-blue);">.io</span></div>
+            <p>© 2026 iTpraTi PSDI. Operadora Digital Soberana.</p>
+            <p style="margin-top: 10px;">Luanda, Angola • Suporte via WebApp</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll para links internos (comportamento de app)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simulação de clique nos cards de serviço (feedback tátil)
+        const cards = document.querySelectorAll('.service-card');
+        cards.forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.98)';
+                card.style.backgroundColor = '#1e2a4a';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'scale(1) translateY(-5px)';
+                card.style.backgroundColor = '#16203a';
+            });
+             // Adicionar um link real aqui para cada serviço no futuro
+            card.addEventListener('click', () => {
+                 console.log('Navegar para o serviço: ' + card.querySelector('h3').innerText);
+                 // window.location.href = 'app/servico-x';
+            });
+        });
+
+        // Simples efeito de "reveal" ao fazer scroll
+        const revealElements = document.querySelectorAll('.service-card, .concept-item');
+        
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                } else {
+                    element.style.opacity = '0';
+                    element.style.transform = 'translateY(20px)';
+                }
+                // Set initial state in JS to avoid FOUC if JS fails
+                element.style.transition = 'all 0.6s ease';
+            });
+        }
+
+        window.addEventListener('scroll', revealOnScroll);
+        // Trigger initial check
+        revealOnScroll(); 
+    </script>
+</body>
+</html>
