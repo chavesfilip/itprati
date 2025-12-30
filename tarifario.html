@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarifários & Ativação | iTpraTi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #050a14;
+            --bg-card: #0f172a;
+            --neon-blue: #00f2ff;
+            --neon-purple: #bc13fe;
+            --neon-gold: #ffd700;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --success: #10b981;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-dark); color: var(--text-primary); font-family: 'Inter', sans-serif; }
+        .container { width: 95%; max-width: 1200px; margin: 0 auto; padding: 60px 0; }
+        
+        .text-center { text-align: center; }
+        .accent { color: var(--neon-blue); }
+
+        /* --- Tabela de Planos --- */
+        .table-container { overflow-x: auto; background: var(--bg-card); border-radius: 16px; border: 1px solid #ffffff10; margin-bottom: 50px; }
+        table { width: 100%; border-collapse: collapse; min-width: 850px; }
+        th, td { padding: 20px; text-align: left; border-bottom: 1px solid #ffffff05; }
+        th { background: rgba(255, 255, 255, 0.02); text-transform: uppercase; font-size: 0.75rem; color: var(--text-secondary); }
+        .price-cell { font-weight: 800; color: var(--neon-blue); font-size: 1.1rem; }
+        .cloud-badge { background: var(--neon-purple); padding: 3px 8px; border-radius: 4px; font-size: 0.65rem; margin-left: 5px; }
+
+        /* --- NOVA SECÇÃO: CUSTOS DE INSTALAÇÃO --- */
+        .install-header { margin-top: 80px; margin-bottom: 40px; }
+        
+        .install-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 25px; 
+        }
+
+        .install-card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid #ffffff10;
+            position: relative;
+            transition: 0.3s;
+        }
+
+        .install-card:hover { border-color: var(--neon-blue); transform: translateY(-5px); }
+
+        .install-card.promo {
+            border: 2px solid var(--success);
+            background: linear-gradient(145deg, #0f172a, #06201a);
+        }
+
+        .install-card h3 { font-size: 1.2rem; text-transform: uppercase; margin-bottom: 15px; }
+        .install-card .price { font-size: 3rem; font-weight: 900; margin-bottom: 10px; display: block; }
+        .install-card .price span { font-size: 1rem; color: var(--text-secondary); }
+        
+        .badge-migration {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--success);
+            color: var(--bg-dark);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 800;
+            font-size: 0.8rem;
+        }
+
+        .install-list { list-style: none; margin-top: 20px; color: var(--text-secondary); font-size: 0.95rem; }
+        .install-list li { margin-bottom: 10px; display: flex; align-items: center; }
+        .install-list li::before { content: "→"; color: var(--neon-blue); margin-right: 10px; }
+
+        @media (max-width: 768px) {
+            .install-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="text-center" style="margin-bottom: 40px;">
+            <h1>Planos de <span class="accent">Assinatura Mensal</span></h1>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Recursos</th>
+                        <th>Plano CONTA</th>
+                        <th>Plano CONECTADO</th>
+                        <th>Plano INTEGRADO</th>
+                        <th>Plano EMPREENDEDOR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Velocidade Internet</td>
+                        <td>10 Mbps</td>
+                        <td>20 Mbps</td>
+                        <td>40 Mbps</td>
+                        <td>Dedicada / Máxima</td>
+                    </tr>
+                    <tr>
+                        <td>IPTV (+200 Canais)</td>
+                        <td>✘</td>
+                        <td>Extra (+4.900)</td>
+                        <td>✔ Incluído</td>
+                        <td>✔ Incluído</td>
+                    </tr>
+                    <tr>
+                        <td>E-mail & Site .AO</td>
+                        <td>✘</td>
+                        <td>✔</td>
+                        <td>✔</td>
+                        <td>✔</td>
+                    </tr>
+                    <tr>
+                        <td>Cloud iTpraTi</td>
+                        <td>✘</td>
+                        <td>✘</td>
+                        <td>✘</td>
+                        <td>✔ <span class="cloud-badge">SaaS</span></td>
+                    </tr>
+                    <tr>
+                        <td>Faturação Vendus</td>
+                        <td>✘</td>
+                        <td>✘</td>
+                        <td>✘</td>
+                        <td>✔ AGT Cert.</td>
+                    </tr>
+                    <tr style="background: rgba(0, 242, 255, 0.05);">
+                        <td style="font-weight: 800;">TOTAL MENSAL</td>
+                        <td class="price-cell">GRÁTIS</td>
+                        <td class="price-cell">29.990 AOA</td>
+                        <td class="price-cell">49.900 AOA</td>
+                        <td class="price-cell">99.900 AOA</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="install-header text-center">
+            <h2>Custos de <span class="accent">Ativação & Setup</span></h2>
+            <p>Escolha como deseja entrar na nossa rede soberana.</p>
+        </div>
+
+        <div class="install-grid">
+            
+            <div class="install-card">
+                <h3>Instalação Standard</h3>
+                <span class="price">99.999 <span>AOA</span></span>
+                <p>Para novos pontos de acesso sem infraestrutura prévia.</p>
+                <ul class="install-list">
+                    <li>Fornecimento de ID Digital iT-ID</li>
+                    <li>Configuração de Equipamento Rádio</li>
+                    <li>Criação de Carteira Blockchain</li>
+                    <li>Suporte Técnico On-site</li>
+                </ul>
+            </div>
+
+            <div class="install-card promo">
+                <div class="badge-migration">CAMPANHA DE MIGRAÇÃO</div>
+                <h3>Upgrade de Operadora</h3>
+                <span class="price" style="color: var(--success);">55.555 <span>AOA</span></span>
+                <p>Exclusivo para quem já tem ZAP, TV CABO ou FIBRA.</p>
+                <ul class="install-list">
+                    <li>Reconfiguração de Antena/Router existente</li>
+                    <li>Migração de Domínio e E-mail</li>
+                    <li>Ativação imediata sem obras</li>
+                    <li>Oferta de Consultoria iT-Nandoo</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="text-center" style="margin-top: 50px; opacity: 0.6; font-size: 0.8rem;">
+            <p>Nota: A migração requer a validação técnica do equipamento atual pelo nosso parceiro iTpraTi.</p>
+            <p>Pagamentos via Referência Express: Entidade 10116 | Ref: 941473345</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
