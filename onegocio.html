@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Model | iTpraTi Soberana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #050a14;
+            --bg-card: #0f172a;
+            --neon-blue: #00f2ff;
+            --neon-purple: #bc13fe;
+            --neon-gold: #ffd700;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-dark); color: var(--text-primary); font-family: 'Inter', sans-serif; line-height: 1.6; }
+        .container { width: 90%; max-width: 1100px; margin: 0 auto; }
+        .accent-blue { color: var(--neon-blue); }
+        .accent-gold { color: var(--neon-gold); }
+        
+        header { padding: 20px 5%; background: rgba(5, 10, 20, 0.9); border-bottom: 1px solid #ffffff10; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .logo { font-weight: 800; font-size: 1.2rem; }
+
+        section { padding: 80px 0; border-bottom: 1px solid #ffffff10; }
+        h2 { font-size: 2.5rem; margin-bottom: 40px; text-transform: uppercase; letter-spacing: -1px; }
+
+        /* --- Grid Layouts --- */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+
+        /* --- Cards --- */
+        .biz-card { background: var(--bg-card); padding: 40px; border-radius: 12px; border-left: 4px solid var(--neon-blue); }
+        .biz-card h3 { margin-bottom: 20px; font-size: 1.5rem; color: var(--neon-blue); }
+
+        /* --- Financial Metrics --- */
+        .metric-box { background: linear-gradient(135deg, #0f172a, #1e293b); padding: 30px; border-radius: 12px; text-align: center; border: 1px solid var(--neon-gold); }
+        .metric-value { font-size: 2.5rem; font-weight: 800; color: var(--neon-gold); display: block; }
+        .metric-label { font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase; }
+
+        /* --- Strategy Tags --- */
+        .tag { display: inline-block; padding: 5px 15px; background: #ffffff10; border-radius: 20px; font-size: 0.8rem; margin-right: 10px; margin-bottom: 10px; border: 1px solid #ffffff20; }
+
+        @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } h2 { font-size: 1.8rem; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">iTpraTi<span class="accent-blue">.io</span></div>
+        <div style="font-size: 0.8rem; font-weight: 800; letter-spacing: 2px;">BUSINESS PLAN 2026</div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="grid-2">
+                <div>
+                    <span class="accent-blue" style="font-weight: 800;">// O PROBLEMA & A SOLUÇÃO</span>
+                    <h2 style="margin-top: 10px;">Digitalizando a <span class="accent-blue">Soberania</span> de Angola.</h2>
+                    <p>O mercado angolano sofre com conectividade instável e serviços digitais fragmentados. A iTpraTi resolve isso com o modelo **Asset-Light PSDI**.</p>
+                    <div style="margin-top: 20px;">
+                        <span class="tag">Open Radio Network</span>
+                        <span class="tag">Blockchain ID</span>
+                        <span class="tag">SaaS Integrado</span>
+                    </div>
+                </div>
+                <div class="biz-card">
+                    <h3>Nossa Solução 360º</h3>
+                    <p>Combinamos **Internet de Alta Disponibilidade** com ferramentas de gestão (**Vendus/Odoo**) e **Identidade Digital**. O cliente não compra apenas um cabo; ele compra a infraestrutura para operar o seu negócio globalmente a partir de Angola.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: #080f1e;">
+        <div class="container">
+            <h2 class="text-center">Estratégia de <span class="accent-blue">Crescimento</span></h2>
+            <div class="grid-3">
+                <div class="biz-card" style="border-color: var(--neon-purple);">
+                    <h3>Marketing de Guerrilha</h3>
+                    <p>Foco na Centralidade do Kilamba como laboratório de testes. Campanhas segmentadas para PMEs que faturam em Kwanzas mas precisam de ferramentas globais.</p>
+                </div>
+                <div class="biz-card" style="border-color: var(--neon-purple);">
+                    <h3>Growth Hacking</h3>
+                    <p>O modelo "1 Mês Grátis por Indicação" transforma cada cliente num vendedor ativo, reduzindo o Custo de Aquisição de Cliente (CAC) drasticamente.</p>
+                </div>
+                <div class="biz-card" style="border-color: var(--neon-purple);">
+                    <h3>Ecossistema Parceiro</h3>
+                    <p>Parcerias com revendedores locais (30% comissão) para expandir a rede sem necessidade de investimento em equipas de vendas próprias massivas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 class="text-center">Projeção Financeira <span class="accent-gold">Exponencial</span></h2>
+            <p class="text-center" style="margin-bottom: 50px;">Base de cálculo: Plano **INTEGRADO (49.900 AOA/mês)**</p>
+            
+            <div class="grid-3" style="margin-bottom: 50px;">
+                <div class="metric-box">
+                    <span class="metric-label">Meta de Clientes Q4</span>
+                    <span class="metric-value">400</span>
+                    <p>Clientes Ativos</p>
+                </div>
+                <div class="metric-box">
+                    <span class="metric-label">Faturação Mensal Bruta</span>
+                    <span class="metric-value">19.960.000</span>
+                    <p>AOA / Mês</p>
+                </div>
+                <div class="metric-box">
+                    <span class="metric-label">Retorno Anual (ARR)</span>
+                    <span class="metric-value">239.520.000</span>
+                    <p>AOA / Ano</p>
+                </div>
+            </div>
+
+            <div class="biz-card" style="border-color: var(--neon-gold); background: rgba(255, 215, 0, 0.05);">
+                <h3>Análise de Lucratividade</h3>
+                <p>Com um ticket médio de **49.900 AOA**, a iTpraTi atinge o ponto de equilíbrio com apenas **50 clientes**. A partir dos 100 clientes, a escalabilidade torna-se quase 100% lucro bruto, uma vez que a infraestrutura rádio e as licenças SaaS têm custos marginais decrescentes.</p>
+                <ul style="margin-top: 20px; padding-left: 20px; color: var(--text-secondary);">
+                    <li>Margem Operacional Estimada: 65%</li>
+                    <li>Payback do Investimento Inicial: 6 a 8 meses</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 40px 0; text-align: center;">
+        <p style="color: var(--text-secondary);">© 2026 iTpraTi. Confidential Business Roadmap.</p>
+        <button onclick="window.print()" style="margin-top: 20px; background: transparent; border: 1px solid var(--neon-blue); color: var(--neon-blue); padding: 10px 20px; cursor: pointer; border-radius: 5px;">Baixar Relatório PDF</button>
+    </footer>
+
+</body>
+</html>
