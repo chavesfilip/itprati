@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório Estratégico iTpraTi 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00f2ff;
+            --secondary: #bc13fe;
+            --accent: #ffd700;
+            --dark: #050a14;
+            --light: #f8fafc;
+            --grey: #64748b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background-color: #f1f5f9;
+            color: #334155;
+            padding: 40px 20px;
+        }
+
+        .pdf-page {
+            background: white;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-top: 8px solid var(--dark);
+            position: relative;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: var(--dark);
+            letter-spacing: -1px;
+        }
+
+        .logo span { color: var(--primary); }
+
+        .report-title {
+            text-align: right;
+        }
+
+        .report-title h1 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            color: var(--grey);
+            letter-spacing: 2px;
+        }
+
+        .confidential-tag {
+            background: #fee2e2;
+            color: #ef4444;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-top: 5px;
+        }
+
+        h2 {
+            color: var(--dark);
+            font-size: 1.4rem;
+            margin: 30px 0 15px 0;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+
+        h2::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: var(--primary);
+            margin-right: 12px;
+            display: inline-block;
+        }
+
+        p { margin-bottom: 15px; font-size: 1rem; text-align: justify; }
+
+        .highlight-box {
+            background: #f8fafc;
+            border-left: 4px solid var(--secondary);
+            padding: 20px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+
+        th {
+            background: var(--dark);
+            color: white;
+            text-align: left;
+            padding: 12px;
+            font-size: 0.9rem;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.95rem;
+        }
+
+        .total-row {
+            background: #f1f5f9;
+            font-weight: bold;
+            color: var(--dark);
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 0.8rem;
+            color: var(--grey);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .pdf-page { box-shadow: none; border: none; width: 100%; max-width: 100%; }
+            .no-print { display: none; }
+        }
+
+        .btn-print {
+            display: block;
+            width: 200px;
+            margin: 0 auto 20px auto;
+            padding: 12px;
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <button class="btn-print no-print" onclick="window.print()">Imprimir / Guardar PDF</button>
+
+    <div class="pdf-page">
+        <div class="header">
+            <div class="logo">iTpraTi<span>.io</span></div>
+            <div class="report-title">
+                <h1>Plano Estratégico 2026</h1>
+                <span class="confidential-tag">CONFIDENCIAL • EXECUTIVO</span>
+            </div>
+        </div>
+
+        <p><strong>Data:</strong> 30 de Dezembro de 2025</p>
+        <p><strong>Responsável:</strong> Administração iTpraTi</p>
+        <p><strong>Assunto:</strong> Modelo de Negócio, Expansão B2B e Metas Financeiras</p>
+
+        <h2>1. Visão Geral</h2>
+        <p>A iTpraTi redefine-se como uma <strong>Provedora de Serviços Digitais Integrados (PSDI)</strong>. O nosso modelo operacional baseia-se na descentralização de infraestrutura (Asset-Light), permitindo um crescimento exponencial com baixo investimento em hardware fixo.</p>
+
+        <h2>2. O Ecossistema de Soluções</h2>
+        <p>Diferenciamo-nos no mercado angolano ao unificar conectividade e ferramentas de produtividade num único ID Soberano:</p>
+        <div class="highlight-box">
+            "Não entregamos apenas internet; entregamos a infraestrutura necessária para que as empresas angolanas operem ao nível global."
+        </div>
+
+        <h2>3. Plano de Marketing e Vendas</h2>
+        <ul>
+            <li><strong>Foco Regional:</strong> Centralidade do Kilamba como hub tecnológico.</li>
+            <li><strong>Marketing de Afiliados:</strong> Rede de parceiros com comissões de até 30%.</li>
+            <li><strong>Retenção:</strong> Benefício de "1 mês grátis" para clientes que indicam novos utilizadores.</li>
+        </ul>
+
+        <h2>4. Projeção Financeira</h2>
+        <p>Cálculo baseado no Plano Integrado (49.900 AOA/mês):</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fase de Expansão</th>
+                    <th>Meta de Clientes</th>
+                    <th>Faturação Mensal (AOA)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Q1 (Arranque)</td>
+                    <td>100</td>
+                    <td>4.990.000 AOA</td>
+                </tr>
+                <tr>
+                    <td>Q2 (Crescimento)</td>
+                    <td>200</td>
+                    <td>9.980.000 AOA</td>
+                </tr>
+                <tr>
+                    <td>Q3 (Escala)</td>
+                    <td>300</td>
+                    <td>14.970.000 AOA</td>
+                </tr>
+                <tr class="total-row">
+                    <td>Q4 (Soberania)</td>
+                    <td>400</td>
+                    <td>19.960.000 AOA</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>5. Métodos de Pagamento (Soberania Financeira)</h2>
+        <p>A partir de 01/01/2026, eliminamos a dependência de transferências manuais (IBAN). O fluxo será 100% digital e instantâneo via Referência, Multicaixa Express, KWIK e Criptoativos (USDT/BTC).</p>
+
+        <div class="footer">
+            <span>iTpraTi.io — Operadora Digital Network</span>
+            <span>Página 1 de 1</span>
+        </div>
+    </div>
+
+</body>
+</html>
