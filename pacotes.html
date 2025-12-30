@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planos & Tarifários | iTpraTi 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #050a14;
+            --bg-card: #0f172a;
+            --neon-blue: #00f2ff;
+            --neon-purple: #bc13fe;
+            --neon-gold: #ffd700;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+            --success: #10b981;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-dark); color: var(--text-primary); font-family: 'Inter', sans-serif; padding-bottom: 50px; }
+        .container { width: 95%; max-width: 1200px; margin: 0 auto; padding: 40px 0; }
+        
+        .header-box { text-align: center; margin-bottom: 50px; border-bottom: 1px solid #ffffff10; padding-bottom: 30px; }
+        h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .accent { color: var(--neon-blue); }
+
+        /* --- Tabela Comparativa --- */
+        .table-container { overflow-x: auto; background: var(--bg-card); border-radius: 16px; border: 1px solid #ffffff10; }
+        table { width: 100%; border-collapse: collapse; min-width: 800px; }
+        th, td { padding: 20px; text-align: left; border-bottom: 1px solid #ffffff05; }
+        th { background: rgba(255, 255, 255, 0.02); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; color: var(--text-secondary); }
+        
+        .plan-name { font-weight: 800; color: var(--text-primary); font-size: 1.1rem; }
+        .check { color: var(--success); font-weight: bold; }
+        .cross { color: #ef4444; opacity: 0.5; }
+        .price-cell { font-weight: 800; color: var(--neon-blue); font-size: 1.2rem; }
+        
+        /* --- Secção de Instalação (Migração) --- */
+        .installation-box { 
+            margin-top: 40px; 
+            padding: 40px; 
+            border-radius: 16px; 
+            background: linear-gradient(135deg, #0f172a 0%, #050a14 100%);
+            border: 2px solid var(--neon-purple);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+        .inst-price { font-size: 3rem; font-weight: 900; color: var(--text-primary); }
+        .inst-price span { font-size: 1rem; color: var(--text-secondary); }
+        .migration-promo { 
+            background: var(--success); 
+            color: var(--bg-dark); 
+            padding: 20px; 
+            border-radius: 12px; 
+            font-weight: 800;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+        }
+
+        /* --- Cloud Tag --- */
+        .cloud-badge {
+            background: var(--neon-purple);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 768px) {
+            .installation-box { grid-template-columns: 1fr; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header-box">
+            <h1>Tabela de <span class="accent">Serviços & Planos</span></h1>
+            <p>Transparência total. Sem custos ocultos. Pagamento via Referência ou Cripto.</p>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Serviços / Benefícios</th>
+                        <th>Plano CONTA</th>
+                        <th>Plano CONECTADO</th>
+                        <th>Plano INTEGRADO</th>
+                        <th>Plano EMPREENDEDOR</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Velocidade de Internet</td>
+                        <td>10 Mbps</td>
+                        <td>20 Mbps</td>
+                        <td>40 Mbps</td>
+                        <td>Máxima (Dedicada)</td>
+                    </tr>
+                    <tr>
+                        <td>iT-ID Soberano (Web3)</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>VPN iTpraTi (Privacidade)</td>
+                        <td class="cross">✘</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>iT-TV (+200 Canais)</td>
+                        <td class="cross">✘</td>
+                        <td>Opcional (+4.9k)</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>E-mail & Workspace</td>
+                        <td class="cross">✘</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>Domínio .AO + Site</td>
+                        <td class="cross">✘</td>
+                        <td class="cross">✘</td>
+                        <td class="check">✔</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>Vendus (Faturação AGT)</td>
+                        <td class="cross">✘</td>
+                        <td class="cross">✘</td>
+                        <td class="cross">✘</td>
+                        <td class="check">✔</td>
+                    </tr>
+                    <tr>
+                        <td>iT-Cloud Storage</td>
+                        <td class="cross">✘</td>
+                        <td class="cross">✘</td>
+                        <td class="cross">✘</td>
+                        <td class="check">✔ <span class="cloud-badge">NEW</span></td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 800;">MENSALIDADE</td>
+                        <td class="price-cell">GRÁTIS</td>
+                        <td class="price-cell">29.990 AOA</td>
+                        <td class="price-cell">49.900 AOA</td>
+                        <td class="price-cell" style="color:var(--neon-gold)">99.900 AOA</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="installation-box">
+            <div>
+                <h2 style="margin-bottom: 10px;">Taxa de Instalação Standard</h2>
+                <div class="inst-price">99.999 <span>AOA</span></div>
+                <p style="margin-top: 15px; color: var(--text-secondary);">Inclui configuração do iT-ID, setup do router e ativação da rede rádio/fibra.</p>
+            </div>
+            
+            <div class="migration-promo">
+                <h2 style="color: #050a14; font-size: 1.5rem; margin-bottom: 10px;">CAMPANHA DE MIGRAÇÃO</h2>
+                <p>Já tem equipamento de outra operadora? (ZAP, TV Cabo, Fibra, etc.)</p>
+                <div style="font-size: 2.2rem; margin: 15px 0;">INSTALAÇÃO: 0 AOA</div>
+                <p>Mude para a iTpraTi sem pagar taxa de ativação! Aproveitamos a sua infraestrutura existente.</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; color: var(--text-secondary); font-size: 0.9rem;">
+            * Preços sujeitos a alteração. Pagamentos aceites exclusivamente via Multicaixa Express, Referência, KWIK e USDT.
+        </div>
+    </div>
+
+</body>
+</html>
