@@ -1,178 +1,198 @@
 <!DOCTYPE html>
-<html lang="pt-pt">
+<html lang="pt-AO">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estratégia de Expansão iTpraTi 2026</title>
+    <title>iTpraTi | Operações & Estratégia 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #05070a;
-            --surface: #0f1218;
-            --primary: #00f2ff;
-            --accent: #bc13fe;
-            --success: #00ff88;
-            --text: #e2e8f0;
-            --text-muted: #94a3b8;
+            --bg-black: #020617;
+            --bg-card: #0f172a;
+            --neon-blue: #00f2ff;
+            --neon-purple: #bc13fe;
+            --neon-gold: #ffd700;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 20px;
+            background-color: var(--bg-black);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
+            padding: 20px;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1100px; margin: 0 auto; }
 
         header {
             text-align: center;
-            padding: 40px 0;
-            border-bottom: 1px solid #1e293b;
+            padding: 60px 0;
+            background: linear-gradient(to bottom, #1e293b50, transparent);
+            border-radius: 20px;
             margin-bottom: 40px;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            letter-spacing: -1px;
-            margin: 0;
+        h1 { font-size: 3rem; font-weight: 900; letter-spacing: -2px; }
+        h1 span { color: var(--neon-blue); }
+        .subtitle { color: var(--neon-purple); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+
+        .intro-box {
+            background: rgba(0, 242, 255, 0.05);
+            border-left: 4px solid var(--neon-blue);
+            padding: 25px;
+            margin-bottom: 40px;
+            font-size: 1.1rem;
         }
 
-        h1 span { color: var(--primary); }
-
-        .strategy-grid {
+        .grid-strategy {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
 
         .card {
-            background: var(--surface);
+            background: var(--bg-card);
             border: 1px solid #1e293b;
-            border-radius: 12px;
-            padding: 30px;
-            position: relative;
-            transition: transform 0.3s ease;
+            border-radius: 16px;
+            padding: 35px;
+            transition: all 0.3s ease;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-        }
+        .card:hover { border-color: var(--neon-blue); transform: translateY(-5px); }
 
-        .card h2 {
-            color: var(--primary);
-            font-size: 1.5rem;
-            margin-top: 0;
-        }
+        .card-elite { border-color: var(--neon-gold); background: linear-gradient(145deg, #0f172a, #1a1a05); }
 
-        .badge {
-            background: rgba(0, 242, 255, 0.1);
-            color: var(--primary);
-            padding: 4px 12px;
+        h2 { font-size: 1.8rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        h2 .number { background: var(--neon-blue); color: var(--bg-black); padding: 5px 12px; border-radius: 8px; font-size: 1.2rem; }
+        .card-elite h2 .number { background: var(--neon-gold); }
+
+        h3 { color: var(--neon-blue); margin-top: 20px; font-size: 1.1rem; text-transform: uppercase; }
+        .card-elite h3 { color: var(--neon-gold); }
+
+        ul { list-style: none; margin-top: 10px; }
+        ul li { margin-bottom: 12px; padding-left: 20px; position: relative; color: var(--text-dim); }
+        ul li::before { content: "▹"; position: absolute; left: 0; color: var(--neon-blue); }
+
+        .price-tag { display: block; font-size: 2.5rem; font-weight: 900; color: var(--text-main); margin: 20px 0; }
+
+        .next-steps {
+            margin-top: 60px;
+            padding: 40px;
+            background: #1e293b;
             border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .card-premium {
-            border: 1px solid var(--accent);
-            background: linear-gradient(145deg, #0f1218 0%, #1a1025 100%);
-        }
-
-        .card-premium h2 { color: var(--accent); }
-
-        .feature-list {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-        }
-
-        .feature-list li {
-            margin-bottom: 12px;
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .feature-list li::before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-        }
-
-        .price-tag {
-            font-size: 2rem;
-            font-weight: 800;
-            margin: 20px 0;
-            display: block;
-        }
-
-        .footer-note {
-            margin-top: 50px;
             text-align: center;
-            padding: 20px;
-            background: rgba(0, 255, 136, 0.05);
-            border-radius: 8px;
-            color: var(--success);
-            font-weight: 600;
         }
+
+        .btn-group { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 30px; }
+        .btn {
+            padding: 15px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: 0.3s;
+            border: 1px solid var(--neon-blue);
+            color: var(--neon-blue);
+        }
+        .btn:hover { background: var(--neon-blue); color: var(--bg-black); }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1>iTpraTi <span>Expansão 2026</span></h1>
-        <p>Protocolo Operacional de Migração e Ativação Silenciosa</p>
+        <div class="subtitle">Estratégia Asset-Light 2026</div>
+        <h1>iTpraTi <span>Master Operations</span></h1>
     </header>
 
-    <div class="strategy-grid">
+    <div class="intro-box">
+        Esta estratégia de migração e expansão reforça o modelo Asset-Light da iTpraTi, permitindo um crescimento rápido com baixo custo de aquisição por cliente.
+    </div>
+
+    <div class="grid-strategy">
         <div class="card">
-            <span class="badge">Migração Ágil</span>
-            <h2>Upgrade de Ecossistema</h2>
-            <p>Para clientes com infraestrutura de outros operadores (ZAP/Unitel).</p>
-            <ul class="feature-list">
-                <li>Manutenção do cabeamento existente.</li>
-                <li>Adição exclusiva de **Router iTpraTi** e **TVBox**.</li>
-                <li>Ativação imediata do ID Soberano e IPTV.</li>
-                <li>Processo limpo, sem obras invasivas.</li>
+            <h2><span class="number">1</span> Upgrade iTpraTi</h2>
+            <p>Focado em clientes com conectividade ativa de outros operadores (ZAP, Unitel, etc.).</p>
+            
+            <h3>Hardware</h3>
+            <ul>
+                <li>Mantemos a infraestrutura de fibra/cabo existente.</li>
+                <li>Adicionamos apenas o Router iTpraTi (Gestão & VPN) e a TVBox.</li>
+            </ul>
+
+            <h3>Proposta de Valor</h3>
+            <ul>
+                <li>Sem obras ou novas instalações pesadas.</li>
+                <li>Acesso instantâneo ao ID Soberano e Super Agregador TV.</li>
+            </ul>
+
+            <h3>Velocidade</h3>
+            <ul>
+                <li>Iluminação de casas/escritórios em minutos.</li>
+                <li>Independência total de equipas de fusão de fibra.</li>
             </ul>
         </div>
 
         <div class="card">
-            <span class="badge">Open Radio</span>
-            <h2>Bring Your Own Device</h2>
-            <p>Para clientes com antenas Mikrotik ou Ubiquiti próprias.</p>
-            <ul class="feature-list">
-                <li>Conexão direta à rede aberta iTpraTi.</li>
-                <li>Validação via iT-ID na nossa Blockchain.</li>
-                <li>Zero custo de hardware para a empresa.</li>
-                <li>Escalabilidade geográfica instantânea.</li>
+            <h2><span class="number">2</span> Rede Aberta (BYOD)</h2>
+            <p>Modelo "Bring Your Own Device" para utilizadores com equipamento próprio (Mikrotik, Ubiquiti).</p>
+            
+            <h3>Conexão Direta</h3>
+            <ul>
+                <li>Localização de sinal via Open Radio Network.</li>
+                <li>Utilização do hardware que o cliente já possui.</li>
+            </ul>
+
+            <h3>Autenticação</h3>
+            <ul>
+                <li>Validação via iT-ID na nossa rede descentralizada.</li>
+                <li>Equipamento privado torna-se um nó oficial iTpraTi.</li>
+            </ul>
+
+            <h3>Economia</h3>
+            <ul>
+                <li>Custo zero de instalação para a empresa e para o cliente.</li>
+                <li>Aceleração máxima da escalabilidade geográfica.</li>
             </ul>
         </div>
 
-        <div class="card card-premium">
-            <span class="badge" style="color: var(--accent); background: rgba(188, 19, 254, 0.1);">Premium B2B</span>
-            <h2>Plano Empreendedor</h2>
-            <p>A solução definitiva para negócios de elite.</p>
+        <div class="card card-elite">
+            <h2><span class="number">3</span> Ativação Black Box</h2>
+            <p>Política de exclusividade para o Plano Empreendedor de Elite.</p>
+            
             <span class="price-tag">99.900 AOA</span>
-            <ul class="feature-list">
-                <li>**Ativação Silenciosa:** O cliente recebe a solução, não a especificação do hardware.</li>
-                <li>Foco total em resultados: Internet + Vendus + Odoo.</li>
-                <li>Status "Black Box": Equipamento gerido pela iTpraTi.</li>
-                <li>Suporte Prioritário e Consultoria Nandoo incluída.</li>
+
+            <h3>Foco na Solução</h3>
+            <ul>
+                <li>Cliente não é informado sobre marcas ou modelos.</li>
+                <li>Entrega de Soberania Digital e Performance Garantida.</li>
+            </ul>
+
+            <h3>Ativação VIP</h3>
+            <ul>
+                <li>Hardware tratado como infraestrutura proprietária gerida.</li>
+                <li>Conceito de Serviço Gerido de ponta-a-ponta.</li>
+            </ul>
+
+            <h3>Percepção de Valor</h3>
+            <ul>
+                <li>Redução de questionamentos técnicos.</li>
+                <li>Posicionamento "Chave na Mão" para negócios premium.</li>
             </ul>
         </div>
     </div>
 
-    <div class="footer-note">
-        META OPERACIONAL: 20 MILHÕES/MÊS ATRAVÉS DE CONTRATOS DE ALTO VALOR E BAIXO CUSTO FÍSICO.
+    <div class="next-steps">
+        <h2>🚀 Próximos Passos para o Terreno</h2>
+        <p>Qual destas ferramentas devemos ativar agora para suportar a expansão?</p>
+        <div class="btn-group">
+            <a href="#" class="btn">Guia de Configuração (BYOD)</a>
+            <a href="#" class="btn">Script de Vendas Migração</a>
+            <a href="#" class="btn">Kit Boas-Vindas Empreendedor</a>
+        </div>
     </div>
 </div>
 
