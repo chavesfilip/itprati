@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>iTpraTi | Open Radio Network</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #050a14;
+            --bg-card: #0f172a;
+            --neon-blue: #00f2ff;
+            --neon-purple: #bc13fe;
+            --neon-gold: #ffd700;
+            --text-primary: #ffffff;
+            --text-secondary: #94a3b8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-dark); color: var(--text-primary); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        .text-center { text-align: center; }
+        .accent-blue { color: var(--neon-blue); }
+        .accent-gold { color: var(--neon-gold); }
+        
+        header { padding: 20px 5%; position: fixed; width: 100%; top: 0; z-index: 100; background: rgba(5, 10, 20, 0.8); backdrop-filter: blur(10px); border-bottom: 1px solid #ffffff10; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 800; font-size: 1.5rem; letter-spacing: -1px; }
+
+        section { padding: 100px 0; border-bottom: 1px solid #ffffff10; }
+
+        /* --- Hero --- */
+        #hero { min-height: 80vh; display: flex; align-items: center; padding-top: 120px; }
+        h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 20px; }
+
+        /* --- Pricing Table --- */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 50px; }
+        .price-card { background: var(--bg-card); padding: 40px 25px; border-radius: 16px; border: 1px solid #ffffff10; display: flex; flex-direction: column; transition: transform 0.3s; position: relative; }
+        .price-card.featured { border: 2px solid var(--neon-blue); transform: scale(1.05); z-index: 2; }
+        .price-card h3 { font-size: 1.5rem; margin-bottom: 10px; text-transform: uppercase; }
+        .price-tag { font-size: 2rem; font-weight: 800; margin: 20px 0; color: var(--neon-blue); }
+        .price-tag span { font-size: 1rem; color: var(--text-secondary); }
+        .features-list { list-style: none; text-align: left; margin-bottom: 30px; flex-grow: 1; }
+        .features-list li { margin-bottom: 12px; font-size: 0.95rem; color: var(--text-secondary); display: flex; align-items: center; }
+        .features-list li::before { content: '✓'; color: var(--neon-blue); margin-right: 10px; font-weight: bold; }
+        .btn-plan { padding: 15px; border-radius: 8px; text-decoration: none; font-weight: 800; text-align: center; background: var(--neon-blue); color: var(--bg-dark); transition: 0.3s; }
+        .btn-plan:hover { filter: brightness(1.2); }
+
+        /* --- Ecossistema Section (New) --- */
+        #ecossistema { background: var(--bg-dark); }
+        .ecossistema-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+        .ecossistema-banner {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #ffffff0d;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--text-primary);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 220px;
+            transition: transform 0.3s ease;
+        }
+        .ecossistema-banner:hover {
+            transform: translateY(-8px);
+            background: #16203a;
+        }
+        .ecossistema-banner h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: var(--neon-blue);
+            line-height: 1.2;
+        }
+        .ecossistema-banner p {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        .ecossistema-banner .cta-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--neon-purple);
+            color: var(--text-primary);
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: background 0.3s ease;
+        }
+        .ecossistema-banner .cta-btn:hover { background: #d713fe; }
+
+        /* --- Global Partnership --- */
+        #partnership { background: linear-gradient(135deg, var(--bg-dark), rgba(255, 215, 0, 0.05)); border-top: 2px solid var(--neon-gold); }
+        #partnership h2 { color: var(--neon-gold); }
+
+        /* --- Reseller Section --- */
+        #revendedor { background: var(--bg-card); border-top: 1px solid #ffffff10; }
+        .revendedor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .revendedor-card {
+            background: rgba(0, 0, 0, 0.2);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #ffffff0d;
+            text-align: left;
+        }
+        .revendedor-card h3 { color: var(--neon-gold); margin-bottom: 15px; font-size: 1.4rem; }
+        .revendedor-card p { font-size: 1rem; color: var(--text-secondary); }
+        .revendedor-card .value {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--neon-blue);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+        .revendedor-card .value.gold { color: var(--neon-gold); }
+        
+        @media (max-width: 768px) { .price-card.featured { transform: scale(1); margin: 20px 0; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">iTpraTi<span class="accent-blue">.io</span></div>
+        <div style="color: var(--neon-blue); font-weight: bold;">LOGIN ID</div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <span style="color:var(--neon-blue); font-weight:800;">// OPEN RADIO NETWORK //</span>
+            <h1>A Tua Liberdade Digital <span class="accent-blue">Começa Aqui.</span></h1>
+            <p style="max-width: 600px; margin-bottom: 30px;">Conecta-te à nossa rede descentralizada com o teu próprio equipamento e assume o controlo.</p>
+            <a href="#planos" class="btn-plan" style="padding: 15px 40px;">Ver Planos</a>
+        </div>
+    </section>
+
+    <section id="planos">
+        <div class="container text-center">
+            <h2>Escolha a sua <span class="accent-blue">Dimensão</span></h2>
+            <p>Planos desenhados para a realidade de Angola, com tecnologia global.</p>
+
+            <div class="pricing-grid">
+                <div class="price-card">
+                    <h3>Conta</h3>
+                    <div class="price-tag">Grátis</div>
+                    <ul class="features-list">
+                        <li>10 Megas de Velocidade</li>
+                        <li>Cripto ID Soberano</li>
+                        <li>Blockchain Wallet</li>
+                    </ul>
+                    <a href="#" class="btn-plan">Começar Agora</a>
+                </div>
+
+                <div class="price-card featured">
+                    <div style="position:absolute; top:-15px; left:50%; transform:translateX(-50%); background:var(--neon-blue); color:var(--bg-dark); padding:2px 15px; border-radius:20px; font-size:0.7rem; font-weight:800;">POPULAR</div>
+                    <h3>Conectado</h3>
+                    <div class="price-tag">29.990 <span>/mês</span></div>
+                    <ul class="features-list">
+                        <li>20 Megas de Velocidade</li>
+                        <li>VPN Soberana Incluída</li>
+                        <li>Email Profissional</li>
+                        <li>IPTV (Opcional)</li>
+                    </ul>
+                    <a href="#" class="btn-plan">Ativar Plano</a>
+                </div>
+
+                <div class="price-card">
+                    <h3>Integrado</h3>
+                    <div class="price-tag">49.900 <span>/mês</span></div>
+                    <ul class="features-list">
+                        <li>40 Megas de Velocidade</li>
+                        <li>IPTV +200 Canais</li>
+                        <li>Google Workspace</li>
+                        <li>Domínio .AO Próprio</li>
+                    </ul>
+                    <a href="#" class="btn-plan">Assinar Agora</a>
+                </div>
+
+                <div class="price-card" style="border-color: var(--neon-gold);">
+                    <h3 class="accent-gold">Empreendedor</h3>
+                    <div class="price-tag" style="color:var(--neon-gold)">99.900 <span>/mês</span></div>
+                    <ul class="features-list">
+                        <li>Velocidade Máxima</li>
+                        <li>Vendus (Faturação AGT)</li>
+                        <li>Loja Online Completa</li>
+                        <li>Suporte VIP Prioritário</li>
+                    </ul>
+                    <a href="#" class="btn-plan" style="background:var(--neon-gold)">Escalar Negócio</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ecossistema">
+        <div class="container text-center">
+            <h2>O Nosso <span class="accent-blue">Ecossistema Soberano.</span></h2>
+            <p style="max-width: 800px; margin: 0 auto 50px auto;">
+                Descubra cada pilar que integra a sua experiência digital completa na iTpraTi.
+            </p>
+
+            <div class="ecossistema-grid">
+                <a href="/servicos/net" class="ecossistema-banner" style="background-image: linear-gradient(to bottom right, #00f2ff30, transparent); border-color: #00f2ff40;">
+                    <h3>iT-NET</h3>
+                    <p>Conectividade de alta disponibilidade via Open Radio Network.</p>
+                    <span class="cta-btn" style="background:var(--neon-blue);">Conhecer a Rede</span>
+                </a>
+
+                <a href="/servicos/iptv" class="ecossistema-banner" style="background-image: linear-gradient(to bottom right, #bc13fe30, transparent); border-color: #bc13fe40;">
+                    <h3>iT-TV</h3>
+                    <p>O melhor do entretenimento com IPTV e Videoclub na sua TV ou smartphone.</p>
+                    <span class="cta-btn" style="background:var(--neon-purple);">Ver Canais</span>
+                </a>
+
+                <a href="/servicos/vendus" class="ecossistema-banner" style="background-image: linear-gradient(to bottom right, #ffd70030, transparent); border-color: #ffd70040;">
+                    <h3>Vendus by iTpraTi</h3>
+                    <p>Software de faturação certificada pela AGT, fácil e na nuvem.</p>
+                    <span class="cta-btn" style="background:var(--neon-gold);">Experimentar</span>
+                </a>
+
+                <a href="/servicos/workspace" class="ecossistema-banner" style="background-image: linear-gradient(to bottom right, #00f2ff30, transparent); border-color: #00f2ff40;">
+                    <h3>iT-Workspace</h3>
+                    <p>Produtividade com Google Workspace, Microsoft 365 e ERP Odoo.</p>
+                    <span class="cta-btn" style="background:var(--neon-blue);">Saber Mais</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="partnership">
+        <div class="container text-center">
+            <h2 class="accent-gold">Torne-se um Nó da Rede</h2>
+            <p style="max-width: 700px; margin: 0 auto 30px auto; font-size: 1.2rem; color: #ffffff;">
+                Não seja apenas um cliente. Seja um ponto de expansão da nossa Soberania Digital.
+            </p>
+        </div>
+    </section>
+
+    <section id="revendedor">
+        <div class="container text-center">
+            <h2>Ganhe Dinheiro com a <span class="accent-gold">iTpraTi.</span></h2>
+            <p style="max-width: 800px; margin: 0 auto 50px auto;">
+                Temos duas formas de recompensar quem acredita na nossa visão de conectividade aberta e digital. Queremos crescer consigo!
+            </p>
+
+            <div class="revendedor-grid">
+                <div class="revendedor-card">
+                    <h3 class="accent-gold">Parceiro Revendedor</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                        Registe-se como nosso parceiro oficial e construa a sua própria carteira de clientes.
+                    </p>
+                    <div class="value gold">Até 30%</div>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Comissão mensal recorrente por cada cliente ativo que angariar.</p>
+                </div>
+
+                <div class="revendedor-card">
+                    <h3 class="accent-blue">Cliente Embaixador</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 20px;">
+                        Já é nosso cliente? Partilhe a experiência iTpraTi e seja recompensado!
+                    </p>
+                    <div class="value">1 Mês Grátis</div>
+                    <p style="font-size: 0.9rem; color: var(--text-secondary);">Por cada novo cliente que nos indicar e que ative um plano pago.</p>
+                </div>
+            </div>
+            <a href="#" class="btn-plan" style="background:var(--neon-gold); padding: 15px 40px; margin-top: 50px;">Quero Ser Parceiro / Indicar Cliente</a>
+        </div>
+    </section>
+
+    <footer style="padding: 40px 0; text-align: center; border-top: 1px solid #ffffff10;">
+        <p style="color: var(--text-secondary);">© 2026 iTpraTi PSDI. Pagamentos via Referência & Cripto.</p>
+    </footer>
+
+</body>
+</html>
