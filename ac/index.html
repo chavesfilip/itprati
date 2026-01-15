@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iTpraTi - Soberania Digital Angolana</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #0052CC;
+            --primary-cyan: #00B4D8;
+            --dark-navy: #001F3F;
+            --light-bg: #F8F9FA;
+            --text-dark: #1A1A1A;
+            --text-light: #666666;
+            --border-color: #E0E0E0;
+            --success-green: #00A86B;
+            --accent-yellow: #FFD700;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #FFFFFF;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary-cyan);
+        }
+
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary-blue);
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 82, 204, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--dark-navy) 0%, var(--primary-blue) 100%);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: rgba(0, 180, 216, 0.2);
+            border: 1px solid var(--primary-cyan);
+            color: var(--primary-cyan);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-blue);
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 4rem 0;
+        }
+
+        section.light {
+            background: var(--light-bg);
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        section .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        /* Card Styling */
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+            border-color: var(--primary-cyan);
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-box {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.95;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Features Section */
+        .feature-item {
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-cyan);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            box-shadow: 0 8px 20px rgba(0, 82, 204, 0.1);
+        }
+
+        .feature-item h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--text-dark);
+        }
+
+        .feature-item p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Roadmap Section */
+        .roadmap-container {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .roadmap-item {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            align-items: start;
+        }
+
+        .roadmap-phase {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .roadmap-content {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-cyan);
+        }
+
+        .roadmap-content h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .roadmap-content ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .roadmap-content li {
+            padding: 0.5rem 0;
+            color: var(--text-light);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .roadmap-content li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success-green);
+            font-weight: 700;
+        }
+
+        /* Sectors Grid */
+        .sector-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .sector-item:hover {
+            border-color: var(--primary-cyan);
+            background: rgba(0, 180, 216, 0.05);
+        }
+
+        .sector-icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .sector-item h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        /* Accordion Styling */
+        .accordion {
+            margin-top: 2rem;
+        }
+
+        .accordion-item {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .accordion-header {
+            background: var(--light-bg);
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-size: 1rem;
+        }
+
+        .accordion-header:hover {
+            background: rgba(0, 82, 204, 0.05);
+        }
+
+        .accordion-header.active {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-cyan));
+            color: white;
+        }
+
+        .accordion-content {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .accordion-content.active {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+
+        .accordion-content p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--dark-navy), var(--primary-blue));
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 0 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-cyan);
+        }
+
+        .footer-section a {
+            display: block;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .roadmap-item {
+                grid-template-columns: 1fr;
+            }
+
+            .roadmap-phase {
+                width: 100%;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+            }
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-4 {
+            margin-top: 2rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 2rem;
+        }
+
+        .highlight {
+            color: var(--primary-cyan);
+            font-weight: 700;
+        }
+
+        .dashed-border {
+            border: 2px dashed var(--primary-cyan);
+            padding: 2rem;
+            border-radius: 8px;
+            background: rgba(0, 180, 216, 0.05);
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo">i<span>Tra</span>Ti</a>
+            <nav>
+                <a href="#o-que-e">O que é?</a>
+                <a href="#problemas">Problemas</a>
+                <a href="#solucoes">Soluções</a>
+                <a href="#beneficios">Benefícios</a>
+                <a href="#roadmap">Roadmap</a>
+                <a href="#parceria">Parceria</a>
+                <button class="cta-button" onclick="document.getElementById('contacto').scrollIntoView()">Contacto</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="badge">ACELERA CLOUD | PARTNER PROPOSAL</div>
+            <h1>Soberania Digital Angolana</h1>
+            <p class="subtitle">Não somos apenas um fornecedor. Somos o integrador estratégico que transforma a rede submarina da Angola Cables em soluções reais de conectividade e infraestrutura para o mercado africano.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="document.getElementById('o-que-e').scrollIntoView()">Ver Visão Estratégica</button>
+                <button class="btn-secondary" onclick="document.getElementById('contacto').scrollIntoView()">Agendar Demo Técnica</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- O que é iTpraTi -->
+    <section id="o-que-e" class="light">
+        <div class="container">
+            <h2>O que é o iTpraTi?</h2>
+            <p class="section-subtitle">Uma plataforma inovadora de Tecnologia para Negócios focada em fornecer soluções integradas de conectividade de alta qualidade e alojamento de serviços digitais em Angola.</p>
+            
+            <div class="grid-2">
+                <div>
+                    <h3>A Nossa Génese</h3>
+                    <p>A iTpraTi nasceu da observação direta do paradoxo angolano: possuímos uma das melhores infraestruturas de cabos submarinos do mundo, mas as nossas empresas locais ainda dependem de nuvens em Frankfurt ou Virgínia, pagando em dólares e sofrendo com latências superiores a 150ms.</p>
+                    <p style="margin-top: 1rem;">Fundada por visionários do setor tech em Angola, a nossa história é de validação contínua. Começámos por integrar soluções de software, mas rapidamente percebemos que o "teto" do crescimento das PMEs angolanas não é a falta de software, mas sim a instabilidade e o custo da conectividade.</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-number">90%</div>
+                        <div class="stat-label">PMEs sem ERP Cloud Local</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">+40%</div>
+                        <div class="stat-label">Poupança em Custos</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">20M</div>
+                        <div class="stat-label">Utilizadores Potenciais</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problemas que Resolvemos -->
+    <section id="problemas">
+        <div class="container">
+            <h2>Problemas que Resolvemos</h2>
+            <p class="section-subtitle">Muitas empresas em Angola enfrentam desafios críticos que limitam o seu crescimento digital.</p>
+            
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-icon">🌐</div>
+                    <h3>Conectividade Instável</h3>
+                    <p>Empresas locais sofrem com conexões intermitentes e de baixa qualidade, prejudicando operações críticas e reduzindo a produtividade.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💰</div>
+                    <h3>Custos Operacionais Elevados</h3>
+                    <p>Hospedagem internacional e serviços cloud em moedas estrangeiras aumentam significativamente os custos operacionais das PMEs.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📈</div>
+                    <h3>Limitações de Escalabilidade</h3>
+                    <p>Infraestrutura local inadequada impede o crescimento e expansão dos negócios para novos mercados.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔒</div>
+                    <h3>Soberania de Dados</h3>
+                    <p>Dependência de provedores estrangeiros coloca em risco a conformidade com regulamentações locais e a privacidade dos dados.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⏱️</div>
+                    <h3>Latência Elevada</h3>
+                    <p>Dados viajam para servidores distantes, causando atrasos que afetam a experiência do utilizador e a eficiência operacional.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🛠️</div>
+                    <h3>Falta de Suporte Local</h3>
+                    <p>Ausência de suporte técnico em português e familiaridade com contexto local dificulta a resolução de problemas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Soluções Oferecidas -->
+    <section id="solucoes" class="light">
+        <div class="container">
+            <h2>As Nossas Soluções</h2>
+            <p class="section-subtitle">Dois eixos estratégicos que trabalham em sinergia para transformar a infraestrutura digital angolana.</p>
+            
+            <!-- Eixo 1: Conectividade -->
+            <div style="margin-bottom: 4rem;">
+                <h3 style="font-size: 1.8rem; margin-bottom: 2rem; color: var(--primary-blue);">Eixo 1: Infraestrutura de Rede</h3>
+                <div class="grid-2">
+                    <div class="feature-item">
+                        <h4>Last Mile - Domínio Final</h4>
+                        <p>Implementação de anéis de fibra e micro-ondas de alta capacidade ligados diretamente aos PoPs da Angola Cables. Modelo de revenda estratégica para ISPs, acordos de transporte de dados de baixa latência e gestão técnica de SLAs corporativos de 99.9%.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Open Source Radio (OSR)</h4>
+                        <p>Inovação disruptiva para levar conectividade a zonas industriais periféricas e áreas remotas. Redução de 50% no custo de hardware via protocolos abertos, uso de antenas existentes da Angola Cables e escalabilidade rápida para o interior do país.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Consultoria em Transporte</h4>
+                        <p>Atuamos como arquitetos de rede para empresas que precisam de ligar sucursais entre províncias. Otimização de rotas via Rede Nacional de Fibra e segurança de dados nativa no ecossistema Angola Cables.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Parceria de Revenda</h4>
+                        <p>Acesso a descontos de até 20%, marketing conjunto e comissões em receitas. Exemplos inspirados em parcerias como Paratus com Maxnet, expandindo para mercados locais e internacionais via rede global.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Eixo 2: Alojamento -->
+            <div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 2rem; color: var(--primary-blue);">Eixo 2: O Motor Digital (Angonap)</h3>
+                <div class="grid-2">
+                    <div class="feature-item">
+                        <h4>VPS & Bare Metal Local</h4>
+                        <p>Hospedagem de alto rendimento no Data Center Angonap, eliminando o "salto" internacional dos dados. Instâncias de alta performance com menor latência garantida e conformidade legal total.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Gestão Local (Odoo/Primavera)</h4>
+                        <p>Hospedagem de ERPs críticos com velocidade local para operações de retalho e indústria. Configurações personalizadas com módulos para CRM, vendas e contabilidade, escalável para até 1.000 utilizadores simultâneos.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>N8N Automação</h4>
+                        <p>Implementação de instâncias n8n para automação de workflows empresariais. Integração com APIs de terceiros e hospedagem em VPS com monitoramento em tempo real, poupando até 30% em mão de obra.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>Workspace Localizado</h4>
+                        <p>Alternativas a ferramentas de produtividade como Microsoft 365, hospedadas localmente. Inclui e-mail, calendário e colaboração em nuvem com conformidade total com a Lei de Proteção de Dados de Angola.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section id="beneficios">
+        <div class="container">
+            <h2>Benefícios e Impacto Esperado</h2>
+            <p class="section-subtitle">O iTpraTi não só beneficia os nossos clientes, mas contribui para o ecossistema digital angolano e africano.</p>
+            
+            <div class="grid-2">
+                <div>
+                    <div class="feature-item">
+                        <h4>✓ Redução de Custos</h4>
+                        <p>Redução de custos operacionais em 35%, com maior segurança via serviços gerenciados e escalabilidade global.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>✓ Escalabilidade</h4>
+                        <p>Integração com peering remoto para baixa latência em acessos internacionais, permitindo crescimento sem limitações.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>✓ Conformidade Legal</h4>
+                        <p>Conformidade total com regulamentações angolanas e garantia de soberania de dados em solo nacional.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="feature-item">
+                        <h4>✓ Impacto Social</h4>
+                        <p>Criação de empregos em tech e telecom, com foco em treinamento local e inclusão digital para mais de 10.000 utilizadores iniciais.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>✓ Inovação Regional</h4>
+                        <p>Expansão para mercados africanos via rede global da Angola Cables, com potencial de receitas anuais de 500.000 USD nos primeiros 3 anos.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h4>✓ Suporte Local</h4>
+                        <p>Suporte técnico 24/7 em Português com equipa local que compreende o contexto e necessidades específicas das empresas angolanas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- O que Buscamos -->
+    <section id="parceria" class="light">
+        <div class="container">
+            <h2>O que Buscamos com a Parceria</h2>
+            <p class="section-subtitle">Não buscamos capital financeiro. Buscamos infraestrutura e portas abertas.</p>
+            
+            <div class="dashed-border" style="margin-top: 2rem;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 2rem; text-align: center; color: var(--primary-blue);">O Nosso Manifesto</h3>
+                <div class="grid-2">
+                    <div>
+                        <h4 style="color: var(--primary-cyan); margin-bottom: 1rem;">💳 Créditos de Cloud</h4>
+                        <p>Acesso a créditos de compute/storage para escala massiva dos nossos clientes PME. Solicitamos 10.000 USD em créditos iniciais para testes e migração de VPS.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--primary-cyan); margin-bottom: 1rem;">🎓 Mentoria Técnica</h4>
+                        <p>Apoio de engenharia para otimização de Peering e Peering Global, consultoria especializada em expansão de rede e exploração de infraestrutura existente.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--primary-cyan); margin-bottom: 1rem;">📋 Contratos de Expansão</h4>
+                        <p>Facilitação de contratos de conectividade e transporte, acordos de last mile e integração com serviços de transporte de dados.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--primary-cyan); margin-bottom: 1rem;">📡 PoPs & Antenas</h4>
+                        <p>Apoio logístico para instalação de hardware em pontos estratégicos, alocação em antenas existentes para projetos open source.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--primary-cyan); margin-bottom: 1rem;">✅ Selo de Confiança</h4>
+                        <p>Integração oficial no programa de Parceiros (Reseller/Agent), acesso ao Programa Global de Parceiros da Angola Cables.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--primary-cyan); margin-bottom: 1rem;">🎤 Visibilidade</h4>
+                        <p>Participação no Innovation Day para ganhar visibilidade e atrair investidores, marketing conjunto e presença em eventos estratégicos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section id="roadmap">
+        <div class="container">
+            <h2>Roadmap de Escalabilidade</h2>
+            <p class="section-subtitle">Um plano de ação estruturado em três fases para transformar a visão em realidade.</p>
+            
+            <div class="roadmap-container">
+                <div class="roadmap-item">
+                    <div class="roadmap-phase">
+                        <div>Fase 1</div>
+                        <div style="font-size: 0.8rem; margin-top: 0.5rem;">Q1-Q2 2026</div>
+                    </div>
+                    <div class="roadmap-content">
+                        <h4>Consolidação</h4>
+                        <p>Migração do MVP para Clouds2Africa. Ativação dos primeiros 200 clientes PME em Luanda e Benguela.</p>
+                        <ul>
+                            <li>Ativação de créditos cloud</li>
+                            <li>Integração técnica com infraestrutura AC</li>
+                            <li>Onboarding de primeiros clientes</li>
+                            <li>Validação de SLAs e performance</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-phase">
+                        <div>Fase 2</div>
+                        <div style="font-size: 0.8rem; margin-top: 0.5rem;">Q3-Q4 2026</div>
+                    </div>
+                    <div class="roadmap-content">
+                        <h4>Expansão Nacional</h4>
+                        <p>Ativação de 3 novos PoPs regionais via Open Source Radio. Lançamento do portal de revenda iTpraTi para outros ISPs locais.</p>
+                        <ul>
+                            <li>Instalação de PoPs em Benguela, Huambo e Cabinda</li>
+                            <li>Lançamento de programa de revenda</li>
+                            <li>Expansão para 500+ clientes</li>
+                            <li>Parcerias com ISPs locais</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="roadmap-item">
+                    <div class="roadmap-phase">
+                        <div>Fase 3</div>
+                        <div style="font-size: 0.8rem; margin-top: 0.5rem;">2027</div>
+                    </div>
+                    <div class="roadmap-content">
+                        <h4>Regionalização SADC</h4>
+                        <p>Aproveitar a conectividade do cabo SACS e WACS para exportar serviços de hosting iTpraTi para a RDC e Namíbia.</p>
+                        <ul>
+                            <li>Expansão para mercados SADC</li>
+                            <li>Integração com peering global</li>
+                            <li>Potencial de 1M+ utilizadores na região</li>
+                            <li>Receitas anuais de 500k USD+</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sectores de Interesse -->
+    <section class="light">
+        <div class="container">
+            <h2>Sectores de Interesse</h2>
+            <p class="section-subtitle">Através do iTpraTi, buscamos impulsionar empresas dos mais variados sectores oferecendo Infraestrutura-como-Serviço (IaaS) com custos reduzidos.</p>
+            
+            <div class="grid-4">
+                <div class="sector-item">
+                    <div class="sector-icon">🏦</div>
+                    <h4>Banca e Seguros</h4>
+                </div>
+                <div class="sector-item">
+                    <div class="sector-icon">⛽</div>
+                    <h4>Petróleo & Gás</h4>
+                </div>
+                <div class="sector-item">
+                    <div class="sector-icon">⚡</div>
+                    <h4>Energia e Indústria</h4>
+                </div>
+                <div class="sector-item">
+                    <div class="sector-icon">📡</div>
+                    <h4>Telecom & Network</h4>
+                </div>
+                <div class="sector-item">
+                    <div class="sector-icon">🎬</div>
+                    <h4>Media & Streaming</h4>
+                </div>
+                <div class="sector-item">
+                    <div class="sector-icon">🏥</div>
+                    <h4>Saúde</h4>
+                </div>
+                <div class="sector-item">
+                    <div class="sector-icon">📚</div>
+                    <h4>Educação</h4>
+                </div>
+                <div class="sector-item">
+                    <div class="sector-icon">🛒</div>
+                    <h4>Retalho e Logística</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ / Detalhes Técnicos -->
+    <section id="detalhes">
+        <div class="container">
+            <h2>Detalhes Técnicos e Especificações</h2>
+            <p class="section-subtitle">Informações detalhadas sobre as nossas capacidades técnicas e ofertas.</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Como funciona a integração com a Angola Cables?</span>
+                        <span>+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>A iTpraTi funciona como um integrador estratégico que aproveita a infraestrutura de cabos submarinos, data centers e rede de fibra óptica da Angola Cables. Utilizamos os PoPs (Points of Presence) existentes para entregar serviços de conectividade e alojamento aos nossos clientes. A integração inclui:</p>
+                        <ul style="margin-top: 1rem; margin-left: 2rem;">
+                            <li>Acesso direto aos PoPs da Angola Cables para roteamento otimizado</li>
+                            <li>Utilização do data center Angonap para hospedagem de VPS e serviços cloud</li>
+                            <li>Integração com a rede de fibra óptica para serviços de last mile</li>
+                            <li>Acesso ao programa de parceiros para revenda e referral</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Quais são as garantias de performance e disponibilidade?</span>
+                        <span>+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Oferecemos SLAs corporativos de 99.9% de disponibilidade para todos os nossos serviços. Isto significa um máximo de 43 minutos de downtime por mês. As nossas garantias incluem:</p>
+                        <ul style="margin-top: 1rem; margin-left: 2rem;">
+                            <li>Latência local inferior a 10ms para clientes em Luanda</li>
+                            <li>Redundância de infraestrutura em múltiplos PoPs</li>
+                            <li>Backups automáticos diários com retenção de 30 dias</li>
+                            <li>Suporte técnico 24/7 em Português</li>
+                            <li>Monitoramento contínuo e alertas em tempo real</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Como é garantida a conformidade com regulamentações locais?</span>
+                        <span>+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>A iTpraTi opera em conformidade total com a legislação angolana, incluindo a Lei de Proteção de Dados de Angola. Todos os dados dos nossos clientes são armazenados em solo nacional, nos data centers da Angola Cables, garantindo:</p>
+                        <ul style="margin-top: 1rem; margin-left: 2rem;">
+                            <li>Soberania de dados: nenhum dado sai do território nacional</li>
+                            <li>Conformidade com regulamentações fiscais e contabilísticas angolanas</li>
+                            <li>Suporte a módulos fiscais adaptados a Angola</li>
+                            <li>Auditoria e certificações de segurança internacionais</li>
+                            <li>Conformidade com normas de proteção de dados</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Qual é a estrutura de preços?</span>
+                        <span>+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>A nossa estrutura de preços é flexível e adaptada às necessidades de cada cliente. Oferecemos:</p>
+                        <ul style="margin-top: 1rem; margin-left: 2rem;">
+                            <li>Planos de VPS a partir de 50 USD/mês com 2 vCPU, 4GB RAM e 50GB SSD</li>
+                            <li>Serviços de conectividade last mile com base em largura de banda (a partir de 10 Mbps)</li>
+                            <li>Hospedagem de ERPs (Odoo/Primavera) com suporte técnico incluído</li>
+                            <li>Descontos para parceiros resellers (até 20% de desconto)</li>
+                            <li>Créditos cloud para startups e projetos inovadores</li>
+                            <li>Modelos de receita compartilhada para parcerias estratégicas</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>Como é o processo de migração para os nossos serviços?</span>
+                        <span>+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Oferecemos um processo de migração estruturado e suportado pela nossa equipa técnica:</p>
+                        <ul style="margin-top: 1rem; margin-left: 2rem;">
+                            <li>Análise inicial gratuita da infraestrutura existente</li>
+                            <li>Plano de migração personalizado com timeline definida</li>
+                            <li>Migração assistida com zero downtime para serviços críticos</li>
+                            <li>Testes de performance e validação pré-produção</li>
+                            <li>Suporte técnico dedicado durante todo o processo</li>
+                            <li>Treinamento da equipa do cliente nos novos sistemas</li>
+                            <li>Período de suporte estendido pós-migração (30 dias)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contacto" class="cta-section">
+        <div class="container">
+            <h2>Pronto para Transformar a Infraestrutura Digital Angolana?</h2>
+            <p>Junte-se a nós na missão de criar soberania digital e oportunidades de crescimento para empresas em Angola e na região SADC.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" style="color: var(--primary-blue);">Iniciar Parceria Estratégica</button>
+                <button class="btn-secondary">Agendar Reunião</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Sobre iTpraTi</h4>
+                    <p>Somos o integrador estratégico que transforma a infraestrutura da Angola Cables em soluções reais para o mercado africano.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Soluções</h4>
+                    <a href="#solucoes">Conectividade</a>
+                    <a href="#solucoes">Alojamento Cloud</a>
+                    <a href="#solucoes">Automação</a>
+                    <a href="#solucoes">Consultoria</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <a href="mailto:info@itprati.ao">info@itprati.ao</a>
+                    <a href="tel:+244222123456">+244 222 123 456</a>
+                    <a href="#">Luanda, Angola</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 iTpraTi. Todos os direitos reservados. | Proposta de Parceria Acelera Cloud - Angola Cables</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const isActive = header.classList.contains('active');
+            
+            // Close all other accordions
+            document.querySelectorAll('.accordion-header').forEach(h => {
+                h.classList.remove('active');
+                h.nextElementSibling.classList.remove('active');
+            });
+            
+            // Toggle current accordion
+            if (!isActive) {
+                header.classList.add('active');
+                content.classList.add('active');
+            }
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
