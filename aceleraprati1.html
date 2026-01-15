@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pt-ao">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iTpraTi | Infraestrutura & Soberania Digital 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;600;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #020202;
+            --bg-card: #0a0a0b;
+            --primary: #0062ff;
+            --secondary: #00d4ff;
+            --accent: #5efce8;
+            --text: #f0f0f0;
+            --text-muted: #88888b;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .font-tech { font-family: 'Space Grotesk', sans-serif; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-dark); }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 25px; }
+
+        /* Hero Animation */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+            background: radial-gradient(circle at 80% 20%, #002b5c 0%, transparent 40%);
+        }
+
+        .hero-content { z-index: 10; max-width: 850px; }
+
+        .badge-main {
+            display: inline-block;
+            padding: 6px 15px;
+            background: var(--glass);
+            border: 1px solid var(--primary);
+            color: var(--secondary);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: clamp(3rem, 10vw, 6rem);
+            line-height: 0.95;
+            font-weight: 700;
+            margin-bottom: 30px;
+            background: linear-gradient(to bottom right, #fff 40%, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 40px;
+            border-left: 3px solid var(--primary);
+            padding-left: 20px;
+        }
+
+        /* Stats Grid */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+            width: 100%;
+        }
+
+        .stat-item {
+            background: var(--glass);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid var(--border);
+        }
+
+        .stat-item h4 { font-size: 2rem; color: var(--secondary); }
+        .stat-item p { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; }
+
+        /* Section Layouts */
+        section { padding: 120px 0; border-bottom: 1px solid var(--border); }
+
+        .section-header { margin-bottom: 60px; max-width: 700px; }
+        .section-header span { color: var(--primary); font-weight: bold; font-size: 0.9rem; }
+        .section-header h2 { font-size: 3rem; margin-top: 10px; }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .card-detalhado {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 25px;
+            border: 1px solid var(--border);
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card-detalhado:hover {
+            border-color: var(--primary);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            transform: translateY(-10px);
+        }
+
+        .card-detalhado .num {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 4rem;
+            font-weight: 900;
+            opacity: 0.05;
+        }
+
+        .card-detalhado h3 { color: var(--secondary); margin-bottom: 20px; font-size: 1.5rem; }
+        .card-detalhado ul { list-style: none; margin-top: 20px; }
+        .card-detalhado li { margin-bottom: 12px; color: var(--text-muted); display: flex; align-items: flex-start; }
+        .card-detalhado li::before { content: '◈'; color: var(--primary); margin-right: 10px; font-size: 0.8rem; margin-top: 4px; }
+
+        /* Historia / Genesis Section */
+        .genesis-block {
+            display: flex;
+            gap: 60px;
+            align-items: center;
+            background: linear-gradient(90deg, var(--bg-card), transparent);
+            padding: 60px;
+            border-radius: 40px;
+            border: 1px solid var(--border);
+        }
+
+        .genesis-text { flex: 1; }
+        .genesis-text p { margin-bottom: 20px; color: var(--text-muted); line-height: 1.8; }
+
+        /* Market Section */
+        .market-highlight {
+            background: var(--primary);
+            color: white;
+            padding: 80px;
+            border-radius: 40px;
+            text-align: center;
+        }
+
+        /* Roadmap Styles */
+        .roadmap { position: relative; padding-left: 30px; border-left: 2px solid var(--primary); }
+        .roadmap-step { margin-bottom: 60px; position: relative; }
+        .roadmap-step::after {
+            content: '';
+            position: absolute;
+            left: -41px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--secondary);
+        }
+
+        /* Footer */
+        footer { padding: 100px 0; text-align: center; }
+        .btn-cta {
+            display: inline-block;
+            padding: 20px 50px;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 100px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: 0.3s;
+            box-shadow: 0 15px 30px rgba(0, 98, 255, 0.3);
+        }
+
+        .btn-cta:hover { transform: scale(1.05); background: var(--secondary); }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 3.5rem; }
+            .genesis-block { flex-direction: column; padding: 30px; }
+            .market-highlight { padding: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="hero">
+            <div class="hero-content">
+                <div class="badge-main">Proposta Estratégica | Acelera Cloud</div>
+                <div class="font-tech" style="font-size: 1.5rem; color: var(--primary); font-weight: bold; margin-bottom: 10px;">iTpraTi.ao</div>
+                <h1>Arquitetura de Conectividade.</h1>
+                <p class="hero-p">
+                    Não somos apenas um fornecedor. Somos o integrador estratégico que transforma a rede submarina da Angola Cables em produtividade económica para o mercado nacional.
+                </p>
+                
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <h4>< 10ms</h4>
+                        <p>Latência Local Alvo</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>1.000+</h4>
+                        <p>PMEs em Pipeline</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>SADC</h4>
+                        <p>Foco de Expansão</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section id="historia">
+            <div class="section-header">
+                <span>01. ORIGEM E PROPÓSITO</span>
+                <h2>A Nossa Génese</h2>
+            </div>
+            <div class="genesis-block">
+                <div class="genesis-text">
+                    <p>
+                        A <strong>iTpraTi</strong> nasceu da observação direta do paradoxo angolano: possuímos uma das melhores infraestruturas de cabos submarinos do mundo, mas as nossas empresas locais ainda dependem de nuvens em Frankfurt ou Virgínia, pagando em dólares e sofrendo com latências superiores a 150ms.
+                    </p>
+                    <p>
+                        Fundada por visionários do setor tech em Angola, a nossa história é de validação contínua. Começámos por integrar soluções de software, mas rapidamente percebemos que o "teto" do crescimento das PMEs angolanas não é a falta de software, mas sim a instabilidade e o custo da conectividade.
+                    </p>
+                    <p>
+                        Hoje, evoluímos para ser o <strong>Cérebro Operacional</strong> que faz a ponte entre o potencial bruto da Angola Cables e a necessidade real da padaria no Kilamba ou da empresa de logística em Viana.
+                    </p>
+                </div>
+                <div style="flex: 0.5; text-align: center;">
+                    <div style="font-size: 5rem; color: var(--primary); font-weight: 900; opacity: 0.3;">2026</div>
+                    <p style="font-weight: bold; color: var(--secondary);">O Ano da Soberania de Dados</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="mercado">
+            <div class="section-header">
+                <span>02. ANÁLISE DE MERCADO</span>
+                <h2>O Panorama Angolano</h2>
+            </div>
+            <div class="market-highlight">
+                <h3 style="font-size: 2.5rem; margin-bottom: 30px;">Porquê Agora?</h3>
+                <div class="grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px;">
+                    <div>
+                        <h4 style="font-size: 3rem;">90%</h4>
+                        <p>Das PMEs angolanas ainda não possuem ERP em Cloud Local.</p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 3rem;">+40%</h4>
+                        <p>De poupança em custos de infraestrutura ao migrar de AWS/Azure para Angola Cables via iTpraTi.</p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 3rem;">20M</h4>
+                        <p>De utilizadores potenciais no ecossistema digital nacional em expansão.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="conectividade">
+            <div class="section-header">
+                <span>03. CORE BUSINESS</span>
+                <h2>Eixo 01: Infraestrutura de Rede</h2>
+            </div>
+            <div class="content-grid">
+                <div class="card-detalhado">
+                    <span class="num">01</span>
+                    <h3>Domínio Last Mile</h3>
+                    <p>Implementação de anéis de fibra e micro-ondas de alta capacidade ligados diretamente aos PoPs da Angola Cables.</p>
+                    <ul>
+                        <li>Modelo de Revenda Estratégica (ISP para Business).</li>
+                        <li>Acordos de transporte de dados de baixa latência.</li>
+                        <li>Gestão técnica de SLAs corporativos de 99.9%.</li>
+                    </ul>
+                </div>
+                <div class="card-detalhado">
+                    <span class="num">02</span>
+                    <h3>Open Source Radio (OSR)</h3>
+                    <p>Inovação disruptiva para levar conectividade a zonas industriais periféricas e áreas remotas com baixo custo.</p>
+                    <ul>
+                        <li>Redução de 50% no custo de hardware via protocolos abertos.</li>
+                        <li>Uso de antenas existentes da AC para propagação de sinal.</li>
+                        <li>Escalabilidade rápida para o interior do país.</li>
+                    </ul>
+                </div>
+                <div class="card-detalhado">
+                    <span class="num">03</span>
+                    <h3>Consultoria em Transporte</h3>
+                    <p>Atuamos como arquitetos de rede para empresas que precisam de ligar sucursais entre províncias.</p>
+                    <ul>
+                        <li>Otimização de rotas via Rede Nacional de Fibra.</li>
+                        <li>Segurança de dados (SD-WAN) nativa no ecossistema AC.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="alojamento">
+            <div class="section-header">
+                <span>04. CLOUD SERVICES</span>
+                <h2>Eixo 02: O Motor Digital (Angonap)</h2>
+            </div>
+            <div class="content-grid">
+                <div class="card-detalhado">
+                    <span class="num">A1</span>
+                    <h3>VPS & Bare Metal Local</h3>
+                    <p>Hospedagem de alto rendimento no Data Center Angonap, eliminando o "salto" internacional dos dados.</p>
+                    <ul>
+                        <li><strong>Odoo & Primavera:</strong> Performance local para ERPs críticos.</li>
+                        <li><strong>n8n & Automação:</strong> Workflows empresariais ultra-rápidos.</li>
+                    </ul>
+                </div>
+                <div class="card-detalhado">
+                    <span class="num">A2</span>
+                    <h3>Workspace Localizado</h3>
+                    <p>Integração de ferramentas de produtividade com redundância local.</p>
+                    <ul>
+                        <li>Conformidade total com a Lei de Proteção de Dados de Angola.</li>
+                        <li>Suporte local 24/7 em Português.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap">
+            <div class="section-header">
+                <span>05. VISÃO DE FUTURO</span>
+                <h2>Roadmap de Escalabilidade</h2>
+            </div>
+            <div class="roadmap">
+                <div class="roadmap-step">
+                    <h3>Fase 1: Consolidação (Q1-Q2 2026)</h3>
+                    <p>Migração do MVP para Clouds2Africa. Ativação dos primeiros 200 clientes PME em Luanda e Benguela.</p>
+                </div>
+                <div class="roadmap-step">
+                    <h3>Fase 2: Expansão Nacional (Q3-Q4 2026)</h3>
+                    <p>Ativação de 3 novos PoPs regionais via Open Source Radio. Lançamento do portal de revenda iTpraTi para outros ISPs locais.</p>
+                </div>
+                <div class="roadmap-step">
+                    <h3>Fase 3: Regionalização SADC (2027)</h3>
+                    <p>Aproveitar a conectividade do cabo SACS e WACS para exportar serviços de hosting iTpraTi para a RDC e Namíbia.</p>
+                </div>
+            </div>
+        </section>
+
+        <section style="background: var(--glass); border-radius: 50px; padding: 80px;">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 30px; color: var(--accent);">O Nosso Pedido: Colaboração, não Capital.</h2>
+                <p style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 40px;">
+                    Não buscamos financiamento bancário. Buscamos a validação e o suporte técnico da maior operadora de infraestrutura de África para acelerarmos juntos.
+                </p>
+                <div style="text-align: left; display: inline-block;">
+                    <p style="margin-bottom: 15px;">✅ <strong>Créditos de Cloud:</strong> Para escala de VPS dos nossos clientes PME.</p>
+                    <p style="margin-bottom: 15px;">✅ <strong>Portas Abertas:</strong> Acesso técnico para integração direta em infraestrutura de antena.</p>
+                    <p style="margin-bottom: 15px;">✅ <strong>Mentoria Core:</strong> Apoio em engenharia de Peering Global.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <h2 style="margin-bottom: 20px;">Prontos para Liderar o Ecossistema Digital?</h2>
+            <p style="color: var(--text-muted); margin-bottom: 40px;">A iTpraTi está pronta para ser o braço direito da Angola Cables no mercado corporativo.</p>
+            <a href="mailto:comercial@itprati.ao" class="btn-cta">Iniciar Parceria Estratégica</a>
+            <div style="margin-top: 60px; font-size: 0.9rem; color: #333;">
+                &copy; 2026 iTpraTi - Tecnologia para Negócios | Kilamba, Luanda, Angola.
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
