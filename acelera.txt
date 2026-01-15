@@ -1,1 +1,50 @@
-oi
+### Visão Geral do Projeto iTpraTi.ao
+
+O teu projeto iTpraTi - Tecnologia para Negócios parece focado em fornecer soluções integradas de tecnologia, aproveitando o ecossistema da Angola Cables para conectividade de alta qualidade e alojamento de serviços. Isso alinha bem com o programa Acelera Cloud, que enfatiza inovação, escalabilidade e uso de infraestrutura local para soberania de dados. Organizei as tuas ideias em seções claras e lógicas para facilitar a apresentação na reunião. Sugiro estruturá-la assim: comece com uma introdução breve ao projeto, depois detalhe as áreas chave (Conectividade e Alojamento), e finalize com o impacto esperado e solicitações específicas. Mantém curto e impactante, usando slides ou bullet points visuais.
+
+### Estrutura Sugerida para a Apresentação
+1. **Introdução (2-3 minutos)**: Apresenta o iTpraTi como uma plataforma de tecnologia para negócios, resolvendo problemas de conectividade e hospedagem em Angola. Menciona validação inicial (se houver MVP ou testes) e como a parceria com Angola Cables acelera o crescimento.
+   
+2. **Pontos Principais (5-7 minutos)**: Divide em Conectividade e Alojamento, destacando benefícios mútuos.
+   
+3. **Impacto e Solicitações (3-5 minutos)**: Explica o potencial de escalabilidade, contribuição para o ecossistema angolano e o que solicitas (créditos cloud, suporte técnico, acesso a parceiros).
+   
+4. **Q&A**: Deixa tempo para perguntas e feedback.
+
+### Ideias Organizadas por Área
+
+#### 1. Conectividade: Aproveitando Provedores de Alta Conectividade da Angola Cables
+Foca em expandir o acesso à rede de fibra óptica e parcerias para revenda, alinhando com o Programa de Parceiros (https://partners.angolacables.co.ao). Isso demonstra como o iTpraTi pode atuar como revendedor ou integrador, gerando receitas compartilhadas.
+
+- **Alocação em Antenas ou Apoio em Projeto Open Source Radio**: Propõe colaboração para alocar recursos em antenas existentes ou apoiar iniciativas open source para rádio, melhorando a cobertura em áreas remotas. Benefício: Reduz custos iniciais e acelera rollout; solicita apoio técnico ou financiário via créditos cloud para prototipagem.
+  
+- **Acesso à Fibra Óptica**: Usa a rede da Angola Cables para entregar serviços onde houver fibra disponível. Benefício: Garante alta velocidade e baixa latência para clientes empresariais; integra com Clouds2Africa para migração de workloads.
+
+- **Ser Parceiro para Revender e Criar Planos**: Torna-te parceiro oficial (ex: Reseller ou Referral) para revender serviços da Angola Cables, criando planos personalizados. Benefício: Acesso a descontos, marketing conjunto e receitas de comissões; menciona exemplos como Paratus com Maxnet e Matias.
+
+- **Plano Last Mile em Parceria**: Desenvolve soluções last mile similar a parcerias existentes, usando infraestrutura da Angola Cables para conectar usuários finais. Benefício: Expande mercado local, promovendo inclusão digital.
+
+- **Consultoria em Expansão de Rede e Exploração de Rede Existente para Transporte**: Solicita consultoria para otimizar redes atuais e expandir para transporte de dados. Benefício: Usa expertise da Angola Cables em peering global e data centers para eficiência operacional.
+
+#### 2. Alojamento: Usando Data Centers da Angola Cables para Serviços de VPS
+Enfatiza hospedagem segura e escalável nos data centers (ex: Angonap), integrando com serviços cloud para oferecer soluções prontas. Isso se conecta diretamente ao Acelera Cloud, onde podes usar créditos para storage e compute.
+
+- **Serviços Principais Oferecidos via VPS**:
+  - **Odoo**: Hospedagem de ERP para gestão de negócios, com integração em nuvem para acessibilidade remota.
+  - **Primavera**: Soluções de software empresarial, otimizadas para performance em data centers locais.
+  - **N8N Automação**: Ferramentas de automação de workflows, escaláveis com recursos cloud.
+  - **Workspace/365**: Alternativas a ferramentas de produtividade como Microsoft 365, hospedadas localmente para conformidade de dados.
+
+- **Benefícios Gerais**: Redução de custos operacionais, maior segurança (via Shields2Africa) e escalabilidade global. Solicita acesso a colocation, rack space e managed services para routing/segurança.
+
+### Impacto Esperado e Solicitações Específicas
+- **Impacto**: O iTpraTi contribui para o ecossistema angolano ao promover inovação em telecom e tech, criando empregos, melhorando conectividade rural/urbana e fomentando soberania de dados. Potencial para expansão para África via rede global da Angola Cables.
+  
+- **O Que Solicitar**:
+  - Créditos cloud para testes e migração (ex: compute/storage para VPS).
+  - Suporte técnico para integração (mentoria em expansão de rede e last mile).
+  - Acesso ao Programa de Parceiros: Registro como Reseller para revenda de planos.
+  - Consultoria gratuita inicial para otimização de rede.
+  - Participação no Innovation Day para visibilidade.
+
+Prepara evidências como diagramas de arquitetura ou métricas estimadas (ex: número de clientes potenciais). Isso mostra proatividade e fit com os objetivos deles. Boa sorte na reunião! Se precisares de um pitch deck modelo, avisa.
