@@ -1,0 +1,1857 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iTpraTi - Internet & TV Online em Angola</title>
+  <meta name="description" content="iTpraTi - Provedor de Internet e TV Online 4K em Angola desde 2021. Conectividade de alta velocidade e entretenimento para toda a CPLP.">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF6B00;
+      --primary-glow: rgba(255, 107, 0, 0.4);
+      --secondary: #00D4FF;
+      --secondary-glow: rgba(0, 212, 255, 0.3);
+      --accent: #7C3AED;
+      --dark: #0A0A0F;
+      --darker: #06060A;
+      --card: #111118;
+      --card-hover: #1A1A24;
+      --text: #F0F0F5;
+      --text-muted: #8B8B9A;
+      --border: rgba(255,255,255,0.06);
+      --success: #10B981;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--darker);
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* PARTICLE CANVAS */
+    #network-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* NAVIGATION */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(6,6,10,0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      padding: 0.7rem 2rem;
+      background: rgba(6,6,10,0.95);
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -1px;
+    }
+
+    .logo span { font-weight: 300; }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .btn {
+      padding: 0.6rem 1.4rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #FF8C00);
+      color: white;
+      box-shadow: 0 4px 20px var(--primary-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--primary-glow);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      background: var(--card);
+      border-color: var(--primary);
+    }
+
+    .btn-glow {
+      background: linear-gradient(135deg, var(--secondary), var(--accent));
+      color: white;
+      box-shadow: 0 4px 20px var(--secondary-glow);
+    }
+
+    .btn-glow:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--secondary-glow);
+    }
+
+    .btn-large {
+      padding: 1rem 2.5rem;
+      font-size: 1rem;
+      border-radius: 16px;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 2rem 4rem;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.2rem;
+      background: rgba(255,107,0,0.1);
+      border: 1px solid rgba(255,107,0,0.3);
+      border-radius: 100px;
+      font-size: 0.85rem;
+      color: var(--primary);
+      margin-bottom: 2rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .hero-badge .pulse {
+      width: 8px; height: 8px;
+      background: var(--primary);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+      letter-spacing: -2px;
+    }
+
+    .hero h1 .gradient-text {
+      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% 200%;
+      animation: gradientShift 5s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      margin-top: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+
+    /* SECTIONS */
+    section {
+      position: relative;
+      z-index: 2;
+      padding: 6rem 2rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+      margin: 1rem auto;
+    }
+
+    /* DUAL SERVICE SHOWCASE */
+    .services-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      position: relative;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transform: scaleX(0);
+      transition: transform 0.4s;
+    }
+
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255,107,0,0.2);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .service-card.net-card::before {
+      background: linear-gradient(90deg, var(--primary), #FF8C00);
+    }
+
+    .service-card.tv-card::before {
+      background: linear-gradient(90deg, var(--secondary), var(--accent));
+    }
+
+    .service-icon {
+      width: 64px; height: 64px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .net-card .service-icon {
+      background: rgba(255,107,0,0.1);
+      color: var(--primary);
+    }
+
+    .tv-card .service-icon {
+      background: rgba(0,212,255,0.1);
+      color: var(--secondary);
+    }
+
+    .service-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+
+    .service-card p {
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-features {
+      list-style: none;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.4rem 0;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .service-features li .check {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      flex-shrink: 0;
+    }
+
+    .net-card .check {
+      background: rgba(255,107,0,0.15);
+      color: var(--primary);
+    }
+
+    .tv-card .check {
+      background: rgba(0,212,255,0.15);
+      color: var(--secondary);
+    }
+
+    /* SPEED METER */
+    .speed-section {
+      background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .speed-section::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(255,107,0,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .speed-meter {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .speed-display {
+      font-size: clamp(4rem, 10vw, 8rem);
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .speed-label {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+    }
+
+    .speed-bar-container {
+      width: 100%;
+      height: 8px;
+      background: var(--card);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+
+    .speed-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 4px;
+      transition: width 2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .speed-plans {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .speed-plan {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .speed-plan:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+    }
+
+    .speed-plan .plan-speed {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .speed-plan .plan-unit {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .speed-plan .plan-name {
+      margin-top: 0.5rem;
+      font-weight: 600;
+    }
+
+    .speed-plan .plan-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.3rem;
+    }
+
+    /* TV CHANNELS MARQUEE */
+    .tv-section { background: var(--darker); }
+
+    .channel-marquee {
+      overflow: hidden;
+      margin: 3rem 0;
+      position: relative;
+    }
+
+    .channel-marquee::before,
+    .channel-marquee::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 100px;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .channel-marquee::before {
+      left: 0;
+      background: linear-gradient(90deg, var(--darker), transparent);
+    }
+
+    .channel-marquee::after {
+      right: 0;
+      background: linear-gradient(-90deg, var(--darker), transparent);
+    }
+
+    .marquee-track {
+      display: flex;
+      gap: 1.5rem;
+      animation: marquee 30s linear infinite;
+      width: max-content;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .channel-item {
+      flex-shrink: 0;
+      width: 120px;
+      height: 80px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      transition: all 0.3s;
+    }
+
+    .channel-item:hover {
+      border-color: var(--secondary);
+      transform: scale(1.1);
+      box-shadow: 0 0 20px var(--secondary-glow);
+    }
+
+    .tv-features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .tv-feature {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.8rem;
+      transition: all 0.3s;
+    }
+
+    .tv-feature:hover {
+      border-color: var(--secondary);
+      transform: translateY(-4px);
+    }
+
+    .tv-feature .feature-icon {
+      width: 48px; height: 48px;
+      border-radius: 12px;
+      background: rgba(0,212,255,0.1);
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .tv-feature h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .tv-feature p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* CPLP MAP SECTION */
+    .cplp-section { background: var(--dark); }
+
+    .cplp-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .cplp-country {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .cplp-country:hover {
+      border-color: var(--secondary);
+      transform: translateX(8px);
+      background: var(--card-hover);
+    }
+
+    .country-flag {
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+
+    .country-info h4 {
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .country-info p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .country-channels {
+      margin-left: auto;
+      text-align: right;
+    }
+
+    .country-channels .num {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--secondary);
+    }
+
+    .country-channels .label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-section { background: var(--darker); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .testimonial {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .testimonial:hover {
+      border-color: rgba(255,107,0,0.2);
+      transform: translateY(-4px);
+    }
+
+    .testimonial::before {
+      content: '"';
+      position: absolute;
+      top: 1rem; right: 1.5rem;
+      font-size: 4rem;
+      color: var(--primary);
+      opacity: 0.2;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .testimonial-text {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .author-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: white;
+      font-size: 0.9rem;
+    }
+
+    .author-info h4 {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .author-info p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .stars {
+      color: #FBBF24;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    /* NEWSLETTER / CONTACT FORM */
+    .newsletter-section {
+      background: linear-gradient(135deg, rgba(255,107,0,0.05), rgba(0,212,255,0.05));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .newsletter-section::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 30% 50%, rgba(255,107,0,0.03) 0%, transparent 50%),
+                  radial-gradient(circle at 70% 50%, rgba(0,212,255,0.03) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .newsletter-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 3rem;
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .newsletter-card h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .newsletter-card > p {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    .form-group { margin-bottom: 1.2rem; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.9rem 1.2rem;
+      background: var(--darker);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: all 0.3s;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(255,107,0,0.1);
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder { color: #4A4A5A; }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .form-checkboxes {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin: 1.5rem 0;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      cursor: pointer;
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      width: 20px; height: 20px;
+      accent-color: var(--primary);
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .checkbox-item .check-label {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .checkbox-item .check-label strong { color: var(--text); }
+
+    .form-submit {
+      width: 100%;
+      padding: 1rem;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .form-success {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .form-success .success-icon {
+      width: 64px; height: 64px;
+      background: rgba(16,185,129,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin: 0 auto 1rem;
+      color: var(--success);
+    }
+
+    .form-success h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-success p { color: var(--text-muted); }
+
+    /* FOOTER */
+    .footer {
+      background: var(--darker);
+      border-top: 1px solid var(--border);
+      padding: 4rem 2rem 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand .logo {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+
+    .footer-brand p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-brand .socials {
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .social-btn {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: all 0.3s;
+      font-size: 1.1rem;
+    }
+
+    .social-btn:hover {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .footer-col h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1.2rem;
+      color: var(--text);
+    }
+
+    .footer-col ul { list-style: none; }
+
+    .footer-col li { margin-bottom: 0.7rem; }
+
+    .footer-col a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-col a:hover { color: var(--primary); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-bottom a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    /* SCROLL ANIMATIONS */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* WHATSAPP FLOAT */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      z-index: 1000;
+      width: 56px; height: 56px;
+      background: #25D366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.6rem;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      transition: all 0.3s;
+      animation: pulse-whatsapp 2s infinite;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 8px 30px rgba(37,211,102,0.5);
+    }
+
+    @keyframes pulse-whatsapp {
+      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+      50% { box-shadow: 0 4px 30px rgba(37,211,102,0.7); }
+    }
+
+    .whatsapp-tooltip {
+      position: absolute;
+      right: 70px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      color: var(--text);
+    }
+
+    .whatsapp-float:hover .whatsapp-tooltip { opacity: 1; }
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--darker); }
+    ::-webkit-scrollbar-thumb { background: var(--card); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+    /* MOBILE MENU */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .services-showcase { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .mobile-menu-btn { display: block; }
+      .hero-stats { gap: 1.5rem; }
+      .stat-number { font-size: 1.8rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 500px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .navbar { padding: 0.8rem 1rem; }
+      .hero { padding: 7rem 1rem 3rem; }
+      section { padding: 4rem 1rem; }
+      .newsletter-card { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- PARTICLE NETWORK CANVAS -->
+<canvas id="network-canvas"></canvas>
+
+<!-- NAVIGATION -->
+<nav class="navbar" id="navbar">
+  <div class="logo">iTpra<span>Ti</span></div>
+  <ul class="nav-links">
+    <li><a href="#internet">Internet</a></li>
+    <li><a href="#tv">TV Online</a></li>
+    <li><a href="#cplp">CPLP</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="https://carteira.itprati.ao" target="_blank" class="btn btn-ghost">
+      <span>&#128100;</span> Área Cliente
+    </a>
+    <a href="https://wa.me/244930000000" target="_blank" class="btn btn-primary">
+      <span>&#128172;</span> WhatsApp
+    </a>
+  </div>
+  <button class="mobile-menu-btn" onclick="toggleMobileMenu()">&#9776;</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      Internet & TV Online em Angola desde 2021
+    </div>
+    <h1>
+      Conecte-se ao<br>
+      <span class="gradient-text">Futuro Digital</span>
+    </h1>
+    <p>
+      A iTpraTi leva conectividade de alta velocidade e entretenimento
+      4K para centros urbanos e áreas remotas de Angola.
+      Tecnologia de ponta, atendimento humano.
+    </p>
+    <div class="hero-actions">
+      <a href="#internet" class="btn btn-primary btn-large">
+        <span>&#128640;</span> Ver Planos Internet
+      </a>
+      <a href="#tv" class="btn btn-glow btn-large">
+        <span>&#128250;</span> Explorar TV Online
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <div class="stat-number">50K+</div>
+        <div class="stat-label">Clientes Ativos</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">99.9%</div>
+        <div class="stat-label">Uptime Garantido</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">1000+</div>
+        <div class="stat-label">Canais TV</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">24/7</div>
+        <div class="stat-label">Suporte Local</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DUAL SERVICES -->
+<section id="servicos">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Nossos Serviços</h2>
+      <div class="section-divider"></div>
+      <p>Duas soluções poderosas, uma única experiência. Internet de fibra e TV online 4K para toda a família.</p>
+    </div>
+
+    <div class="services-showcase">
+      <div class="service-card net-card reveal" onclick="window.open('https://net.itprati.ao','_blank')">
+        <div class="service-icon">&#127760;</div>
+        <h3>Internet Banda Larga</h3>
+        <p>Conectividade de alta velocidade com tecnologia de última geração. Redes corporativas de voz e dados com estabilidade garantida.</p>
+        <ul class="service-features">
+          <li><span class="check">&#10003;</span> Fibra ótica de alta velocidade</li>
+          <li><span class="check">&#10003;</span> Redes corporativas dedicadas</li>
+          <li><span class="check">&#10003;</span> Transmissão de dados estável</li>
+          <li><span class="check">&#10003;</span> Cobertura Luanda e áreas remotas</li>
+          <li><span class="check">&#10003;</span> Suporte técnico especializado</li>
+        </ul>
+        <a href="https://net.itprati.ao" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;">
+          Ver Planos Internet <span>&#8594;</span>
+        </a>
+      </div>
+
+      <div class="service-card tv-card reveal" onclick="window.open('https://tv.itprati.ao','_blank')">
+        <div class="service-icon">&#128250;</div>
+        <h3>TV Online 4K</h3>
+        <p>A melhor experiência IPTV para toda a CPLP. Mais de 1000 canais ao vivo, filmes e séries em Ultra HD.</p>
+        <ul class="service-features">
+          <li><span class="check">&#10003;</span> Qualidade 4K Ultra HD</li>
+          <li><span class="check">&#10003;</span> 1000+ canais ao vivo CPLP</li>
+          <li><span class="check">&#10003;</span> Filmes e séries atualizadas</li>
+          <li><span class="check">&#10003;</span> Controle parental avançado</li>
+          <li><span class="check">&#10003;</span> Multi-dispositivos simultâneos</li>
+        </ul>
+        <a href="https://tv.itprati.ao" target="_blank" class="btn btn-glow" style="width:100%;justify-content:center;">
+          Explorar TV Online <span>&#8594;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERNET SPEED SECTION -->
+<section id="internet" class="speed-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Velocidade que <span class="gradient-text">Transforma</span></h2>
+      <div class="section-divider"></div>
+      <p>Planos de internet flexíveis para residências e empresas em Luanda.</p>
+    </div>
+
+    <div class="speed-meter reveal">
+      <div class="speed-display" id="speed-display">0</div>
+      <div class="speed-label">Mbps de velocidade máxima disponível</div>
+      <div class="speed-bar-container">
+        <div class="speed-bar" id="speed-bar"></div>
+      </div>
+
+      <div class="speed-plans">
+        <div class="speed-plan" onclick="animateSpeed(20)">
+          <div class="plan-speed">20</div>
+          <div class="plan-unit">Mbps</div>
+          <div class="plan-name">Essencial</div>
+          <div class="plan-desc">Para uso básico</div>
+        </div>
+        <div class="speed-plan" onclick="animateSpeed(50)">
+          <div class="plan-speed">50</div>
+          <div class="plan-unit">Mbps</div>
+          <div class="plan-name">Família</div>
+          <div class="plan-desc">Streaming HD</div>
+        </div>
+        <div class="speed-plan" onclick="animateSpeed(100)">
+          <div class="plan-speed">100</div>
+          <div class="plan-unit">Mbps</div>
+          <div class="plan-name">Premium</div>
+          <div class="plan-desc">4K & Gaming</div>
+        </div>
+        <div class="speed-plan" onclick="animateSpeed(200)">
+          <div class="plan-speed">200</div>
+          <div class="plan-unit">Mbps</div>
+          <div class="plan-name">Empresarial</div>
+          <div class="plan-desc">Rede dedicada</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TV SECTION -->
+<section id="tv" class="tv-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Entretenimento <span style="color:var(--secondary)">Sem Limites</span></h2>
+      <div class="section-divider"></div>
+      <p>Mais de 1000 canais ao vivo, filmes e séries em 4K Ultra HD para toda a família.</p>
+    </div>
+
+    <div class="channel-marquee reveal">
+      <div class="marquee-track">
+        <div class="channel-item">&#128240;</div>
+        <div class="channel-item">&#9917;</div>
+        <div class="channel-item">&#127916;</div>
+        <div class="channel-item">&#127925;</div>
+        <div class="channel-item">&#128118;</div>
+        <div class="channel-item">&#127871;</div>
+        <div class="channel-item">&#128250;</div>
+        <div class="channel-item">&#127918;</div>
+        <div class="channel-item">&#127757;</div>
+        <div class="channel-item">&#127917;</div>
+        <div class="channel-item">&#127942;</div>
+        <div class="channel-item">&#127914;</div>
+        <div class="channel-item">&#128240;</div>
+        <div class="channel-item">&#9917;</div>
+        <div class="channel-item">&#127916;</div>
+        <div class="channel-item">&#127925;</div>
+        <div class="channel-item">&#128118;</div>
+        <div class="channel-item">&#127871;</div>
+        <div class="channel-item">&#128250;</div>
+        <div class="channel-item">&#127918;</div>
+        <div class="channel-item">&#127757;</div>
+        <div class="channel-item">&#127917;</div>
+        <div class="channel-item">&#127942;</div>
+        <div class="channel-item">&#127914;</div>
+      </div>
+    </div>
+
+    <div class="tv-features-grid">
+      <div class="tv-feature reveal">
+        <div class="feature-icon">&#127909;</div>
+        <h4>4K Ultra HD</h4>
+        <p>Imagens cristalinas em ultra-alta definição para uma experiência visual incomparável em todos os dispositivos.</p>
+      </div>
+      <div class="tv-feature reveal">
+        <div class="feature-icon">&#128225;</div>
+        <h4>Canais ao Vivo</h4>
+        <p>Mais de 1000 canais dos principais países de língua portuguesa: notícias, esportes e entretenimento.</p>
+      </div>
+      <div class="tv-feature reveal">
+        <div class="feature-icon">&#127902;</div>
+        <h4>Filmes & Séries</h4>
+        <p>Vasta biblioteca sempre atualizada com os últimos lançamentos nacionais e internacionais.</p>
+      </div>
+      <div class="tv-feature reveal">
+        <div class="feature-icon">&#128106;</div>
+        <h4>Controle Parental</h4>
+        <p>Sistema avançado para garantir conteúdo adequado para toda a família com perfis personalizados.</p>
+      </div>
+      <div class="tv-feature reveal">
+        <div class="feature-icon">&#128241;</div>
+        <h4>Multi-dispositivos</h4>
+        <p>Compatível com smartphones, tablets, Smart TVs, TV Box, Fire Stick e computadores.</p>
+      </div>
+      <div class="tv-feature reveal">
+        <div class="feature-icon">&#9889;</div>
+        <h4>Streaming Estável</h4>
+        <p>Tecnologia avançada que garante transmissão contínua sem travamentos ou interrupções.</p>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:3rem;">
+      <a href="https://tv.itprati.ao" target="_blank" class="btn btn-glow btn-large">
+        <span>&#127916;</span> Começar Teste Grátis de 7 Dias
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CPLP SECTION -->
+<section id="cplp" class="cplp-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>Para Toda a <span class="gradient-text">CPLP</span></h2>
+      <div class="section-divider"></div>
+      <p>Conectando culturas e unindo idiomas através do melhor entretenimento em língua portuguesa.</p>
+    </div>
+
+    <div class="cplp-grid">
+      <div class="cplp-country reveal">
+        <div class="country-flag">&#127463;&#127479;</div>
+        <div class="country-info">
+          <h4>Brasil</h4>
+          <p>Maior mercado da CPLP</p>
+        </div>
+        <div class="country-channels">
+          <div class="num">400+</div>
+          <div class="label">Canais</div>
+        </div>
+      </div>
+      <div class="cplp-country reveal">
+        <div class="country-flag">&#127477;&#127481;</div>
+        <div class="country-info">
+          <h4>Portugal</h4>
+          <p>Berço da língua portuguesa</p>
+        </div>
+        <div class="country-channels">
+          <div class="num">150+</div>
+          <div class="label">Canais</div>
+        </div>
+      </div>
+      <div class="cplp-country reveal">
+        <div class="country-flag">&#127462;&#127476;</div>
+        <div class="country-info">
+          <h4>Angola</h4>
+          <p>Mercado em crescimento</p>
+        </div>
+        <div class="country-channels">
+          <div class="num">100+</div>
+          <div class="label">Canais</div>
+        </div>
+      </div>
+      <div class="cplp-country reveal">
+        <div class="country-flag">&#127474;&#127485;</div>
+        <div class="country-info">
+          <h4>Moçambique</h4>
+          <p>Costa do Índico</p>
+        </div>
+        <div class="country-channels">
+          <div class="num">80+</div>
+          <div class="label">Canais</div>
+        </div>
+      </div>
+      <div class="cplp-country reveal">
+        <div class="country-flag">&#127464;&#127487;</div>
+        <div class="country-info">
+          <h4>Cabo Verde</h4>
+          <p>Arquipélago atlântico</p>
+        </div>
+        <div class="country-channels">
+          <div class="num">30+</div>
+          <div class="label">Canais</div>
+        </div>
+      </div>
+      <div class="cplp-country reveal">
+        <div class="country-flag">&#127468;&#127479;</div>
+        <div class="country-info">
+          <h4>Guiné-Bissau</h4>
+          <p>Costa ocidental africana</p>
+        </div>
+        <div class="country-channels">
+          <div class="num">25+</div>
+          <div class="label">Canais</div>
+        </div>
+      </div>
+      <div class="cplp-country reveal">
+        <div class="country-flag">&#127480;&#127481;</div>
+        <div class="country-info">
+          <h4>São Tomé e Príncipe</h4>
+          <p>Ilhas do Golfo da Guiné</p>
+        </div>
+        <div class="country-channels">
+          <div class="num">15+</div>
+          <div class="label">Canais</div>
+        </div>
+      </div>
+      <div class="cplp-country reveal">
+        <div class="country-flag">&#127481;&#127481;</div>
+        <div class="country-info">
+          <h4>Timor-Leste</h4>
+          <p>Sudeste asiático</p>
+        </div>
+        <div class="country-channels">
+          <div class="num">20+</div>
+          <div class="label">Canais</div>
+        </div>
+      </div>
+      <div class="cplp-country reveal">
+        <div class="country-flag">&#127466;&#127478;</div>
+        <div class="country-info">
+          <h4>Guiné Equatorial</h4>
+          <p>Membro observador</p>
+        </div>
+        <div class="country-channels">
+          <div class="num">18+</div>
+          <div class="label">Canais</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-header reveal">
+      <h2>O que Dizem <span style="color:var(--primary)">Nossos Clientes</span></h2>
+      <div class="section-divider"></div>
+      <p>Histórias reais de pessoas que transformaram sua experiência digital com a iTpraTi.</p>
+    </div>
+
+    <div class="testimonials-grid">
+      <div class="testimonial reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">Incrível! A qualidade 4K é perfeita e nunca trava. Minha família toda adora assistir os canais brasileiros e portugueses.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">MS</div>
+          <div class="author-info">
+            <h4>Maria Silva</h4>
+            <p>São Paulo, Brasil</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">Finalmente encontrei um serviço que funciona perfeitamente na minha Smart TV. O suporte em português é excelente!</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">JS</div>
+          <div class="author-info">
+            <h4>João Santos</h4>
+            <p>Lisboa, Portugal</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">Uso no meu celular e TV Box. A instalação foi super fácil e agora posso assistir canais de todo o mundo lusófono.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">AF</div>
+          <div class="author-info">
+            <h4>Ana Ferreira</h4>
+            <p>Luanda, Angola</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">O controle parental é perfeito para minha família. Meus filhos assistem conteúdo seguro enquanto eu vejo esportes.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">CM</div>
+          <div class="author-info">
+            <h4>Carlos Mendes</h4>
+            <p>Maputo, Moçambique</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">Melhor investimento que fiz! Tenho acesso a filmes e séries que não encontro em lugar nenhum. Recomendo!</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">IC</div>
+          <div class="author-info">
+            <h4>Isabel Costa</h4>
+            <p>Praia, Cabo Verde</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial reveal">
+        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-text">A variedade de canais é impressionante. Desde notícias até entretenimento, tudo em excelente qualidade.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">PO</div>
+          <div class="author-info">
+            <h4>Pedro Oliveira</h4>
+            <p>Porto, Portugal</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER / CONTACT FORM -->
+<section id="contacto" class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-card reveal">
+      <h2>Mantenha-se <span class="gradient-text">Conectado</span></h2>
+      <p>Receba novidades, promoções exclusivas e fique por dentro de tudo da iTpraTi. Ou solicite que nossa equipe entre em contacto consigo.</p>
+
+      <form id="contact-form" action="https://formspree.io/f/xnqevwzy" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nome">Nome Completo *</label>
+            <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="telefone">Telefone / WhatsApp</label>
+            <input type="tel" id="telefone" name="telefone" placeholder="+244 9XX XXX XXX">
+          </div>
+          <div class="form-group">
+            <label for="cidade">Cidade / País</label>
+            <input type="text" id="cidade" name="cidade" placeholder="Ex: Luanda, Angola">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="interesse">Tenho interesse em:</label>
+          <select id="interesse" name="interesse">
+            <option value="ambos">Internet + TV Online</option>
+            <option value="internet">Apenas Internet</option>
+            <option value="tv">Apenas TV Online</option>
+            <option value="empresarial">Solução Empresarial</option>
+            <option value="outro">Outro</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="mensagem">Mensagem (opcional)</label>
+          <textarea id="mensagem" name="mensagem" rows="3" placeholder="Conte-nos mais sobre o que precisa..."></textarea>
+        </div>
+
+        <div class="form-checkboxes">
+          <label class="checkbox-item">
+            <input type="checkbox" name="newsletter" value="sim">
+            <span class="check-label"><strong>Quero receber a newsletter</strong> da iTpraTi com novidades, dicas e promoções exclusivas.</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" name="contacto" value="sim" checked>
+            <span class="check-label"><strong>Quero ser contactado</strong> pela equipe comercial da iTpraTi para conhecer os planos disponíveis.</span>
+          </label>
+        </div>
+
+        <input type="hidden" name="_subject" value="Novo contacto - Site iTpraTi">
+        <input type="hidden" name="_replyto" value="">
+
+        <button type="submit" class="btn btn-primary form-submit">
+          <span>&#128236;</span> Enviar Registo
+        </button>
+      </form>
+
+      <div class="form-success" id="form-success">
+        <div class="success-icon">&#10003;</div>
+        <h3>Registo Enviado!</h3>
+        <p>Obrigado pelo seu interesse. A nossa equipe entrará em contacto consigo em breve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">iTpra<span>Ti</span></div>
+      <p>Conectividade e entretenimento de alta qualidade para Angola e toda a CPLP. Desde 2021 levando o futuro digital até si.</p>
+      <div class="socials">
+        <a href="https://wa.me/244930000000" target="_blank" class="social-btn" title="WhatsApp">&#128172;</a>
+        <a href="#" class="social-btn" title="Facebook">&#128220;</a>
+        <a href="#" class="social-btn" title="Instagram">&#128247;</a>
+        <a href="#" class="social-btn" title="YouTube">&#9654;</a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Serviços</h4>
+      <ul>
+        <li><a href="https://net.itprati.ao" target="_blank">Internet Banda Larga</a></li>
+        <li><a href="https://tv.itprati.ao" target="_blank">TV Online 4K</a></li>
+        <li><a href="https://tv.itprati.ao" target="_blank">Teste Grátis 7 Dias</a></li>
+        <li><a href="https://carteira.itprati.ao" target="_blank">Área do Cliente</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Suporte</h4>
+      <ul>
+        <li><a href="https://wa.me/244930000000" target="_blank">WhatsApp Suporte</a></li>
+        <li><a href="https://tv.itprati.ao" target="_blank">Guia de Instalação</a></li>
+        <li><a href="#contacto">Contacto Comercial</a></li>
+        <li><a href="#contacto">Newsletter</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="#">Sobre Nós</a></li>
+        <li><a href="#cplp">Cobertura CPLP</a></li>
+        <li><a href="#">Carreiras</a></li>
+        <li><a href="#">Política de Privacidade</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2021-2026 iTpraTi. Todos os direitos reservados. |
+    <a href="https://net.itprati.ao" target="_blank">Internet</a> |
+    <a href="https://tv.itprati.ao" target="_blank">TV Online</a> |
+    <a href="https://carteira.itprati.ao" target="_blank">Área Cliente</a></p>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/244930000000" target="_blank" class="whatsapp-float">
+  <span>&#128172;</span>
+  <span class="whatsapp-tooltip">Falar no WhatsApp</span>
+</a>
+
+<script>
+  // ===== PARTICLE NETWORK ANIMATION =====
+  const canvas = document.getElementById('network-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let mouse = { x: null, y: null };
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.vx = (Math.random() - 0.5) * 0.5;
+      this.vy = (Math.random() - 0.5) * 0.5;
+      this.size = Math.random() * 2 + 1;
+      this.color = Math.random() > 0.5 ? 'rgba(255,107,0,' : 'rgba(0,212,255,';
+    }
+
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+
+      if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+      if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+
+      if (mouse.x != null) {
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 150) {
+          this.x -= dx * 0.01;
+          this.y -= dy * 0.01;
+        }
+      }
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = this.color + '0.6)';
+      ctx.fill();
+    }
+  }
+
+  function initParticles() {
+    particles = [];
+    const count = Math.min(window.innerWidth / 8, 120);
+    for (let i = 0; i < count; i++) {
+      particles.push(new Particle());
+    }
+  }
+  initParticles();
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw();
+
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(255,107,0,${0.1 * (1 - dist/120)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
+
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+
+  window.addEventListener('mouseleave', () => {
+    mouse.x = null;
+    mouse.y = null;
+  });
+
+  // ===== SCROLL REVEAL =====
+  const revealElements = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1 });
+
+  revealElements.forEach(el => revealObserver.observe(el));
+
+  // ===== NAVBAR SCROLL =====
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+
+  // ===== SPEED METER =====
+  let currentSpeed = 0;
+  function animateSpeed(target) {
+    const display = document.getElementById('speed-display');
+    const bar = document.getElementById('speed-bar');
+    const duration = 2000;
+    const start = currentSpeed;
+    const startTime = performance.now();
+
+    function update(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      currentSpeed = Math.round(start + (target - start) * ease);
+
+      display.textContent = currentSpeed;
+      bar.style.width = (currentSpeed / 250 * 100) + '%';
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      }
+    }
+    requestAnimationFrame(update);
+  }
+
+  // Animate to 100 on load
+  setTimeout(() => animateSpeed(100), 1000);
+
+  // ===== FORMSPREE =====
+  const form = document.getElementById('contact-form');
+  const successMsg = document.getElementById('form-success');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        form.style.display = 'none';
+        successMsg.style.display = 'block';
+      } else {
+        alert('Ocorreu um erro. Por favor, tente novamente.');
+      }
+    } catch (error) {
+      alert('Ocorreu um erro de conexão. Por favor, tente novamente.');
+    }
+  });
+
+  // ===== MOBILE MENU =====
+  function toggleMobileMenu() {
+    const links = document.querySelector('.nav-links');
+    links.style.display = links.style.display === 'flex' ? 'none' : 'flex';
+    links.style.position = 'absolute';
+    links.style.top = '100%';
+    links.style.left = '0';
+    links.style.right = '0';
+    links.style.flexDirection = 'column';
+    links.style.background = 'rgba(6,6,10,0.95)';
+    links.style.padding = '1rem 2rem';
+    links.style.backdropFilter = 'blur(20px)';
+  }
+</script>
+
+</body>
+</html>
