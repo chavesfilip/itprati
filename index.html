@@ -77,8 +77,9 @@
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.5rem;
       list-style: none;
+      align-items: center;
     }
 
     .nav-links a {
@@ -104,12 +105,12 @@
 
     .nav-cta {
       display: flex;
-      gap: 1rem;
+      gap: 0.8rem;
       align-items: center;
     }
 
     .btn {
-      padding: 0.6rem 1.4rem;
+      padding: 0.6rem 1.2rem;
       border-radius: 12px;
       font-weight: 600;
       font-size: 0.85rem;
@@ -325,7 +326,8 @@
       padding: 2.5rem;
       overflow: hidden;
       transition: all 0.4s ease;
-      cursor: pointer;
+      display: flex;
+      flex-direction: column;
     }
 
     .service-card::before {
@@ -389,6 +391,7 @@
     .service-features {
       list-style: none;
       margin-bottom: 1.5rem;
+      flex-grow: 1;
     }
 
     .service-features li {
@@ -420,7 +423,14 @@
       color: var(--secondary);
     }
 
-    /* SPEED METER */
+    .service-card-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: auto;
+    }
+
+    /* SPEED METER & PLANS */
     .speed-section {
       background: linear-gradient(180deg, var(--dark) 0%, var(--darker) 100%);
       position: relative;
@@ -437,8 +447,25 @@
       pointer-events: none;
     }
 
+    .installation-banner {
+      background: rgba(255, 107, 0, 0.1);
+      border: 1px solid var(--primary);
+      border-radius: 16px;
+      padding: 1rem 1.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .installation-banner span {
+      color: var(--primary);
+      font-weight: 800;
+    }
+
     .speed-meter {
-      max-width: 800px;
+      max-width: 1000px;
       margin: 0 auto;
       text-align: center;
     }
@@ -478,7 +505,7 @@
 
     .speed-plans {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
       margin-top: 3rem;
     }
@@ -487,19 +514,23 @@
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 1.5rem;
+      padding: 1.8rem;
       text-align: center;
       transition: all 0.3s;
       cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .speed-plan:hover {
       border-color: var(--primary);
       transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(255, 107, 0, 0.15);
     }
 
     .speed-plan .plan-speed {
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-weight: 800;
       color: var(--primary);
     }
@@ -509,15 +540,20 @@
       color: var(--text-muted);
     }
 
-    .speed-plan .plan-name {
-      margin-top: 0.5rem;
-      font-weight: 600;
+    .speed-plan .plan-price {
+      margin: 1rem 0;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+      padding: 0.6rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
     }
 
     .speed-plan .plan-desc {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
-      margin-top: 0.3rem;
     }
 
     /* TV CHANNELS MARQUEE */
@@ -1107,12 +1143,16 @@
   <ul class="nav-links">
     <li><a href="#internet">Internet</a></li>
     <li><a href="#tv">TV Online</a></li>
+    <li><a href="https://tv.itprati.ao/tvprationline.html" target="_blank" style="color: var(--secondary);">TV Gratuita</a></li>
     <li><a href="#cplp">CPLP</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
   <div class="nav-cta">
-    <a href="https://carteira.itprati.ao" target="_blank" class="btn btn-ghost">
+    <a href="https://uisp.itprati.ao/crm/login" target="_blank" class="btn btn-ghost" title="Área de Cliente">
       <span>&#128100;</span> Área Cliente
+    </a>
+    <a href="https://carteira.itprati.ao/login" target="_blank" class="btn btn-ghost" title="Carteira">
+      <span>&#128588;</span> Carteira
     </a>
     <a href="https://wa.me/244930000000" target="_blank" class="btn btn-primary">
       <span>&#128172;</span> WhatsApp
@@ -1126,7 +1166,7 @@
   <div class="hero-content">
     <div class="hero-badge">
       <span class="pulse"></span>
-      Internet & TV Online em Angola desde 2021
+      Cobertura de Internet e TV Online em Toda Angola
     </div>
     <h1>
       Conecte-se ao<br>
@@ -1134,7 +1174,7 @@
     </h1>
     <p>
       A iTpraTi leva conectividade de alta velocidade e entretenimento
-      4K para centros urbanos e áreas remotas de Angola.
+      4K para centros urbanos e áreas remotas de toda Angola.
       Tecnologia de ponta, atendimento humano.
     </p>
     <div class="hero-actions">
@@ -1176,23 +1216,30 @@
     </div>
 
     <div class="services-showcase">
-      <div class="service-card net-card reveal" onclick="window.open('https://net.itprati.ao','_blank')">
+      <!-- CARD INTERNET -->
+      <div class="service-card net-card reveal">
         <div class="service-icon">&#127760;</div>
         <h3>Internet Banda Larga</h3>
-        <p>Conectividade de alta velocidade com tecnologia de última geração. Redes corporativas de voz e dados com estabilidade garantida.</p>
+        <p>Conectividade de alta velocidade com tecnologia de última geração. Redes corporativas e residenciais com cobertura em toda Angola.</p>
         <ul class="service-features">
           <li><span class="check">&#10003;</span> Fibra ótica de alta velocidade</li>
-          <li><span class="check">&#10003;</span> Redes corporativas dedicadas</li>
-          <li><span class="check">&#10003;</span> Transmissão de dados estável</li>
-          <li><span class="check">&#10003;</span> Cobertura Luanda e áreas remotas</li>
-          <li><span class="check">&#10003;</span> Suporte técnico especializado</li>
+          <li><span class="check">&#10003;</span> Cobertura em toda Angola</li>
+          <li><span class="check">&#10003;</span> Taxa de Instalação: 252.100 AOA</li>
+          <li><span class="check">&#10003;</span> Planos Residenciais de 10MB a 200MB</li>
+          <li><span class="check">&#10003;</span> Suporte técnico especializado 24/7</li>
         </ul>
-        <a href="https://net.itprati.ao" target="_blank" class="btn btn-primary" style="width:100%;justify-content:center;">
-          Ver Planos Internet <span>&#8594;</span>
-        </a>
+        <div class="service-card-actions">
+          <a href="#internet" class="btn btn-primary" style="width:100%;justify-content:center;">
+            Ver Preços e Planos <span>&#8594;</span>
+          </a>
+          <a href="https://net.itprati.ao" target="_blank" class="btn btn-ghost" style="width:100%;justify-content:center;">
+            Visitar Site Antigo <span>&#128279;</span>
+          </a>
+        </div>
       </div>
 
-      <div class="service-card tv-card reveal" onclick="window.open('https://tv.itprati.ao','_blank')">
+      <!-- CARD TV -->
+      <div class="service-card tv-card reveal">
         <div class="service-icon">&#128250;</div>
         <h3>TV Online 4K</h3>
         <p>A melhor experiência IPTV para toda a CPLP. Mais de 1000 canais ao vivo, filmes e séries em Ultra HD.</p>
@@ -1200,12 +1247,17 @@
           <li><span class="check">&#10003;</span> Qualidade 4K Ultra HD</li>
           <li><span class="check">&#10003;</span> 1000+ canais ao vivo CPLP</li>
           <li><span class="check">&#10003;</span> Filmes e séries atualizadas</li>
-          <li><span class="check">&#10003;</span> Controle parental avançado</li>
+          <li><span class="check">&#10003;</span> Assista TV Online Gratuita</li>
           <li><span class="check">&#10003;</span> Multi-dispositivos simultâneos</li>
         </ul>
-        <a href="https://tv.itprati.ao" target="_blank" class="btn btn-glow" style="width:100%;justify-content:center;">
-          Explorar TV Online <span>&#8594;</span>
-        </a>
+        <div class="service-card-actions">
+          <a href="https://tv.itprati.ao/tvprationline.html" target="_blank" class="btn btn-glow" style="width:100%;justify-content:center;">
+            Ver TV Online Gratuita <span>&#128250;</span>
+          </a>
+          <a href="https://tv.itprati.ao" target="_blank" class="btn btn-ghost" style="width:100%;justify-content:center;">
+            Visitar Site Antigo <span>&#128279;</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -1215,43 +1267,82 @@
 <section id="internet" class="speed-section">
   <div class="container">
     <div class="section-header reveal">
-      <h2>Velocidade que <span class="gradient-text">Transforma</span></h2>
+      <h2>Planos de Internet <span class="gradient-text">Residenciais</span></h2>
       <div class="section-divider"></div>
-      <p>Planos de internet flexíveis para residências e empresas em Luanda.</p>
+      <p>Internet de alta velocidade com <strong>cobertura em toda Angola</strong>. Escolha a velocidade ideal para a sua casa.</p>
+    </div>
+
+    <!-- BANNER DE INSTALAÇÃO -->
+    <div class="installation-banner reveal">
+      Taxa de Instalação do Serviço de Internet: <span>252.100,00 AOA</span>
     </div>
 
     <div class="speed-meter reveal">
       <div class="speed-display" id="speed-display">0</div>
-      <div class="speed-label">Mbps de velocidade máxima disponível</div>
+      <div class="speed-label">Mbps de velocidade selecionada</div>
       <div class="speed-bar-container">
         <div class="speed-bar" id="speed-bar"></div>
       </div>
 
+      <!-- PLANOS DE INTERNET RESIDENCIAIS -->
       <div class="speed-plans">
-        <div class="speed-plan" onclick="animateSpeed(20)">
-          <div class="plan-speed">20</div>
-          <div class="plan-unit">Mbps</div>
-          <div class="plan-name">Essencial</div>
-          <div class="plan-desc">Para uso básico</div>
+        <div class="speed-plan" onclick="animateSpeed(10)">
+          <div>
+            <div class="plan-speed">10</div>
+            <div class="plan-unit">Mbps</div>
+            <div class="plan-price">33.333,33 AOA / mês</div>
+          </div>
+          <div class="plan-desc">Navegação diária, redes sociais e mensagens.</div>
         </div>
+
+        <div class="speed-plan" onclick="animateSpeed(15)">
+          <div>
+            <div class="plan-speed">15</div>
+            <div class="plan-unit">Mbps</div>
+            <div class="plan-price">55.555,55 AOA / mês</div>
+          </div>
+          <div class="plan-desc">Ideal para chamadas de vídeo e vídeos em HD.</div>
+        </div>
+
+        <div class="speed-plan" onclick="animateSpeed(25)">
+          <div>
+            <div class="plan-speed">25</div>
+            <div class="plan-unit">Mbps</div>
+            <div class="plan-price">90.000,00 AOA / mês</div>
+          </div>
+          <div class="plan-desc">Perfeito para múltiplos dispositivos e streaming.</div>
+        </div>
+
         <div class="speed-plan" onclick="animateSpeed(50)">
-          <div class="plan-speed">50</div>
-          <div class="plan-unit">Mbps</div>
-          <div class="plan-name">Família</div>
-          <div class="plan-desc">Streaming HD</div>
+          <div>
+            <div class="plan-speed">50</div>
+            <div class="plan-unit">Mbps</div>
+            <div class="plan-price">133.333,33 AOA / mês</div>
+          </div>
+          <div class="plan-desc">Alta velocidade para downloads rápidos e streaming 4K.</div>
         </div>
+
         <div class="speed-plan" onclick="animateSpeed(100)">
-          <div class="plan-speed">100</div>
-          <div class="plan-unit">Mbps</div>
-          <div class="plan-name">Premium</div>
-          <div class="plan-desc">4K & Gaming</div>
+          <div>
+            <div class="plan-speed">100</div>
+            <div class="plan-unit">Mbps</div>
+            <div class="plan-price">175.555,55 AOA / mês</div>
+          </div>
+          <div class="plan-desc">Uso intensivo, múltiplos utilizadores e gaming.</div>
         </div>
+
         <div class="speed-plan" onclick="animateSpeed(200)">
-          <div class="plan-speed">200</div>
-          <div class="plan-unit">Mbps</div>
-          <div class="plan-name">Empresarial</div>
-          <div class="plan-desc">Rede dedicada</div>
+          <div>
+            <div class="plan-speed">200</div>
+            <div class="plan-unit">Mbps</div>
+            <div class="plan-price">333.333,33 AOA / mês</div>
+          </div>
+          <div class="plan-desc">Velocidade máxima sem limites para toda a família.</div>
         </div>
+      </div>
+      
+      <div style="margin-top: 2rem;">
+        <a href="https://net.itprati.ao" target="_blank" class="btn btn-ghost">Visitar site antigo da Internet (net.itprati.ao)</a>
       </div>
     </div>
   </div>
@@ -1268,18 +1359,6 @@
 
     <div class="channel-marquee reveal">
       <div class="marquee-track">
-        <div class="channel-item">&#128240;</div>
-        <div class="channel-item">&#9917;</div>
-        <div class="channel-item">&#127916;</div>
-        <div class="channel-item">&#127925;</div>
-        <div class="channel-item">&#128118;</div>
-        <div class="channel-item">&#127871;</div>
-        <div class="channel-item">&#128250;</div>
-        <div class="channel-item">&#127918;</div>
-        <div class="channel-item">&#127757;</div>
-        <div class="channel-item">&#127917;</div>
-        <div class="channel-item">&#127942;</div>
-        <div class="channel-item">&#127914;</div>
         <div class="channel-item">&#128240;</div>
         <div class="channel-item">&#9917;</div>
         <div class="channel-item">&#127916;</div>
@@ -1328,9 +1407,12 @@
       </div>
     </div>
 
-    <div style="text-align:center; margin-top:3rem;">
-      <a href="https://tv.itprati.ao" target="_blank" class="btn btn-glow btn-large">
-        <span>&#127916;</span> Começar Teste Grátis de 7 Dias
+    <div style="text-align:center; margin-top:3rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+      <a href="https://tv.itprati.ao/tvprationline.html" target="_blank" class="btn btn-glow btn-large">
+        <span>&#128250;</span> Assistir TV Online Gratuita
+      </a>
+      <a href="https://tv.itprati.ao" target="_blank" class="btn btn-ghost btn-large">
+        <span>&#128279;</span> Visitar Site Antigo TV (tv.itprati.ao)
       </a>
     </div>
   </div>
@@ -1412,39 +1494,6 @@
           <div class="label">Canais</div>
         </div>
       </div>
-      <div class="cplp-country reveal">
-        <div class="country-flag">&#127480;&#127481;</div>
-        <div class="country-info">
-          <h4>São Tomé e Príncipe</h4>
-          <p>Ilhas do Golfo da Guiné</p>
-        </div>
-        <div class="country-channels">
-          <div class="num">15+</div>
-          <div class="label">Canais</div>
-        </div>
-      </div>
-      <div class="cplp-country reveal">
-        <div class="country-flag">&#127481;&#127481;</div>
-        <div class="country-info">
-          <h4>Timor-Leste</h4>
-          <p>Sudeste asiático</p>
-        </div>
-        <div class="country-channels">
-          <div class="num">20+</div>
-          <div class="label">Canais</div>
-        </div>
-      </div>
-      <div class="cplp-country reveal">
-        <div class="country-flag">&#127466;&#127478;</div>
-        <div class="country-info">
-          <h4>Guiné Equatorial</h4>
-          <p>Membro observador</p>
-        </div>
-        <div class="country-channels">
-          <div class="num">18+</div>
-          <div class="label">Canais</div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
@@ -1491,42 +1540,6 @@
           <div class="author-info">
             <h4>Ana Ferreira</h4>
             <p>Luanda, Angola</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial reveal">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-text">O controle parental é perfeito para minha família. Meus filhos assistem conteúdo seguro enquanto eu vejo esportes.</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">CM</div>
-          <div class="author-info">
-            <h4>Carlos Mendes</h4>
-            <p>Maputo, Moçambique</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial reveal">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-text">Melhor investimento que fiz! Tenho acesso a filmes e séries que não encontro em lugar nenhum. Recomendo!</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">IC</div>
-          <div class="author-info">
-            <h4>Isabel Costa</h4>
-            <p>Praia, Cabo Verde</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonial reveal">
-        <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p class="testimonial-text">A variedade de canais é impressionante. Desde notícias até entretenimento, tudo em excelente qualidade.</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">PO</div>
-          <div class="author-info">
-            <h4>Pedro Oliveira</h4>
-            <p>Porto, Portugal</p>
           </div>
         </div>
       </div>
@@ -1592,8 +1605,6 @@
         </div>
 
         <input type="hidden" name="_subject" value="Novo contacto - Site iTpraTi">
-        <input type="hidden" name="_replyto" value="">
-
         <button type="submit" class="btn btn-primary form-submit">
           <span>&#128236;</span> Enviar Registo
         </button>
@@ -1627,18 +1638,22 @@
       <ul>
         <li><a href="https://net.itprati.ao" target="_blank">Internet Banda Larga</a></li>
         <li><a href="https://tv.itprati.ao" target="_blank">TV Online 4K</a></li>
-        <li><a href="https://tv.itprati.ao" target="_blank">Teste Grátis 7 Dias</a></li>
-        <li><a href="https://carteira.itprati.ao" target="_blank">Área do Cliente</a></li>
+        <li><a href="https://tv.itprati.ao/tvprationline.html" target="_blank">TV Online Gratuita</a></li>
+        <li><a href="https://uisp.itprati.ao/crm/login" target="_blank">Área de Cliente</a></li>
+        <li><a href="https://carteira.itprati.ao/login" target="_blank">Carteira Digital</a></li>
       </ul>
     </div>
 
+    <!-- NOSSOS OUTROS NEGÓCIOS -->
     <div class="footer-col">
-      <h4>Suporte</h4>
+      <h4>Outros Negócios</h4>
       <ul>
-        <li><a href="https://wa.me/244930000000" target="_blank">WhatsApp Suporte</a></li>
-        <li><a href="https://tv.itprati.ao" target="_blank">Guia de Instalação</a></li>
-        <li><a href="#contacto">Contacto Comercial</a></li>
-        <li><a href="#contacto">Newsletter</a></li>
+        <li><a href="https://net.itprati.ao" target="_blank">Internet</a></li>
+        <li><a href="https://tv.itprati.ao" target="_blank">Televisão</a></li>
+        <li><a href="https://nandoo.pt" target="_blank">ERP Odoo</a></li>
+        <li><a href="https://vendus.itprati.ao" target="_blank">Software Facturação</a></li>
+        <li><a href="https://cloud.it.ao" target="_blank">Nuvem Empresarial</a></li>
+        <li><a href="https://www.qyar.me" target="_blank">Qyar QR Catálogos</a></li>
       </ul>
     </div>
 
@@ -1647,7 +1662,7 @@
       <ul>
         <li><a href="#">Sobre Nós</a></li>
         <li><a href="#cplp">Cobertura CPLP</a></li>
-        <li><a href="#">Carreiras</a></li>
+        <li><a href="#contacto">Contacto Comercial</a></li>
         <li><a href="#">Política de Privacidade</a></li>
       </ul>
     </div>
@@ -1657,7 +1672,8 @@
     <p>&copy; 2021-2026 iTpraTi. Todos os direitos reservados. |
     <a href="https://net.itprati.ao" target="_blank">Internet</a> |
     <a href="https://tv.itprati.ao" target="_blank">TV Online</a> |
-    <a href="https://carteira.itprati.ao" target="_blank">Área Cliente</a></p>
+    <a href="https://uisp.itprati.ao/crm/login" target="_blank">Área Cliente</a> |
+    <a href="https://carteira.itprati.ao/login" target="_blank">Carteira</a></p>
   </div>
 </footer>
 
@@ -1789,7 +1805,7 @@
   function animateSpeed(target) {
     const display = document.getElementById('speed-display');
     const bar = document.getElementById('speed-bar');
-    const duration = 2000;
+    const duration = 1500;
     const start = currentSpeed;
     const startTime = performance.now();
 
@@ -1800,7 +1816,7 @@
       currentSpeed = Math.round(start + (target - start) * ease);
 
       display.textContent = currentSpeed;
-      bar.style.width = (currentSpeed / 250 * 100) + '%';
+      bar.style.width = (currentSpeed / 200 * 100) + '%';
 
       if (progress < 1) {
         requestAnimationFrame(update);
@@ -1809,8 +1825,8 @@
     requestAnimationFrame(update);
   }
 
-  // Animate to 100 on load
-  setTimeout(() => animateSpeed(100), 1000);
+  // Animate to 25 on load
+  setTimeout(() => animateSpeed(25), 1000);
 
   // ===== FORMSPREE =====
   const form = document.getElementById('contact-form');
