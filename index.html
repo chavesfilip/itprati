@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iTpraTi - Internet Fibra + TV 4K no Kilamba e Luanda</title>
+  <meta name="description" content="iTpraTi - A melhor combinação de Internet Fibra ultra-rápida e Televisão IPTV 4K em Angola. Instalação rápida no Kilamba em menos de 48 horas.">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #FF6B00;
+      --primary-glow: rgba(255, 107, 0, 0.4);
+      --secondary: #00D4FF;
+      --secondary-glow: rgba(0, 212, 255, 0.3);
+      --accent: #7C3AED;
+      --whatsapp: #25D366;
+      --whatsapp-glow: rgba(37, 211, 102, 0.4);
+      --dark: #0A0A0F;
+      --darker: #06060A;
+      --card: #111118;
+      --card-hover: #1A1A24;
+      --text: #F0F0F5;
+      --text-muted: #8B8B9A;
+      --border: rgba(255,255,255,0.08);
+      --success: #10B981;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--darker);
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* PARTICLE CANVAS */
+    #network-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* NAVIGATION */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(6,6,10,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      padding: 0.7rem 2rem;
+      background: rgba(6,6,10,0.95);
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -1px;
+      text-decoration: none;
+    }
+
+    .logo span { font-weight: 300; }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--primary);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+    }
+
+    /* BUTTONS */
+    .btn {
+      padding: 0.65rem 1.3rem;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #FF8C00);
+      color: white;
+      box-shadow: 0 4px 20px var(--primary-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--primary-glow);
+    }
+
+    .btn-whatsapp {
+      background: linear-gradient(135deg, var(--whatsapp), #1EBE57);
+      color: white;
+      box-shadow: 0 4px 20px var(--whatsapp-glow);
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px var(--whatsapp-glow);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      background: var(--card);
+      border-color: var(--primary);
+    }
+
+    .btn-large {
+      padding: 1rem 2.2rem;
+      font-size: 1rem;
+      border-radius: 14px;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8rem 1.5rem 4rem;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 950px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.5rem 1.2rem;
+      background: rgba(255,107,0,0.1);
+      border: 1px solid rgba(255,107,0,0.3);
+      border-radius: 100px;
+      font-size: 0.85rem;
+      color: var(--primary);
+      margin-bottom: 2rem;
+    }
+
+    .hero-badge .pulse {
+      width: 8px; height: 8px;
+      background: var(--primary);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--primary);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.3); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.3rem, 5.5vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      letter-spacing: -1.5px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-features-list {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-feature-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text);
+      background: rgba(255,255,255,0.03);
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+
+    /* COVERAGE CHECKER WIDGET */
+    .coverage-section {
+      position: relative;
+      z-index: 2;
+      margin-top: -2rem;
+      padding: 0 1.5rem 4rem;
+    }
+
+    .coverage-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2.5rem;
+      max-width: 850px;
+      margin: 0 auto;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      position: relative;
+    }
+
+    .coverage-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 24px 24px 0 0;
+    }
+
+    .coverage-header {
+      text-align: center;
+      margin-bottom: 1.8rem;
+    }
+
+    .coverage-header h3 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 0.4rem;
+    }
+
+    .coverage-header p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .coverage-form {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .coverage-select {
+      flex: 1;
+      min-width: 260px;
+      padding: 0.9rem 1.2rem;
+      background: var(--darker);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .coverage-select:focus {
+      border-color: var(--primary);
+    }
+
+    .coverage-result {
+      margin-top: 1.5rem;
+      padding: 1.2rem;
+      border-radius: 12px;
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .coverage-result.success {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid var(--success);
+      color: #D1FAE5;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* SECTIONS */
+    section {
+      position: relative;
+      z-index: 2;
+      padding: 5rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .section-divider {
+      width: 50px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+      margin: 1rem auto;
+    }
+
+    /* COMBOS PRICING TABLE */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 2rem;
+      align-items: stretch;
+    }
+
+    .pricing-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255,107,0,0.3);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .pricing-card.popular {
+      border: 2px solid var(--primary);
+      background: linear-gradient(180deg, rgba(255,107,0,0.05) 0%, var(--card) 100%);
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--primary), #FF8C00);
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 0.3rem 1.2rem;
+      border-radius: 100px;
+      letter-spacing: 1px;
+    }
+
+    .plan-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin-bottom: 0.4rem;
+    }
+
+    .plan-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .plan-price {
+      margin-bottom: 1.8rem;
+    }
+
+    .plan-price .amount {
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--text);
+    }
+
+    .plan-price .period {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .plan-features {
+      list-style: none;
+      margin-bottom: 2rem;
+      flex-grow: 1;
+    }
+
+    .plan-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      padding: 0.6rem 0;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+
+    .plan-features li strong {
+      color: var(--text);
+    }
+
+    .plan-features .check {
+      color: var(--whatsapp);
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .installation-notice {
+      background: rgba(255,107,0,0.08);
+      border: 1px dashed var(--primary);
+      border-radius: 12px;
+      padding: 0.9rem;
+      text-align: center;
+      margin-top: 2.5rem;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+
+    /* VANTAGENS */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--secondary);
+      transform: translateY(-5px);
+    }
+
+    .feature-icon {
+      width: 54px; height: 54px;
+      border-radius: 16px;
+      background: rgba(0, 212, 255, 0.1);
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .feature-card h4 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ECOSSISTEMA B2B */
+    .ecosystem-section {
+      background: linear-gradient(180deg, var(--darker) 0%, var(--dark) 100%);
+    }
+
+    .ecosystem-card {
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(0, 212, 255, 0.05));
+      border: 1px solid rgba(124, 58, 237, 0.3);
+      border-radius: 24px;
+      padding: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .ecosystem-info h3 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .ecosystem-info p {
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .ecosystem-tags {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    .ecosystem-tag {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      padding: 0.4rem 0.9rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .ecosystem-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .b2b-link-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 1.2rem;
+      border-radius: 16px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.3s;
+    }
+
+    .b2b-link-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    .b2b-link-card h5 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: 0.3rem;
+    }
+
+    .b2b-link-card p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* FAQ ACCORDION */
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .faq-question {
+      padding: 1.3rem 1.5rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    .faq-question span {
+      transition: transform 0.3s;
+      color: var(--primary);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+      padding: 0 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.93rem;
+      line-height: 1.7;
+    }
+
+    .faq-item.active {
+      border-color: var(--primary);
+    }
+
+    .faq-item.active .faq-question span {
+      transform: rotate(180deg);
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      padding: 0 1.5rem 1.3rem;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: var(--darker);
+      border-top: 1px solid var(--border);
+      padding: 4rem 1.5rem 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+    }
+
+    .footer-brand p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 1rem 0;
+    }
+
+    .footer-col h4 {
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1.2rem;
+      color: var(--text);
+    }
+
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 0.7rem; }
+
+    .footer-col a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+      transition: color 0.3s;
+    }
+
+    .footer-col a:hover { color: var(--primary); }
+
+    .footer-bottom {
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    /* WHATSAPP FLOATING BUTTON */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 2rem; right: 2rem;
+      z-index: 1000;
+      width: 60px; height: 60px;
+      background: var(--whatsapp);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.8rem;
+      text-decoration: none;
+      box-shadow: 0 4px 25px var(--whatsapp-glow);
+      transition: all 0.3s;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .ecosystem-card { grid-template-columns: 1fr; text-align: center; }
+      .ecosystem-links { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 7rem; }
+      .coverage-form { flex-direction: column; }
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- CANVAS PARTÍCULAS -->
+<canvas id="network-canvas"></canvas>
+
+<!-- NAVEGAÇÃO -->
+<nav class="navbar" id="navbar">
+  <a href="#" class="logo">iTpra<span>Ti</span></a>
+  
+  <ul class="nav-links">
+    <li><a href="#combos">Combos (NET + TV)</a></li>
+    <li><a href="#cobertura">Cobertura</a></li>
+    <li><a href="#vantagens">Vantagens</a></li>
+    <li><a href="#ecossistema">Empresas (B2B)</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+
+  <div class="nav-cta">
+    <a href="https://uisp.itprati.ao/crm/login" target="_blank" class="btn btn-ghost">
+      <span>👤</span> Área Cliente
+    </a>
+    <a href="https://wa.me/244930000000?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20Combos%20iTpraTi." target="_blank" class="btn btn-whatsapp">
+      <span>💬</span> Aderir Agora
+    </a>
+  </div>
+</nav>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="pulse"></span>
+      Instalação Prioritária no Kilamba em menos de 48h
+    </div>
+    
+    <h1>
+      A Melhor Internet Fibra + IPTV 4K<br>
+      do <span class="gradient-text">Kilamba e Luanda</span>
+    </h1>
+    
+    <p>
+      Navegação sem interrupções, futebol em 4K e os teus canais favoritos num só pacote.
+      Esquece faturas separadas: junta Internet e Televisão na iTpraTi.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#combos" class="btn btn-primary btn-large">
+        <span>🚀</span> Ver Planos e Disponibilidade
+      </a>
+      <a href="https://wa.me/244930000000?text=Olá!%20Quero%20falar%20com%20um%20consultor%20comercial%20da%20iTpraTi." target="_blank" class="btn btn-ghost btn-large">
+        <span>📞</span> Falar com Consultor
+      </a>
+    </div>
+
+    <div class="hero-features-list">
+      <div class="hero-feature-item">✓ Fibra de Alta Velocidade</div>
+      <div class="hero-feature-item">✓ IPTV 4K Sem Travamentos</div>
+      <div class="hero-feature-item">✓ Apoio Técnico Local no Kilamba</div>
+    </div>
+  </div>
+</section>
+
+<!-- VERIFICADOR DE COBERTURA RÁPIDO -->
+<div class="coverage-section" id="cobertura">
+  <div class="coverage-card">
+    <div class="coverage-header">
+      <h3>📍 Verifique a Disponibilidade na sua Zona</h3>
+      <p>Confirme se a rede de Fibra e IPTV da iTpraTi já está ativa no seu Bloco ou Condomínio</p>
+    </div>
+
+    <div class="coverage-form">
+      <select class="coverage-select" id="zoneSelect">
+        <option value="">Selecione a sua localização em Luanda...</option>
+        <option value="kilamba_a_d">Kilamba - Blocos A, B, C, D (Ativação < 48h)</option>
+        <option value="kilamba_e_h">Kilamba - Blocos E, F, G, H (Ativação < 48h)</option>
+        <option value="kilamba_i_x">Kilamba - Blocos I a X (Ativação < 48h)</option>
+        <option value="talatona">Talatona & Condomínios</option>
+        <option value="maianga">Maianga & Centro da Cidade</option>
+        <option value="sequele">Centralidade do Sequele</option>
+        <option value="outra">Outro Bairro / Zona de Luanda</option>
+      </select>
+      
+      <button class="btn btn-primary" onclick="checkCoverage()">Verificar Agora</button>
+    </div>
+
+    <div class="coverage-result" id="coverageResult"></div>
+  </div>
+</div>
+
+<!-- TABELA DE COMBOS COMBINADOS (NET + TV) -->
+<section id="combos">
+  <div class="container">
+    <div class="section-header">
+      <h2>Combos iTpraTi (NET + TV)</h2>
+      <div class="section-divider"></div>
+      <p>Escolhe o pacote ideal para a tua casa ou negócio com preços transparentes em Kwanzas.</p>
+    </div>
+
+    <div class="pricing-grid">
+      <!-- PLANO 1: INICIAL -->
+      <div class="pricing-card">
+        <div>
+          <div class="plan-title">Combo Inicial</div>
+          <div class="plan-subtitle">Ideal para pequenas famílias e apartamentos.</div>
+          <div class="plan-price">
+            <span class="amount">55.500 Kz</span><span class="period">/mês</span>
+          </div>
+
+          <ul class="plan-features">
+            <li><span class="check">✓</span> <span><strong>15 Mbps</strong> Fibra Ótica Rápida</span></li>
+            <li><span class="check">✓</span> <span><strong>+150 Canais IPTV</strong> em HD/4K</span></li>
+            <li><span class="check">✓</span> <span>Acesso em 1 Smart TV / Box</span></li>
+            <li><span class="check">✓</span> <span>Navegação Ilimitada Sem Quotas</span></li>
+            <li><span class="check">✓</span> <span>Suporte Técnico Local</span></li>
+          </ul>
+        </div>
+
+        <a href="https://wa.me/244930000000?text=Olá!%20Quero%20aderir%20ao%20*Combo%20Inicial*%20(15Mbps%20%2B%20150%20Canais)." target="_blank" class="btn btn-ghost" style="width:100%;">
+          Escolher Combo Inicial
+        </a>
+      </div>
+
+      <!-- PLANO 2: FAMÍLIA VIP (POPULAR) -->
+      <div class="pricing-card popular">
+        <div class="popular-badge">Mais Popular / Recomendado</div>
+        <div>
+          <div class="plan-title">Combo Família VIP</div>
+          <div class="plan-subtitle">Ultra velocidade e entretenimento completo para a casa toda.</div>
+          <div class="plan-price">
+            <span class="amount">133.300 Kz</span><span class="period">/mês</span>
+          </div>
+
+          <ul class="plan-features">
+            <li><span class="check">✓</span> <span><strong>50 Mbps</strong> Fibra Ultra-Rápida</span></li>
+            <li><span class="check">✓</span> <span><strong>+1000 Canais 4K Real</strong> (Futebol, Filmes, Séries)</span></li>
+            <li><span class="check">✓</span> <span>Multi-tela (TV, Telemóvel e Tablet)</span></li>
+            <li><span class="check">✓</span> <span>Suporte Prioritário no Kilamba (< 48h)</span></li>
+            <li><span class="check">✓</span> <span>Sem oscilações durante jogos decisivos</span></li>
+          </ul>
+        </div>
+
+        <a href="https://wa.me/244930000000?text=Olá!%20Quero%20aderir%20ao%20*Combo%20Família%20VIP*%20(50Mbps%20%2B%20IPTV%204K%20Completo)." target="_blank" class="btn btn-primary" style="width:100%;">
+          Aderir ao Combo VIP
+        </a>
+      </div>
+
+      <!-- PLANO 3: BUSINESS -->
+      <div class="pricing-card">
+        <div>
+          <div class="plan-title">Combo Business</div>
+          <div class="plan-subtitle">Para lojas, escritórios e estabelecimentos comerciais.</div>
+          <div class="plan-price">
+            <span class="amount">195.000 Kz</span><span class="period">/mês</span>
+          </div>
+
+          <ul class="plan-features">
+            <li><span class="check">✓</span> <span><strong>100 Mbps</strong> Fibra Dedicada Simétrica</span></li>
+            <li><span class="check">✓</span> <span>IPTV Corporativo para Lojas / Salas</span></li>
+            <li><span class="check">✓</span> <span><strong>Integração Faturação AGT (Vendus)</strong></span></li>
+            <li><span class="check">✓</span> <span>IP Fixo & Prioridade na Rede</span></li>
+            <li><span class="check">✓</span> <span>Gestor de Conta Comercial Dedicado</span></li>
+          </ul>
+        </div>
+
+        <a href="https://wa.me/244930000000?text=Olá!%20Quero%20solicitar%20uma%20Proposta%20Empresarial%20do%20*Combo%20Business*." target="_blank" class="btn btn-ghost" style="width:100%;">
+          Solicitar Proposta Empresarial
+        </a>
+      </div>
+    </div>
+
+    <div class="installation-notice">
+      ⚡ <strong>Taxa de Instalação de Fibra:</strong> Opções facilitadas para moradores e comerciantes do Kilamba. Paga via Multicaixa Express.
+    </div>
+  </div>
+</section>
+
+<!-- VANTAGENS E DIFERENCIAIS -->
+<section id="vantagens" style="background: var(--dark);">
+  <div class="container">
+    <div class="section-header">
+      <h2>Porquê Escolher a iTpraTi?</h2>
+      <div class="section-divider"></div>
+      <p>Desenvolvidos a pensar na realidade local de Luanda com tecnologia de padrões internacionais.</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h4>Estabilidade Garantida</h4>
+        <p>Infraestrutura de fibra de última geração com rotas redundantes para evitar quedas no sinal.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📍</div>
+        <h4>Suporte Local no Kilamba</h4>
+        <p>Equipa técnica sediada diretamente no Kilamba. Atendimento presencial e resoluções rápidas.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📺</div>
+        <h4>IPTV em 4K Real</h4>
+        <p>Transmissão fluída e sem travamentos para assistires aos jogos da Champions, Girabola e novelas.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">💳</div>
+        <h4>Pagamento Sem Descomplicação</h4>
+        <p>Renovações fáceis e instantâneas via Multicaixa Express, IBAN ou Carteira Digital.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSSISTEMA ITPRATI (B2B CROSS-SELL) -->
+<section id="ecossistema" class="ecosystem-section">
+  <div class="container">
+    <div class="ecosystem-card">
+      <div class="ecosystem-info">
+        <h3>Tem uma Loja ou Negócio no Kilamba? 💼</h3>
+        <p>
+          A iTpraTi não entrega apenas a melhor internet. Nós fornecemos todo o ecossistema tecnológico necessário para operares e faturares com segurança em Angola.
+        </p>
+
+        <div class="ecosystem-tags">
+          <span class="ecosystem-tag">✓ Faturação Certificada pela AGT</span>
+          <span class="ecosystem-tag">✓ Servidores em Nuvem</span>
+          <span class="ecosystem-tag">✓ Catálogos QR</span>
+        </div>
+
+        <a href="https://wa.me/244930000000?text=Olá!%20Quero%20conhecer%20as%20soluções%20comerciais%20da%20iTpraTi%20para%20o%20meu%20negócio." target="_blank" class="btn btn-primary">
+          Falar com Especialista B2B
+        </a>
+      </div>
+
+      <div class="ecosystem-links">
+        <a href="https://vendus.itprati.ao" target="_blank" class="b2b-link-card">
+          <h5>Vendus iTpraTi 🧾</h5>
+          <p>Sistema de Faturação POS certificado pela AGT. Ideal para lojas e restauração.</p>
+        </a>
+
+        <a href="https://cloud.it.ao" target="_blank" class="b2b-link-card">
+          <h5>Clouditão ☁️</h5>
+          <p>Hospedagem VPS soberana, e-mails corporativos e cópias de segurança.</p>
+        </a>
+
+        <a href="https://www.qyar.me" target="_blank" class="b2b-link-card">
+          <h5>Qyar QR 📱</h5>
+          <p>Catálogos e menus digitais interativos para atendimento rápido via QR Code.</p>
+        </a>
+
+        <a href="https://nandoo.pt" target="_blank" class="b2b-link-card">
+          <h5>ERP Odoo ⚙️</h5>
+          <p>Gestão empresarial integrada para médias e grandes empresas em Angola.</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ ACCORDION -->
+<section id="faq">
+  <div class="container">
+    <div class="section-header">
+      <h2>Perguntas Frequentes</h2>
+      <div class="section-divider"></div>
+      <p>Tira todas as tuas dúvidas antes de aderir aos nossos serviços.</p>
+    </div>
+
+    <div class="faq-container">
+      <div class="faq-item">
+        <div class="faq-question">Quanto tempo demora a instalação no Kilamba? <span>▼</span></div>
+        <div class="faq-answer">
+          Após a validação do contrato e pagamento da taxa, a nossa equipa local efetua a instalação e ativação do serviço em <strong>menos de 48 horas</strong>.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Preciso de comprar uma Box de TV para utilizar o IPTV? <span>▼</span></div>
+        <div class="faq-answer">
+          Se já tiveres uma Smart TV (Samsung, LG, Android TV) podes instalar diretamente a nossa aplicação. Caso tenhas uma TV tradicional, disponibilizamos TV Boxes 4K pré-configuradas.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Quais são as formas de pagamento disponíveis? <span>▼</span></div>
+        <div class="faq-answer">
+          Aceitamos pagamentos via Multicaixa Express, Transferência bancária (IBAN) e através da Carteira Digital iTpraTi.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">Quais os documentos necessários para fazer a adesão? <span>▼</span></div>
+        <div class="faq-answer">
+          Para particulares é apenas necessário a cópia do BI válido e comprovativo de residência. Para empresas (Combo Business), é necessário a Cópia do NIF, Certidão Comercial e BI do Gerente.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">iTpra<span>Ti</span></a>
+      <p>Líder em conectividade de alta velocidade, entretenimento IPTV 4K e ecossistema de gestão empresarial no Kilamba e Luanda.</p>
+      <p style="font-size: 0.8rem; color: var(--text-muted);">NIF: 5000XXXXXX | Luanda - Angola</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Serviços</h4>
+      <ul>
+        <li><a href="#combos">Combos NET + TV</a></li>
+        <li><a href="#cobertura">Verificar Cobertura</a></li>
+        <li><a href="https://uisp.itprati.ao/crm/login" target="_blank">Área do Cliente</a></li>
+        <li><a href="https://carteira.itprati.ao/login" target="_blank">Carteira Digital</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Plataformas B2B</h4>
+      <ul>
+        <li><a href="https://vendus.itprati.ao" target="_blank">Software AGT (Vendus)</a></li>
+        <li><a href="https://cloud.it.ao" target="_blank">Nuvem Clouditão</a></li>
+        <li><a href="https://www.qyar.me" target="_blank">Qyar QR Code</a></li>
+        <li><a href="https://nandoo.pt" target="_blank">Odoo ERP</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contacto Directo</h4>
+      <ul>
+        <li><a href="https://wa.me/244930000000" target="_blank">WhatsApp Comercial</a></li>
+        <li><a href="mailto:suporte@itprati.ao">suporte@itprati.ao</a></li>
+        <li><a href="#">Kilamba, Luanda - Angola</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy; 2021-2026 iTpraTi. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- BOTÃO FLUTUANTE WHATSAPP -->
+<a href="https://wa.me/244930000000?text=Olá!%20Estou%20no%20site%20da%20iTpraTi%20e%20preciso%20de%20ajuda." target="_blank" class="whatsapp-float" title="Falar no WhatsApp">
+  💬
+</a>
+
+<script>
+  // ===== PARTÍCULAS DE FUNDO =====
+  const canvas = document.getElementById('network-canvas');
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.vx = (Math.random() - 0.5) * 0.4;
+      this.vy = (Math.random() - 0.5) * 0.4;
+      this.size = Math.random() * 2 + 1;
+      this.color = Math.random() > 0.5 ? 'rgba(255,107,0,' : 'rgba(0,212,255,';
+    }
+
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+      if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+      if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fillStyle = this.color + '0.5)';
+      ctx.fill();
+    }
+  }
+
+  function initParticles() {
+    particles = [];
+    const count = Math.min(window.innerWidth / 10, 80);
+    for (let i = 0; i < count; i++) particles.push(new Particle());
+  }
+  initParticles();
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw();
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 110) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(255,107,0,${0.08 * (1 - dist/110)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
+
+  // ===== VERIFICADOR DE COBERTURA =====
+  function checkCoverage() {
+    const select = document.getElementById('zoneSelect');
+    const result = document.getElementById('coverageResult');
+    
+    if (!select.value) {
+      alert("Por favor, selecione uma localização na lista.");
+      return;
+    }
+
+    result.style.display = 'block';
+    result.className = 'coverage-result success';
+    
+    if (select.value.includes('kilamba')) {
+      result.innerHTML = `
+        <strong>✅ Cobertura Total Confirmada no Kilamba!</strong><br>
+        Temos equipas técnicas no terreno. A tua instalação pode ser agendada com SLA prioritário em até 48 horas.<br><br>
+        <a href="https://wa.me/244930000000?text=Olá!%20Confirmei%20cobertura%20no%20Kilamba%20e%20quero%20agendar%20a%20minha%20instalação." target="_blank" class="btn btn-whatsapp">Agendar Instalação via WhatsApp</a>
+      `;
+    } else {
+      result.innerHTML = `
+        <strong>✅ Cobertura Disponível em Luanda!</strong><br>
+        Temos viabilidade técnica para a sua região. Entre em contacto para validarmos o número do seu edifício/rua.<br><br>
+        <a href="https://wa.me/244930000000?text=Olá!%20Quero%20validar%20a%20viabilidade%20técnica%20para%20a%20minha%20zona%20em%20Luanda." target="_blank" class="btn btn-whatsapp">Validar Morada no WhatsApp</a>
+      `;
+    }
+  }
+
+  // ===== FAQ ACCORDION =====
+  document.querySelectorAll('.faq-question').forEach(item => {
+    item.addEventListener('click', () => {
+      const parent = item.parentElement;
+      parent.classList.toggle('active');
+    });
+  });
+
+  // ===== NAVBAR SCROLL =====
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+</script>
+
+</body>
+</html>
