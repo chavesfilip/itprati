@@ -1,12 +1,78 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-AO">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>iTpraTi - Internet Fibra + TV 4K no Kilamba e Luanda</title>
-  <meta name="description" content="iTpraTi - A melhor combinação de Internet Fibra ultra-rápida e Televisão IPTV 4K em Angola. Instalação rápida no Kilamba em menos de 48 horas.">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <meta name="description" content="A melhor combinação de Internet Fibra ultra-rápida e Televisão IPTV 4K em Angola. Instalação rápida no Kilamba em menos de 48 horas.">
   
+  <!-- Canonical & Indexação -->
+  <link rel="canonical" href="https://itprati.ao/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <!-- Resource Hints (Carregamento Ultrarrápido) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Google Fonts com font-display: swap -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Open Graph / WhatsApp Preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://itprati.ao/">
+  <meta property="og:title" content="iTpraTi - Internet Fibra + TV 4K no Kilamba e Luanda">
+  <meta property="og:description" content="A melhor combinação de Internet Fibra ultra-rápida e Televisão IPTV 4K em Angola. Instalação no Kilamba em menos de 48h.">
+  <meta property="og:image" content="https://itprati.ao/assets/og-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="pt_AO">
+  <meta property="og:site_name" content="iTpraTi">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="iTpraTi - Internet Fibra + TV 4K">
+  <meta name="twitter:description" content="Velocidade sem limites e IPTV 4K no Kilamba e Luanda.">
+  <meta name="twitter:image" content="https://itprati.ao/assets/og-preview.jpg">
+
+  <!-- SEO Geolocalizado (Kilamba / Luanda) -->
+  <meta name="geo.region" content="AO-LUA">
+  <meta name="geo.placename" content="Kilamba, Luanda">
+  <meta name="geo.position" content="-8.9950;13.2560">
+  <meta name="ICBM" content="-8.9950, 13.2560">
+
+  <!-- PWA & Navegação Mobile -->
+  <meta name="theme-color" content="#0A0A0F">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <!-- Dados Estruturados Schema.org (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "InternetServiceProvider",
+    "name": "iTpraTi",
+    "url": "https://itprati.ao",
+    "logo": "https://itprati.ao/assets/logo.png",
+    "image": "https://itprati.ao/assets/og-preview.jpg",
+    "description": "Provedor de Internet Fibra Ótica e Televisão IPTV 4K no Kilamba e Luanda, Angola.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Kilamba",
+      "addressRegion": "Luanda",
+      "addressCountry": "AO"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -8.9950,
+      "longitude": 13.2560
+    },
+    "areaServed": ["Kilamba", "Luanda"],
+    "priceRange": "55500 Kz - 195000 Kz"
+  }
+  </script>
+
   <style>
     :root {
       --primary: #FF6B00;
@@ -57,6 +123,7 @@
       align-items: center;
       background: rgba(6,6,10,0.85);
       backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
       transition: all 0.3s ease;
     }
@@ -526,7 +593,7 @@
       margin-bottom: 1.2rem;
     }
 
-    .feature-card h4 {
+    .feature-card h3 {
       font-size: 1.15rem;
       font-weight: 700;
       margin-bottom: 0.6rem;
@@ -603,7 +670,7 @@
       transform: translateY(-3px);
     }
 
-    .b2b-link-card h5 {
+    .b2b-link-card h4 {
       font-size: 1rem;
       font-weight: 700;
       color: var(--secondary);
@@ -778,10 +845,10 @@
   </ul>
 
   <div class="nav-cta">
-    <a href="https://uisp.itprati.ao/crm/login" target="_blank" class="btn btn-ghost">
+    <a href="https://uisp.itprati.ao/crm/login" target="_blank" rel="noopener" class="btn btn-ghost">
       <span>👤</span> Área Cliente
     </a>
-    <a href="https://wa.me/244930000000?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20Combos%20iTpraTi." target="_blank" class="btn btn-whatsapp">
+    <a href="https://wa.me/244930000000?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20Combos%20iTpraTi." target="_blank" rel="noopener" class="btn btn-whatsapp">
       <span>💬</span> Aderir Agora
     </a>
   </div>
@@ -809,7 +876,7 @@
       <a href="#combos" class="btn btn-primary btn-large">
         <span>🚀</span> Ver Planos e Disponibilidade
       </a>
-      <a href="https://wa.me/244930000000?text=Olá!%20Quero%20falar%20com%20um%20consultor%20comercial%20da%20iTpraTi." target="_blank" class="btn btn-ghost btn-large">
+      <a href="https://wa.me/244930000000?text=Olá!%20Quero%20falar%20com%20um%20consultor%20comercial%20da%20iTpraTi." target="_blank" rel="noopener" class="btn btn-ghost btn-large">
         <span>📞</span> Falar com Consultor
       </a>
     </div>
@@ -831,13 +898,13 @@
     </div>
 
     <div class="coverage-form">
-      <select class="coverage-select" id="zoneSelect">
+      <select class="coverage-select" id="zoneSelect" aria-label="Selecione a sua localização">
         <option value="">Selecione a sua localização em Luanda...</option>
-        <option value="kilamba_a_d">Kilamba - Blocos A, B, C, D (Ativação < 48h)</option>
-        <option value="kilamba_e_h">Kilamba - Blocos E, F, G, H (Ativação < 48h)</option>
-        <option value="kilamba_i_x">Kilamba - Blocos I a X (Ativação < 48h)</option>
-        <option value="talatona">Talatona & Condomínios</option>
-        <option value="maianga">Maianga & Centro da Cidade</option>
+        <option value="kilamba_a_d">Kilamba - Blocos A, B, C, D (Ativação &lt; 48h)</option>
+        <option value="kilamba_e_h">Kilamba - Blocos E, F, G, H (Ativação &lt; 48h)</option>
+        <option value="kilamba_i_x">Kilamba - Blocos I a X (Ativação &lt; 48h)</option>
+        <option value="talatona">Talatona &amp; Condomínios</option>
+        <option value="maianga">Maianga &amp; Centro da Cidade</option>
         <option value="sequele">Centralidade do Sequele</option>
         <option value="outra">Outro Bairro / Zona de Luanda</option>
       </select>
@@ -877,7 +944,7 @@
           </ul>
         </div>
 
-        <a href="https://wa.me/244930000000?text=Olá!%20Quero%20aderir%20ao%20*Combo%20Inicial*%20(15Mbps%20%2B%20150%20Canais)." target="_blank" class="btn btn-ghost" style="width:100%;">
+        <a href="https://wa.me/244930000000?text=Olá!%20Quero%20aderir%20ao%20*Combo%20Inicial*%20(15Mbps%20%2B%20150%20Canais)." target="_blank" rel="noopener" class="btn btn-ghost" style="width:100%;">
           Escolher Combo Inicial
         </a>
       </div>
@@ -896,12 +963,12 @@
             <li><span class="check">✓</span> <span><strong>50 Mbps</strong> Fibra Ultra-Rápida</span></li>
             <li><span class="check">✓</span> <span><strong>+1000 Canais 4K Real</strong> (Futebol, Filmes, Séries)</span></li>
             <li><span class="check">✓</span> <span>Multi-tela (TV, Telemóvel e Tablet)</span></li>
-            <li><span class="check">✓</span> <span>Suporte Prioritário no Kilamba (< 48h)</span></li>
+            <li><span class="check">✓</span> <span>Suporte Prioritário no Kilamba (&lt; 48h)</span></li>
             <li><span class="check">✓</span> <span>Sem oscilações durante jogos decisivos</span></li>
           </ul>
         </div>
 
-        <a href="https://wa.me/244930000000?text=Olá!%20Quero%20aderir%20ao%20*Combo%20Família%20VIP*%20(50Mbps%20%2B%20IPTV%204K%20Completo)." target="_blank" class="btn btn-primary" style="width:100%;">
+        <a href="https://wa.me/244930000000?text=Olá!%20Quero%20aderir%20ao%20*Combo%20Família%20VIP*%20(50Mbps%20%2B%20IPTV%204K%20Completo)." target="_blank" rel="noopener" class="btn btn-primary" style="width:100%;">
           Aderir ao Combo VIP
         </a>
       </div>
@@ -919,12 +986,12 @@
             <li><span class="check">✓</span> <span><strong>100 Mbps</strong> Fibra Dedicada Simétrica</span></li>
             <li><span class="check">✓</span> <span>IPTV Corporativo para Lojas / Salas</span></li>
             <li><span class="check">✓</span> <span><strong>Integração Faturação AGT (Vendus)</strong></span></li>
-            <li><span class="check">✓</span> <span>IP Fixo & Prioridade na Rede</span></li>
+            <li><span class="check">✓</span> <span>IP Fixo &amp; Prioridade na Rede</span></li>
             <li><span class="check">✓</span> <span>Gestor de Conta Comercial Dedicado</span></li>
           </ul>
         </div>
 
-        <a href="https://wa.me/244930000000?text=Olá!%20Quero%20solicitar%20uma%20Proposta%20Empresarial%20do%20*Combo%20Business*." target="_blank" class="btn btn-ghost" style="width:100%;">
+        <a href="https://wa.me/244930000000?text=Olá!%20Quero%20solicitar%20uma%20Proposta%20Empresarial%20do%20*Combo%20Business*." target="_blank" rel="noopener" class="btn btn-ghost" style="width:100%;">
           Solicitar Proposta Empresarial
         </a>
       </div>
@@ -948,25 +1015,25 @@
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon">⚡</div>
-        <h4>Estabilidade Garantida</h4>
+        <h3>Estabilidade Garantida</h3>
         <p>Infraestrutura de fibra de última geração com rotas redundantes para evitar quedas no sinal.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">📍</div>
-        <h4>Suporte Local no Kilamba</h4>
+        <h3>Suporte Local no Kilamba</h3>
         <p>Equipa técnica sediada diretamente no Kilamba. Atendimento presencial e resoluções rápidas.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">📺</div>
-        <h4>IPTV em 4K Real</h4>
+        <h3>IPTV em 4K Real</h3>
         <p>Transmissão fluída e sem travamentos para assistires aos jogos da Champions, Girabola e novelas.</p>
       </div>
 
       <div class="feature-card">
         <div class="feature-icon">💳</div>
-        <h4>Pagamento Sem Descomplicação</h4>
+        <h3>Pagamento Sem Descomplicação</h3>
         <p>Renovações fáceis e instantâneas via Multicaixa Express, IBAN ou Carteira Digital.</p>
       </div>
     </div>
@@ -989,29 +1056,29 @@
           <span class="ecosystem-tag">✓ Catálogos QR</span>
         </div>
 
-        <a href="https://wa.me/244930000000?text=Olá!%20Quero%20conhecer%20as%20soluções%20comerciais%20da%20iTpraTi%20para%20o%20meu%20negócio." target="_blank" class="btn btn-primary">
+        <a href="https://wa.me/244930000000?text=Olá!%20Quero%20conhecer%20as%20soluções%20comerciais%20da%20iTpraTi%20para%20o%20meu%20negócio." target="_blank" rel="noopener" class="btn btn-primary">
           Falar com Especialista B2B
         </a>
       </div>
 
       <div class="ecosystem-links">
-        <a href="https://vendus.itprati.ao" target="_blank" class="b2b-link-card">
-          <h5>Vendus iTpraTi 🧾</h5>
+        <a href="https://vendus.itprati.ao" target="_blank" rel="noopener" class="b2b-link-card">
+          <h4>Vendus iTpraTi 🧾</h4>
           <p>Sistema de Faturação POS certificado pela AGT. Ideal para lojas e restauração.</p>
         </a>
 
-        <a href="https://cloud.it.ao" target="_blank" class="b2b-link-card">
-          <h5>Clouditão ☁️</h5>
+        <a href="https://cloud.it.ao" target="_blank" rel="noopener" class="b2b-link-card">
+          <h4>Clouditão ☁️</h4>
           <p>Hospedagem VPS soberana, e-mails corporativos e cópias de segurança.</p>
         </a>
 
-        <a href="https://www.qyar.me" target="_blank" class="b2b-link-card">
-          <h5>Qyar QR 📱</h5>
+        <a href="https://www.qyar.me" target="_blank" rel="noopener" class="b2b-link-card">
+          <h4>Qyar QR 📱</h4>
           <p>Catálogos e menus digitais interativos para atendimento rápido via QR Code.</p>
         </a>
 
-        <a href="https://nandoo.pt" target="_blank" class="b2b-link-card">
-          <h5>ERP Odoo ⚙️</h5>
+        <a href="https://nandoo.pt" target="_blank" rel="noopener" class="b2b-link-card">
+          <h4>ERP Odoo ⚙️</h4>
           <p>Gestão empresarial integrada para médias e grandes empresas em Angola.</p>
         </a>
       </div>
@@ -1074,25 +1141,25 @@
       <ul>
         <li><a href="#combos">Combos NET + TV</a></li>
         <li><a href="#cobertura">Verificar Cobertura</a></li>
-        <li><a href="https://uisp.itprati.ao/crm/login" target="_blank">Área do Cliente</a></li>
-        <li><a href="https://carteira.itprati.ao/login" target="_blank">Carteira Digital</a></li>
+        <li><a href="https://uisp.itprati.ao/crm/login" target="_blank" rel="noopener">Área do Cliente</a></li>
+        <li><a href="https://carteira.itprati.ao/login" target="_blank" rel="noopener">Carteira Digital</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
       <h4>Plataformas B2B</h4>
       <ul>
-        <li><a href="https://vendus.itprati.ao" target="_blank">Software AGT (Vendus)</a></li>
-        <li><a href="https://cloud.it.ao" target="_blank">Nuvem Clouditão</a></li>
-        <li><a href="https://www.qyar.me" target="_blank">Qyar QR Code</a></li>
-        <li><a href="https://nandoo.pt" target="_blank">Odoo ERP</a></li>
+        <li><a href="https://vendus.itprati.ao" target="_blank" rel="noopener">Software AGT (Vendus)</a></li>
+        <li><a href="https://cloud.it.ao" target="_blank" rel="noopener">Nuvem Clouditão</a></li>
+        <li><a href="https://www.qyar.me" target="_blank" rel="noopener">Qyar QR Code</a></li>
+        <li><a href="https://nandoo.pt" target="_blank" rel="noopener">Odoo ERP</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
       <h4>Contacto Directo</h4>
       <ul>
-        <li><a href="https://wa.me/244930000000" target="_blank">WhatsApp Comercial</a></li>
+        <li><a href="https://wa.me/244930000000" target="_blank" rel="noopener">WhatsApp Comercial</a></li>
         <li><a href="mailto:suporte@itprati.ao">suporte@itprati.ao</a></li>
         <li><a href="#">Kilamba, Luanda - Angola</a></li>
       </ul>
@@ -1105,29 +1172,32 @@
 </footer>
 
 <!-- BOTÃO FLUTUANTE WHATSAPP -->
-<a href="https://wa.me/244930000000?text=Olá!%20Estou%20no%20site%20da%20iTpraTi%20e%20preciso%20de%20ajuda." target="_blank" class="whatsapp-float" title="Falar no WhatsApp">
+<a href="https://wa.me/244930000000?text=Olá!%20Estou%20no%20site%20da%20iTpraTi%20e%20preciso%20de%20ajuda." target="_blank" rel="noopener" class="whatsapp-float" title="Falar no WhatsApp" aria-label="Falar no WhatsApp">
   💬
 </a>
 
 <script>
-  // ===== PARTÍCULAS DE FUNDO =====
+  // ===== PARTÍCULAS DE FUNDO (OTIMIZADO PARA PAGESPEED) =====
   const canvas = document.getElementById('network-canvas');
   const ctx = canvas.getContext('2d');
   let particles = [];
+  let animationFrameId;
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   }
   resizeCanvas();
-  window.addEventListener('resize', resizeCanvas);
+  window.addEventListener('resize', resizeCanvas, { passive: true });
 
   class Particle {
     constructor() {
       this.x = Math.random() * canvas.width;
       this.y = Math.random() * canvas.height;
-      this.vx = (Math.random() - 0.5) * 0.4;
-      this.vy = (Math.random() - 0.5) * 0.4;
+      this.vx = (Math.random() - 0.5) * 0.3;
+      this.vy = (Math.random() - 0.5) * 0.3;
       this.size = Math.random() * 2 + 1;
       this.color = Math.random() > 0.5 ? 'rgba(255,107,0,' : 'rgba(0,212,255,';
     }
@@ -1149,7 +1219,7 @@
 
   function initParticles() {
     particles = [];
-    const count = Math.min(window.innerWidth / 10, 80);
+    const count = prefersReducedMotion ? 0 : Math.min(window.innerWidth / 15, 50);
     for (let i = 0; i < count; i++) particles.push(new Particle());
   }
   initParticles();
@@ -1163,19 +1233,28 @@
         const dx = particles[i].x - particles[j].x;
         const dy = particles[i].y - particles[j].y;
         const dist = Math.sqrt(dx*dx + dy*dy);
-        if (dist < 110) {
+        if (dist < 100) {
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(255,107,0,${0.08 * (1 - dist/110)})`;
+          ctx.strokeStyle = `rgba(255,107,0,${0.06 * (1 - dist/100)})`;
           ctx.lineWidth = 0.5;
           ctx.stroke();
         }
       }
     }
-    requestAnimationFrame(animateParticles);
+    animationFrameId = requestAnimationFrame(animateParticles);
   }
-  animateParticles();
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      cancelAnimationFrame(animationFrameId);
+    } else if (!prefersReducedMotion) {
+      animateParticles();
+    }
+  });
+
+  if (!prefersReducedMotion) animateParticles();
 
   // ===== VERIFICADOR DE COBERTURA =====
   function checkCoverage() {
@@ -1194,13 +1273,13 @@
       result.innerHTML = `
         <strong>✅ Cobertura Total Confirmada no Kilamba!</strong><br>
         Temos equipas técnicas no terreno. A tua instalação pode ser agendada com SLA prioritário em até 48 horas.<br><br>
-        <a href="https://wa.me/244930000000?text=Olá!%20Confirmei%20cobertura%20no%20Kilamba%20e%20quero%20agendar%20a%20minha%20instalação." target="_blank" class="btn btn-whatsapp">Agendar Instalação via WhatsApp</a>
+        <a href="https://wa.me/244930000000?text=Olá!%20Confirmei%20cobertura%20no%20Kilamba%20e%20quero%20agendar%20a%20minha%20instalação." target="_blank" rel="noopener" class="btn btn-whatsapp">Agendar Instalação via WhatsApp</a>
       `;
     } else {
       result.innerHTML = `
         <strong>✅ Cobertura Disponível em Luanda!</strong><br>
         Temos viabilidade técnica para a sua região. Entre em contacto para validarmos o número do seu edifício/rua.<br><br>
-        <a href="https://wa.me/244930000000?text=Olá!%20Quero%20validar%20a%20viabilidade%20técnica%20para%20a%20minha%20zona%20em%20Luanda." target="_blank" class="btn btn-whatsapp">Validar Morada no WhatsApp</a>
+        <a href="https://wa.me/244930000000?text=Olá!%20Quero%20validar%20a%20viabilidade%20técnica%20para%20a%20minha%20zona%20em%20Luanda." target="_blank" rel="noopener" class="btn btn-whatsapp">Validar Morada no WhatsApp</a>
       `;
     }
   }
@@ -1221,7 +1300,7 @@
     } else {
       nav.classList.remove('scrolled');
     }
-  });
+  }, { passive: true });
 </script>
 
 </body>
