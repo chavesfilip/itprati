@@ -4,148 +4,408 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apresentação Comercial - iTpraTi</title>
+    <meta name="description" content="Conheça a iTpraTi: Internet Super Rápida e TV com +1000 canais para sua casa ou empresa.">
     <style>
+        /* ================= Variaveis de Cor ================= */
+        :root {
+            --dark-blue: #0A2540;
+            --tech-blue: #0066FF;
+            --accent-orange: #FF6B00;
+            --wa-green: #25D366;
+            --bg-light: #F4F7F9;
+            --text-main: #334155;
+            --text-muted: #64748B;
+            --border-color: #E2E8F0;
+        }
+
+        /* ================= Reset & Base ================= */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-main);
             line-height: 1.6;
-            color: #333333;
+            -webkit-font-smoothing: antialiased;
+            padding: 20px;
+        }
+
+        a { text-decoration: none; transition: all 0.3s ease; }
+        
+        /* ================= Estrutura Principal ================= */
+        .letter-wrapper {
             max-width: 800px;
             margin: 0 auto;
-            padding: 40px;
-            background-color: #f9f9f9;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(10, 37, 64, 0.08);
+            overflow: hidden;
+            animation: fadeUp 0.6s ease-out forwards;
         }
-        .container {
-            background-color: #ffffff;
-            padding: 50px;
-            border-top: 6px solid #FF6B00; /* Laranja iTpraTi */
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
+
+        /* ================= Cabeçalho ================= */
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+            padding: 30px 40px;
+            border-bottom: 1px solid var(--border-color);
+            background: #ffffff;
         }
+
         .logo {
             font-size: 28px;
             font-weight: 900;
-            color: #0052FF; /* Azul iTpraTi */
+            color: var(--dark-blue);
+            letter-spacing: -0.5px;
         }
-        .logo span { color: #FF6B00; }
-        .contact-info {
+        
+        .logo span { color: var(--accent-orange); }
+
+        .header-contacts {
             text-align: right;
-            font-size: 13px;
-            color: #666;
+            font-size: 14px;
+            color: var(--text-muted);
         }
+
+        .header-contacts strong {
+            display: block;
+            color: var(--dark-blue);
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        /* ================= Corpo da Carta ================= */
+        .content { padding: 40px; }
+
         h1 {
-            font-size: 24px;
-            color: #0052FF;
-            margin-bottom: 10px;
+            color: var(--dark-blue);
+            font-size: 28px;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            font-weight: 800;
         }
-        p { margin-bottom: 20px; font-size: 15px; }
-        .highlight {
-            background-color: #f0f4ff;
-            border-left: 4px solid #0052FF;
-            padding: 15px;
-            font-weight: 600;
-            color: #0052FF;
-            margin: 25px 0;
+
+        p { margin-bottom: 20px; font-size: 16px; }
+        p strong { color: var(--dark-blue); }
+
+        /* ================= Destaques & Serviços ================= */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.05) 0%, rgba(0, 102, 255, 0.1) 100%);
+            border-left: 4px solid var(--tech-blue);
+            padding: 20px 25px;
+            border-radius: 0 8px 8px 0;
             font-size: 18px;
+            font-weight: 600;
+            color: var(--tech-blue);
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .service-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            padding: 30px 25px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 102, 255, 0.1);
+            border-color: var(--tech-blue);
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 107, 0, 0.1);
+            color: var(--accent-orange);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .service-icon svg { width: 28px; height: 28px; fill: currentColor; }
+        
+        .service-card h3 {
+            color: var(--dark-blue);
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .service-list { list-style: none; }
+        .service-list li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 12px;
+            font-size: 15px;
+        }
+        .service-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--tech-blue);
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* ================= Secção de Contacto (Form & Botões) ================= */
+        .contact-section {
+            background: var(--bg-light);
+            padding: 40px;
+            border-radius: 12px;
+            margin-top: 40px;
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-section h2 {
+            color: var(--dark-blue);
+            font-size: 22px;
+            margin-bottom: 25px;
             text-align: center;
         }
-        .services {
+
+        .action-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
             display: flex;
-            justify-content: space-between;
-            margin-top: 30px;
-        }
-        .service-box {
-            width: 45%;
-            padding: 20px;
-            background-color: #fafafa;
-            border: 1px solid #eaeaea;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 24px;
             border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            text-align: center;
         }
-        .service-box h3 {
-            margin-top: 0;
-            color: #FF6B00;
-            font-size: 18px;
+
+        .btn-wa { background: var(--wa-green); color: #fff; }
+        .btn-wa:hover { background: #1ebe57; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3); }
+
+        .btn-email { background: var(--tech-blue); color: #fff; }
+        .btn-email:hover { background: #0052cc; box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3); }
+
+        /* Formulário */
+        .contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
         }
-        ul { padding-left: 20px; margin-bottom: 0; }
-        li { margin-bottom: 10px; font-size: 14px; }
+
+        .form-group { display: flex; flex-direction: column; }
+        .form-group.full-width { grid-column: span 2; }
+        
+        .contact-form label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark-blue);
+            margin-bottom: 6px;
+        }
+
+        .contact-form input, .contact-form textarea {
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 15px;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--tech-blue);
+            box-shadow: 0 0 0 3px rgba(0, 102, 255, 0.1);
+        }
+
+        .contact-form textarea { resize: vertical; min-height: 100px; }
+
+        .btn-submit {
+            background: var(--dark-blue);
+            color: #fff;
+            grid-column: span 2;
+            padding: 16px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .btn-submit:hover { background: #071a2d; }
+
+        /* ================= Rodapé ================= */
         .footer {
-            margin-top: 40px;
-            border-top: 2px solid #f0f0f0;
-            padding-top: 20px;
+            background: var(--dark-blue);
+            color: rgba(255,255,255,0.8);
+            padding: 40px;
+            text-align: center;
+            border-radius: 0 0 12px 12px;
             font-size: 14px;
         }
-        .cta-button {
-            display: inline-block;
-            background-color: #0052FF;
-            color: #ffffff;
-            padding: 12px 25px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 4px;
-            margin-top: 15px;
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+            flex-wrap: wrap;
         }
-        @media print {
-            body { background-color: #ffffff; padding: 0; }
-            .container { box-shadow: none; padding: 0; border-top: none; }
+
+        .footer-links a { color: #fff; font-weight: 600; }
+        .footer-links a:hover { color: var(--accent-orange); }
+
+        /* ================= Ícones SVG (Inline) ================= */
+        .icon { width: 20px; height: 20px; fill: currentColor; }
+
+        /* ================= Responsivo (Mobile) ================= */
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .header { flex-direction: column; text-align: center; gap: 15px; padding: 25px 20px; }
+            .header-contacts { text-align: center; }
+            .content, .contact-section { padding: 25px 20px; }
+            h1 { font-size: 24px; }
+            .services-grid, .action-buttons, .contact-form { grid-template-columns: 1fr; }
+            .form-group.full-width { grid-column: span 1; }
+            .btn-submit { grid-column: span 1; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
+
+    <div class="letter-wrapper">
+        <header class="header">
             <div class="logo">iTpraTi<span>.ao</span></div>
-            <div class="contact-info">
-                <strong>Tecnologia e Conectividade</strong><br>
+            <div class="header-contacts">
+                <strong>Tecnologia e Conectividade</strong>
                 Luanda, Angola<br>
-                Tel: +244 935 020 324<br>
-                net.itprati.ao | tv.itprati.ao
+                Apoio ao Cliente: +244 935 020 324
             </div>
-        </div>
+        </header>
 
-        <h1>Saudações! O futuro digital chegou ao vosso espaço.</h1>
-        
-        <p>Prezado(a) Morador(a) / Gestor(a),</p>
-        
-        <p>Sabemos que <strong>não há boas soluções de internet e televisão</strong> no mercado atual. É por isso que a <strong>iTpraTi</strong> traz até à sua residência ou empresa uma ligação de <strong>internet super rápida</strong> e uma televisão com <strong>mais de 500 canais em direto e em português, filmes, séries</strong> e muitos mais conteúdos de entretenimento para o seu lar.</p>
+        <main class="content">
+            <h1>Saudações! O futuro digital chegou ao vosso espaço.</h1>
+            
+            <p>Prezado(a) Morador(a) / Gestor(a),</p>
+            
+            <p>Sabemos que <strong>não há boas soluções de internet e televisão</strong> no mercado atual. É por isso que a <strong>iTpraTi</strong> traz até à sua residência ou empresa uma ligação de <strong>internet super rápida</strong> e uma televisão com <strong>mais de 1000 canais em direto e em português, filmes e séries em 4K</strong>, e muitos mais conteúdos de entretenimento para o seu lar.</p>
 
-        <div class="highlight">
-            A nossa rede tem total cobertura no vosso condomínio!
-        </div>
-
-        <p>Ao contratar os nossos serviços agora, terá ótimos preços de instalação e mensalidade. E temos um compromisso com a qualidade: <strong>mesmo que não adquira a nossa internet de imediato, pode desfrutar de 3 dias de sinal de IPTV totalmente gratuito</strong>.</p>
-
-        <div class="services">
-            <div class="service-box">
-                <h3>🌐 Net iTpraTi</h3>
-                <ul>
-                    <li><strong>Internet Super Rápida:</strong> Navegue e trabalhe sem cortes.</li>
-                    <li><strong>Estabilidade Empresarial:</strong> Infraestrutura robusta para o Kilamba.</li>
-                    <li><strong>Suporte Local 24/7:</strong> Assistência técnica rápida e eficiente.</li>
-                </ul>
+            <div class="highlight-box">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                A nossa rede tem total cobertura no vosso condomínio!
             </div>
-            <div class="service-box">
-                <h3>📺 TV iTpraTi</h3>
-                <ul>
-                    <li><strong>+500 Canais em Português:</strong> Desporto, notícias e muito mais.</li>
-                    <li><strong>Filmes e Séries:</strong> Entretenimento ilimitado on-demand.</li>
-                    <li><strong>3 Dias Grátis:</strong> Teste o nosso IPTV sem nenhum custo!</li>
-                </ul>
+
+            <p>Ao contratar os nossos serviços agora, terá ótimos preços de instalação e mensalidade. E temos um compromisso com a qualidade: <strong>mesmo que não adquira a nossa internet de imediato, pode desfrutar de 3 dias de sinal de IPTV totalmente gratuito</strong> para atestar a nossa qualidade.</p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 3C7.79 3 3.7 4.55 0.38 7.31l1.42 1.83C4.54 6.8 8.16 5.4 12 5.4s7.46 1.4 10.2 3.74l1.42-1.83C20.3 4.55 16.21 3 12 3zm0 5.4c-3 0-5.87.97-8.2 2.7l1.42 1.83c1.8-1.25 4.14-2.13 6.78-2.13s4.98.88 6.78 2.13l1.42-1.83c-2.33-1.73-5.2-2.7-8.2-2.7zm0 5.4c-1.5 0-2.85.5-4 1.35l1.42 1.83c.7-.5 1.55-.78 2.58-.78s1.88.28 2.58.78l1.42-1.83c-1.15-.85-2.5-1.35-4-1.35zM12 18c-.83 0-1.5.67-1.5 1.5S11.17 21 12 21s1.5-.67 1.5-1.5S12.83 18 12 18z"/></svg>
+                    </div>
+                    <h3>Net iTpraTi</h3>
+                    <ul class="service-list">
+                        <li><strong>Internet Super Rápida:</strong> Navegue, jogue e trabalhe sem cortes.</li>
+                        <li><strong>Estabilidade Empresarial:</strong> Infraestrutura robusta para residências e lojas.</li>
+                        <li><strong>Suporte Local 24/7:</strong> Assistência técnica rápida e sempre disponível.</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24"><path d="M21 3H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 1.99-.9 1.99-2L23 5c0-1.1-.9-2-2-2zm0 14H3V5h18v12zM5 7h14v8H5z"/></svg>
+                    </div>
+                    <h3>TV iTpraTi</h3>
+                    <ul class="service-list">
+                        <li><strong>+1000 Canais:</strong> Desporto, notícias, infantis e cultura em português.</li>
+                        <li><strong>Filmes e Séries em 4K:</strong> Entretenimento on-demand de altíssima qualidade.</li>
+                        <li><strong>3 Dias Grátis:</strong> Teste a nossa grelha sem qualquer compromisso!</li>
+                    </ul>
+                </div>
             </div>
-        </div>
 
-        <p style="margin-top: 30px;">Não fique preso a serviços que falham quando você mais precisa. Faça a mudança para a rede que realmente funciona.</p>
+            <p style="text-align: center; font-size: 18px; margin-top: 30px;">
+                Não fique preso a serviços que falham quando você mais precisa. <br><strong>Faça a mudança para a rede que realmente funciona.</strong>
+            </p>
 
-        <div class="footer">
-            <p><strong>Estamos à vossa disposição. Agende já a sua instalação ou peça o seu teste grátis de 3 dias!</strong></p>
-            <p>Com os melhores cumprimentos,<br><strong>A Equipa iTpraTi.ao</strong></p>
-            <a href="https://wa.me/244935020324" class="cta-button">Ligue ou Envie Mensagem: +244 935 020 324</a>
-        </div>
+            <section class="contact-section">
+                <h2>Fale Connosco e Agende a sua Instalação</h2>
+                
+                <div class="action-buttons">
+                    <a href="https://wa.me/244935020324?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Internet%20e%20o%20teste%20de%203%20dias%20grátis." target="_blank" class="btn btn-wa">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        Falar no WhatsApp
+                    </a>
+                    
+                    <a href="mailto:info@itprati.ao?subject=Pedido de Informação - Serviços iTpraTi" class="btn btn-email">
+                        <svg class="icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        Contactar por E-mail
+                    </a>
+                </div>
+
+                <form class="contact-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Pedido enviado com sucesso! A nossa equipa entrará em contacto em breve.');">
+                    <div class="form-group">
+                        <label for="nome">O seu Nome</label>
+                        <input type="text" id="nome" name="nome" placeholder="Ex: João Baptista" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telemóvel / WhatsApp</label>
+                        <input type="tel" id="telefone" name="telefone" placeholder="Ex: 935 020 324" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="O seu melhor e-mail" required>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="mensagem">Mensagem (Opcional)</label>
+                        <textarea id="mensagem" name="mensagem" placeholder="Diga-nos o seu bairro/condomínio e o serviço que pretende..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-submit">Enviar Pedido de Contacto</button>
+                </form>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p><strong>A Equipa iTpraTi.ao</strong></p>
+            <p>A tecnologia que você merece. Estamos à vossa disposição!</p>
+            <div class="footer-links">
+                <a href="https://www.itprati.ao" target="_blank">Portal iTpraTi</a>
+                <a href="https://net.itprati.ao" target="_blank">Net iTpraTi</a>
+                <a href="https://tv.itprati.ao" target="_blank">TV iTpraTi</a>
+            </div>
+            <p style="color: rgba(255,255,255,0.5); font-size: 12px; margin-top: 15px;">
+                &copy; 2026 iTpraTi - Todos os direitos reservados.<br>
+                Linhas de Apoio: +244 935 020 324 | +244 941 473 345
+            </p>
+        </footer>
     </div>
+
 </body>
 </html>
