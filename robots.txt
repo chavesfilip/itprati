@@ -1,0 +1,21 @@
+# robots.txt — iTpraTi (www.itprati.ao)
+# Actualizado: Outubro 2026
+
+User-agent: *
+Allow: /
+
+# Bloquear áreas internas (se existirem)
+Disallow: /admin/
+Disallow: /area-cliente/
+Disallow: /api/
+Disallow: /*.json$
+
+# Sitemap
+Sitemap: https://www.itprati.ao/sitemap.xml
+
+# Crawl-delay suave para bots agressivos
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
