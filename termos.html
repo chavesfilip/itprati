@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Termos e Condições de Prestação de Serviço | iTpraTi</title>
+<meta name="description" content="Termos e Condições de prestação de serviços de Internet e TV Online da iTpraTi. Equipamentos, pagamentos, cortes e obrigações do cliente.">
+<meta name="robots" content="noindex, follow">
+<style>
+:root{
+  --navy:#082b49; --blue:#087ca5; --cyan:#39b8c9; --aqua:#dff7f8;
+  --ink:#16344b; --muted:#647789; --line:#dce8ed; --white:#fff;
+  --bg:#f5fafb; --danger:#b91c1c; --ok:#0f766e;
+  --radius:16px; --shadow:0 12px 40px rgba(8,43,73,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.55}
+a{color:var(--blue);text-decoration:none}
+.container{width:min(920px,calc(100% - 32px));margin:0 auto}
+.top{background:var(--navy);color:#e8f6fa;padding:14px 0;font-size:13px}
+.top .container{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.top a{color:#fff;font-weight:700}
+header{background:#fff;border-bottom:1px solid var(--line);padding:18px 0}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;font-size:20px;color:var(--navy)}
+.brand img{height:48px;width:auto;object-fit:contain}
+.badge{display:inline-flex;align-items:center;gap:6px;background:var(--aqua);color:#0a6b7c;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border-radius:999px}
+h1{font-size:clamp(26px,4vw,36px);line-height:1.15;color:var(--navy);margin:12px 0 8px;letter-spacing:-.03em}
+.lead{color:var(--muted);margin:0 0 22px;font-size:15px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:12px;font-weight:800;color:#4b6575;margin-bottom:6px}
+.field input,.field textarea,.field select{
+  width:100%;padding:12px 14px;border:1px solid #d4e2e8;border-radius:12px;
+  background:#fbfdfe;color:var(--ink);outline:none;font:inherit
+}
+.field input:focus,.field textarea:focus,.field select:focus{
+  border-color:var(--cyan);box-shadow:0 0 0 3px rgba(57,184,201,.16)
+}
+.field.full{grid-column:1/-1}
+.btn{
+  border:0;border-radius:999px;padding:13px 20px;font-weight:800;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  transition:transform .15s,background .15s
+}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--cyan);color:var(--navy)}
+.btn-dark{background:var(--navy);color:#fff}
+.btn-outline{background:#fff;border:1px solid #c7dce4;color:var(--navy)}
+.btn-ok{background:var(--ok);color:#fff}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.hint{font-size:12px;color:var(--muted);margin-top:8px}
+.steps{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 10px}
+.step{
+  font-size:12px;font-weight:800;padding:7px 12px;border-radius:999px;
+  background:#eef5f7;color:#5a7383
+}
+.step.active{background:var(--navy);color:#fff}
+.step.done{background:#d1fae5;color:#065f46}
+.doc{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px 26px;margin-top:18px;box-shadow:var(--shadow)
+}
+.doc h2{font-size:18px;color:var(--navy);margin:22px 0 8px}
+.doc h2:first-child{margin-top:0}
+.doc p,.doc li{font-size:14px;color:#2c4556}
+.doc ol,.doc ul{padding-left:20px}
+.doc li{margin:6px 0}
+.doc .meta{
+  background:#f3fafb;border:1px solid #d7ebf0;border-radius:12px;
+  padding:14px 16px;margin:14px 0 18px;font-size:13px
+}
+.doc .meta strong{color:var(--navy)}
+.highlight{
+  background:#fff7ed;border-left:4px solid #f59e0b;padding:12px 14px;
+  border-radius:0 10px 10px 0;margin:14px 0;font-size:14px
+}
+.critical{
+  background:#fef2f2;border-left:4px solid var(--danger);padding:12px 14px;
+  border-radius:0 10px 10px 0;margin:14px 0;font-size:14px
+}
+.agree-box{
+  margin-top:20px;padding:18px;border:2px solid var(--line);border-radius:14px;background:#f8fcfd
+}
+.agree-box label{display:flex;gap:10px;align-items:flex-start;font-size:14px;cursor:pointer}
+.agree-box input{margin-top:3px;width:18px;height:18px;accent-color:var(--navy)}
+.hidden{display:none !important}
+.success{
+  background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;
+  padding:14px 16px;border-radius:12px;margin-top:14px;font-size:14px;font-weight:600
+}
+footer{margin:40px 0 28px;color:var(--muted);font-size:12px;text-align:center}
+@media(max-width:720px){
+  .grid{grid-template-columns:1fr}
+  .doc{padding:20px 16px}
+  .top .container{flex-direction:column;align-items:flex-start}
+}
+@media print{
+  .top,header,.no-print,footer{display:none !important}
+  body{background:#fff}
+  .doc{box-shadow:none;border:0;padding:0}
+}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="container">
+    <span>iTpraTi — Termos e Condições de Prestação de Serviço</span>
+    <a href="https://www.itprati.ao">← Voltar ao site</a>
+  </div>
+</div>
+
+<header>
+  <div class="container">
+    <div class="brand">
+      <img src="/img/logo-itprati.png" alt="iTpraTi" onerror="this.style.display='none'">
+      <span>iTpraTi</span>
+    </div>
+  </div>
+</header>
+
+<main class="container" style="padding:28px 0 10px">
+  <span class="badge">Documento contratual</span>
+  <h1>Termos e Condições de Prestação de Serviço</h1>
+  <p class="lead">
+    Preencha os seus dados para gerar o documento personalizado. Leia com atenção, confirme a aceitação
+    e receba uma cópia por e-mail. Os equipamentos fornecidos pela iTpraTi permanecem sempre propriedade da iTpraTi.
+  </p>
+
+  <div class="steps no-print">
+    <span class="step active" id="step1">1. Dados do cliente</span>
+    <span class="step" id="step2">2. Ler o documento</span>
+    <span class="step" id="step3">3. Concordar e receber cópia</span>
+  </div>
+
+  <!-- FORMULÁRIO -->
+  <section class="card no-print" id="formSection">
+    <h2 style="margin:0 0 14px;font-size:18px;color:var(--navy)">Dados do cliente / assinante</h2>
+    <form id="clientForm">
+      <div class="grid">
+        <div class="field">
+          <label for="nome">Nome completo *</label>
+          <input id="nome" name="nome" required placeholder="Ex.: João Manuel da Silva" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="bilhete">N.º do Bilhete de Identidade / Passaporte *</label>
+          <input id="bilhete" name="bilhete" required placeholder="Ex.: 000000000LA000">
+        </div>
+        <div class="field full">
+          <label for="morada">Morada completa (rua, bairro, município, província) *</label>
+          <input id="morada" name="morada" required placeholder="Ex.: Rua X, Bairro Y, Talatona, Luanda">
+        </div>
+        <div class="field">
+          <label for="telefone">Telemóvel / WhatsApp *</label>
+          <input id="telefone" name="telefone" type="tel" required placeholder="+244 9XX XXX XXX">
+        </div>
+        <div class="field">
+          <label for="email">E-mail para receber a cópia *</label>
+          <input id="email" name="email" type="email" required placeholder="seuemail@exemplo.com">
+        </div>
+        <div class="field">
+          <label for="servico">Serviço pretendido / contratado</label>
+          <select id="servico" name="servico">
+            <option value="Internet Ilimitada">Internet Ilimitada</option>
+            <option value="TV Online">TV Online</option>
+            <option value="Internet + TV Online">Internet + TV Online</option>
+            <option value="Outro serviço iTpraTi">Outro serviço iTpraTi</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="data">Data</label>
+          <input id="data" name="data" type="date">
+        </div>
+      </div>
+      <div class="actions">
+        <button type="submit" class="btn btn-primary">Gerar documento personalizado →</button>
+      </div>
+      <p class="hint">Os campos assinalados com * são obrigatórios. Os seus dados são usados apenas para personalizar este documento e enviar-lhe a cópia.</p>
+    </form>
+  </section>
+
+  <!-- DOCUMENTO -->
+  <section class="doc hidden" id="docSection">
+    <div class="no-print actions" style="margin:0 0 16px">
+      <button type="button" class="btn btn-outline" id="btnEdit">← Alterar dados</button>
+      <button type="button" class="btn btn-outline" onclick="window.print()">Imprimir / Guardar PDF</button>
+    </div>
+
+    <p style="text-align:center;font-size:13px;color:var(--muted);margin:0 0 6px">iTpraTi — Prestação de Serviços de Internet e Televisão Online</p>
+    <h2 style="text-align:center;margin-top:0">TERMOS E CONDIÇÕES DE PRESTAÇÃO DE SERVIÇO</h2>
+    <p style="text-align:center;font-size:13px;color:var(--muted)">Versão aplicável a clientes residenciais e empresariais em Angola</p>
+
+    <div class="meta" id="clientMeta">
+      <!-- preenchido por JS -->
+    </div>
+
+    <h2>1. Objecto</h2>
+    <p>
+      Os presentes Termos e Condições regulam a prestação, pela <strong>iTpraTi</strong> (doravante “Prestador”),
+      de serviços de acesso à Internet, televisão online (IPTV/streaming) e serviços conexos, bem como a
+      cedência de equipamentos necessários à utilização dos serviços, ao cliente identificado neste documento
+      (doravante “Cliente”).
+    </p>
+
+    <h2>2. Aceitação</h2>
+    <p>
+      A activação do serviço, o pagamento de qualquer mensalidade, a assinatura deste documento ou a confirmação
+      electrónica de aceitação constituem plena aceitação destes Termos e Condições pelo Cliente.
+    </p>
+
+    <h2>3. Propriedade dos equipamentos</h2>
+    <div class="critical">
+      <strong>Regra essencial:</strong> Todos os equipamentos fornecidos ou instalados pela iTpraTi
+      (incluindo, sem limitação, routers, antenas, rádios, cabos de rede, Box Android / set-top boxes,
+      fontes de alimentação e demais acessórios) são e <strong>permanecem sempre propriedade exclusiva da iTpraTi</strong>.
+      O Cliente recebe apenas o direito de uso enquanto o contrato estiver activo e as mensalidades em dia.
+    </div>
+    <ol>
+      <li>O Cliente não adquire a propriedade dos equipamentos pelo pagamento de mensalidades, taxas de instalação ou cauções.</li>
+      <li>É proibida a venda, cedência, penhor, empréstimo, desmontagem ou deslocação dos equipamentos para local diferente do de instalação, sem autorização escrita da iTpraTi.</li>
+      <li>Em caso de cessação do serviço (por qualquer motivo), o Cliente obriga-se a devolver os equipamentos em bom estado de funcionamento, no prazo máximo de <strong>5 (cinco) dias úteis</strong>, ou a permitir a sua recolha pela equipa da iTpraTi.</li>
+      <li>A não devolução, extravio, dano ou destruição dos equipamentos obriga o Cliente ao pagamento do valor de reposição definido pela iTpraTi, sem prejuízo de outras responsabilidades legais.</li>
+      <li>A iTpraTi pode, a qualquer momento e com aviso prévio razoável, substituir ou retirar equipamentos para manutenção, actualização ou cessação do serviço.</li>
+    </ol>
+
+    <h2>4. Mensalidades, pagamentos e mora</h2>
+    <ol>
+      <li>O Cliente obriga-se a pagar pontualmente as mensalidades e demais valores devidos, nos prazos e pelos meios indicados pela iTpraTi.</li>
+      <li>O atraso no pagamento coloca o Cliente em mora, podendo a iTpraTi aplicar juros de mora, despesas de cobrança e medidas de restrição ou suspensão do serviço, nos termos da lei e destes Termos.</li>
+      <li>A falta de pagamento não extingue a obrigação de pagar o período em que o serviço esteve disponível.</li>
+    </ol>
+
+    <h2>5. Cortes, suspensão e continuidade do débito</h2>
+    <div class="critical">
+      <strong>Cortes de fornecimento e dívida:</strong> Em caso de não pagamento, a iTpraTi pode suspender ou cortar
+      o fornecimento do serviço. <strong>Se, por qualquer razão, o corte não for efectuado de imediato e o serviço
+      continuar disponível, o Cliente continua a dever e a ser responsável pelo pagamento correspondente a todo o
+      período em que o serviço permaneceu activo ou acessível</strong>, incluindo o tempo não cortado.
+    </div>
+    <ol>
+      <li>A iTpraTi pode suspender o serviço após incumprimento do prazo de pagamento, com ou sem aviso prévio, conforme a gravidade e a reincidência.</li>
+      <li>A eventual demora, falha técnica ou decisão operacional em proceder ao corte <strong>não constitui renúncia</strong> ao direito de cobrança nem perdão da dívida.</li>
+      <li>O Cliente reconhece que a utilização ou a mera disponibilidade do serviço após a data de vencimento gera débito exigível referente a esse período.</li>
+      <li>A reactivação do serviço após corte ou suspensão pode estar sujeita ao pagamento integral dos valores em atraso, juros, taxas de reactivação e eventuais custos de deslocação.</li>
+      <li>A iTpraTi reserva-se o direito de interromper o serviço por motivos de manutenção, segurança, ordem de autoridade competente, ou força maior, sem que tal gere direito a indemnização, sem prejuízo das normas legais aplicáveis.</li>
+    </ol>
+
+    <h2>6. Utilização do serviço</h2>
+    <ol>
+      <li>O Cliente utiliza o serviço de forma lícita, diligente e em conformidade com a lei angolana e estes Termos.</li>
+      <li>É proibido o uso do serviço para actividades ilícitas, partilha abusiva não autorizada, ataques a redes, ou qualquer uso que prejudique a qualidade do serviço de outros clientes.</li>
+      <li>As velocidades de Internet são valores de referência e podem variar em função da tecnologia, congestão, condições do local e equipamentos do Cliente.</li>
+      <li>O serviço de TV Online depende de ligação à Internet estável e de equipamentos/aplicações compatíveis.</li>
+    </ol>
+
+    <h2>7. Instalação e acesso ao local</h2>
+    <ol>
+      <li>O Cliente autoriza o acesso da equipa da iTpraTi ao local de instalação, em horário combinado, para instalação, manutenção, verificação ou recolha de equipamentos.</li>
+      <li>O custo de instalação, quando aplicável, é comunicado antes da execução e pode variar conforme localização, tecnologia e complexidade.</li>
+    </ol>
+
+    <h2>8. Responsabilidade</h2>
+    <ol>
+      <li>A iTpraTi envidará esforços razoáveis para manter a continuidade e qualidade do serviço, sem garantir disponibilidade ininterrupta a 100%.</li>
+      <li>A iTpraTi não se responsabiliza por danos decorrentes de uso indevido, falhas eléctricas, condições atmosféricas, actos de terceiros, ou conteúdos acedidos pelo Cliente através da Internet ou da TV Online.</li>
+      <li>O Cliente é responsável pela segurança dos seus dispositivos, palavras-passe e pelo uso feito a partir da sua ligação.</li>
+    </ol>
+
+    <h2>9. Dados pessoais</h2>
+    <p>
+      Os dados pessoais do Cliente são tratados para gestão contratual, facturação, suporte, cobrança e cumprimento
+      de obrigações legais. O Cliente pode solicitar informações sobre os seus dados através dos canais oficiais da iTpraTi.
+    </p>
+
+    <h2>10. Cessação</h2>
+    <ol>
+      <li>O Cliente pode solicitar a cessação do serviço pelos canais oficiais, sujeita aos prazos e condições de aviso prévio definidos pela iTpraTi.</li>
+      <li>A iTpraTi pode cessar o serviço por incumprimento grave ou reiterado destes Termos, por falta de pagamento, ou por impossibilidade técnica prolongada.</li>
+      <li>Com a cessação, mantém-se a obrigação de pagar valores em dívida e de devolver os equipamentos propriedade da iTpraTi.</li>
+    </ol>
+
+    <h2>11. Lei aplicável e foro</h2>
+    <p>
+      Estes Termos regem-se pela legislação da República de Angola. Para a resolução de litígios, é competente o foro
+      da comarca do local de prestação do serviço ou outro previsto na lei, sem prejuízo de mecanismos de reclamação
+      junto da iTpraTi.
+    </p>
+
+    <h2>12. Disposições finais</h2>
+    <ol>
+      <li>A eventual nulidade de alguma cláusula não afecta a validade das restantes.</li>
+      <li>A iTpraTi pode actualizar estes Termos, comunicando as alterações pelos canais habituais. A continuidade de uso do serviço após comunicação pode constituir aceitação das novas condições, nos termos da lei.</li>
+      <li>Para questões sobre este documento: WhatsApp <strong>+244 935 020 324</strong> · Site <strong>www.itprati.ao</strong>.</li>
+    </ol>
+
+    <div class="highlight">
+      <strong>Declaração do Cliente:</strong> Declaro que li, compreendi e aceito integralmente os presentes
+      Termos e Condições, em especial as cláusulas sobre <strong>propriedade dos equipamentos da iTpraTi</strong>
+      e sobre <strong>obrigação de pagamento do período em que o serviço permaneceu activo mesmo quando não houver corte imediato</strong>.
+    </div>
+
+    <div id="signatureBlock" class="meta">
+      <!-- preenchido por JS -->
+    </div>
+
+    <!-- ACEITAÇÃO -->
+    <div class="agree-box no-print" id="agreeBox">
+      <label>
+        <input type="checkbox" id="agreeCheck">
+        <span>
+          Eu, <strong id="agreeName">[Nome]</strong>, portador do documento <strong id="agreeId">[BI]</strong>,
+          li e aceito os Termos e Condições da iTpraTi, incluindo a propriedade dos equipamentos e as regras de
+          corte e cobrança do período não cortado.
+        </span>
+      </label>
+      <div class="actions" style="margin-top:14px">
+        <button type="button" class="btn btn-ok" id="btnAgree">Concordo e quero receber cópia por e-mail</button>
+        <button type="button" class="btn btn-dark" id="btnWhatsApp">Enviar cópia também por WhatsApp</button>
+      </div>
+      <p class="hint">
+        Ao clicar em “Concordo”, será aberto o seu programa de e-mail com a cópia do documento e os seus dados.
+        Se preferir, pode também enviar pelo WhatsApp oficial da iTpraTi.
+      </p>
+      <div class="success hidden" id="successMsg">
+        Aceitação registada neste dispositivo. Conclua o envio da cópia no e-mail ou WhatsApp que foi aberto.
+        Recomendamos guardar o PDF (Imprimir → Guardar como PDF) para o seu arquivo.
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  © <span id="year"></span> iTpraTi · Termos e Condições · www.itprati.ao · +244 935 020 324
+</footer>
+
+<script>
+(function(){
+  const WA = '244935020324';
+  const $ = (id) => document.getElementById(id);
+  const form = $('clientForm');
+  const formSection = $('formSection');
+  const docSection = $('docSection');
+
+  // data por defeito = hoje
+  const today = new Date();
+  $('data').value = today.toISOString().slice(0,10);
+  $('year').textContent = today.getFullYear();
+
+  function fmtDate(iso){
+    if(!iso) return '—';
+    const [y,m,d] = iso.split('-');
+    return d + '/' + m + '/' + y;
+  }
+
+  function getData(){
+    return {
+      nome: $('nome').value.trim(),
+      bilhete: $('bilhete').value.trim(),
+      morada: $('morada').value.trim(),
+      telefone: $('telefone').value.trim(),
+      email: $('email').value.trim(),
+      servico: $('servico').value,
+      data: $('data').value
+    };
+  }
+
+  function fillDocument(d){
+    $('clientMeta').innerHTML = `
+      <div><strong>Cliente / Assinante:</strong> ${escapeHtml(d.nome)}</div>
+      <div><strong>Documento de identificação:</strong> ${escapeHtml(d.bilhete)}</div>
+      <div><strong>Morada de instalação / contacto:</strong> ${escapeHtml(d.morada)}</div>
+      <div><strong>Telemóvel:</strong> ${escapeHtml(d.telefone)} &nbsp;|&nbsp; <strong>E-mail:</strong> ${escapeHtml(d.email)}</div>
+      <div><strong>Serviço:</strong> ${escapeHtml(d.servico)} &nbsp;|&nbsp; <strong>Data:</strong> ${fmtDate(d.data)}</div>
+    `;
+    $('signatureBlock').innerHTML = `
+      <div><strong>Local e data:</strong> ${escapeHtml(d.morada.split(',').pop()?.trim() || 'Angola')}, ${fmtDate(d.data)}</div>
+      <div style="margin-top:10px"><strong>O Cliente:</strong> ${escapeHtml(d.nome)}</div>
+      <div><strong>N.º de identificação:</strong> ${escapeHtml(d.bilhete)}</div>
+      <div style="margin-top:12px"><strong>Pela iTpraTi:</strong> Aceitação electrónica / canal oficial · WhatsApp +244 935 020 324 · www.itprati.ao</div>
+    `;
+    $('agreeName').textContent = d.nome;
+    $('agreeId').textContent = d.bilhete;
+  }
+
+  function escapeHtml(s){
+    return String(s)
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;');
+  }
+
+  function setStep(n){
+    [1,2,3].forEach(i=>{
+      const el = $('step'+i);
+      el.classList.remove('active','done');
+      if(i < n) el.classList.add('done');
+      if(i === n) el.classList.add('active');
+    });
+  }
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const d = getData();
+    fillDocument(d);
+    formSection.classList.add('hidden');
+    docSection.classList.remove('hidden');
+    setStep(2);
+    $('agreeCheck').checked = false;
+    $('successMsg').classList.add('hidden');
+    docSection.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  $('btnEdit').addEventListener('click', function(){
+    docSection.classList.add('hidden');
+    formSection.classList.remove('hidden');
+    setStep(1);
+    formSection.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+
+  function buildPlainText(d){
+    return (
+`TERMOS E CONDIÇÕES DE PRESTAÇÃO DE SERVIÇO — iTpraTi
+Aceitação pelo Cliente
+
+Cliente: ${d.nome}
+Documento: ${d.bilhete}
+Morada: ${d.morada}
+Telemóvel: ${d.telefone}
+E-mail: ${d.email}
+Serviço: ${d.servico}
+Data: ${fmtDate(d.data)}
+
+DECLARAÇÃO:
+Li, compreendi e aceito os Termos e Condições da iTpraTi, em especial:
+1) Todos os equipamentos (routers, antenas, Box Android, cabos e acessórios) são e permanecem propriedade exclusiva da iTpraTi; o Cliente apenas usa enquanto o contrato estiver activo.
+2) Em caso de não pagamento, a iTpraTi pode cortar o serviço. Se o corte não for feito de imediato e o serviço continuar disponível, o Cliente continua a dever o período em que o serviço permaneceu activo (tempo não cortado).
+3) Na cessação do serviço, obrigo-me a devolver os equipamentos em bom estado no prazo de 5 dias úteis.
+
+Documento completo: https://www.itprati.ao/termos-e-condicoes.html
+Contacto iTpraTi: +244 935 020 324 | www.itprati.ao
+`
+    );
+  }
+
+  $('btnAgree').addEventListener('click', function(){
+    if(!$('agreeCheck').checked){
+      alert('Por favor, assinale a caixa de aceitação antes de continuar.');
+      return;
+    }
+    const d = getData();
+    const subject = encodeURIComponent('Aceitação dos Termos e Condições iTpraTi — ' + d.nome);
+    const body = encodeURIComponent(buildPlainText(d));
+    // Abre o cliente de e-mail do utilizador com cópia para si e BCC/CC opcional para a empresa
+    const mailto = `mailto:${encodeURIComponent(d.email)}?subject=${subject}&body=${body}`;
+    window.location.href = mailto;
+    $('successMsg').classList.remove('hidden');
+    setStep(3);
+  });
+
+  $('btnWhatsApp').addEventListener('click', function(){
+    if(!$('agreeCheck').checked){
+      alert('Por favor, assinale a caixa de aceitação antes de continuar.');
+      return;
+    }
+    const d = getData();
+    const msg = buildPlainText(d);
+    window.open('https://wa.me/' + WA + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+    $('successMsg').classList.remove('hidden');
+    setStep(3);
+  });
+})();
+</script>
+</body>
+</html>
