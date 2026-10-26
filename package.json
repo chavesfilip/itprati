@@ -1,0 +1,8 @@
+{
+  "name": "itprati-site",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Site estático iTpraTi (gerado por build.js, sem dependências)",
+  "scripts": { "build": "node build.js" },
+  "engines": { "node": ">=18" }
+}
